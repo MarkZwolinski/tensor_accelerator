@@ -69,6 +69,10 @@ run_test "NoC Router" \
 run_test "NoC 2x2 Mesh" \
     "iverilog -g2012 -o sim/tb_noc_mesh rtl/noc/noc_router.v tb/tb_noc_mesh_2x2.v" "tb_noc_mesh" "NOC MESH INTEGRATION TESTS PASSED"
 
+run_test "NoC TX (DMA_NOC_SEND)" \
+    "iverilog -g2012 -DSIM -I rtl/include -o sim/tb_noc_tx rtl/core/mac_pe.v rtl/core/systolic_array.v rtl/core/vector_unit.v rtl/core/dma_engine.v rtl/memory/sram_subsystem.v rtl/control/local_cmd_processor.v rtl/top/tensor_processing_cluster.v rtl/noc/noc_router.v tb/tb_noc_tx.v" \
+    "tb_noc_tx" "ALL NOC TX TESTS PASSED"
+
 echo ""
 echo "═══════════════ INTEGRATION TESTS ═══════════════"
 
