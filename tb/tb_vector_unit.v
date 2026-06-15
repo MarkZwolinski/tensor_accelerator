@@ -23,10 +23,14 @@ module tb_vector_unit;
     reg sram_ready;
     
     // VPU opcodes
-    localparam VOP_ADD  = 8'h01;
-    localparam VOP_RELU = 8'h10;
-    localparam VOP_SUM  = 8'h20;
-    localparam VOP_ZERO = 8'h34;
+    localparam VOP_ADD     = 8'h01;
+    localparam VOP_RELU    = 8'h10;
+    localparam VOP_SIGMOID = 8'h13;
+    localparam VOP_TANH    = 8'h14;
+    localparam VOP_SILU    = 8'h12;
+    localparam VOP_GELU    = 8'h11;
+    localparam VOP_SUM     = 8'h20;
+    localparam VOP_ZERO    = 8'h34;
     
     vector_unit #(
         .LANES(LANES), .DATA_WIDTH(DATA_WIDTH), .VREG_COUNT(VREG_COUNT), .SRAM_ADDR_W(SRAM_ADDR_W)
@@ -186,6 +190,129 @@ module tb_vector_unit;
         $display("    After:  V20 = %h", dut.vrf[20]);
         if (dut.vrf[20] == 0) $display("  PASS: V20 zeroed");
         else begin $display("  FAIL: V20 not zero"); errors = errors + 1; end
+
+        //======================================================================
+        // TEST 5: Sigmoid
+        // PWL: y = clamp(x + 16384, 0, 32767)
+        //   sigmoid(0)      = 16384  (midpoint)
+        //   sigmoid(32767)  = 32767  (saturated high)
+        //   sigmoid(-32768) = 0      (saturated low)
+        //======================================================================
+        $display("");
+        $display("[TEST 5] Sigmoid: V22 = sigmoid(V6)");
+
+        init_vrf();
+        // lane[0]=0, lane[1]=32767 (max), lane[2]=-32768 (min)
+        dut.vrf[6][0*DATA_WIDTH +: DATA_WIDTH] = 16'sh0000;
+        dut.vrf[6][1*DATA_WIDTH +: DATA_WIDTH] = 16'sh7FFF;
+        dut.vrf[6][2*DATA_WIDTH +: DATA_WIDTH] = 16'sh8000;
+
+        issue_cmd(make_cmd(VOP_SIGMOID, 5'd22, 5'd6, 5'd0));
+
+        val = $signed(dut.vrf[22][0*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 16384) $display("  PASS: sigmoid(0) = %0d", val);
+        else begin $display("  FAIL: sigmoid(0) = %0d, expected 16384", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[22][1*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 32767) $display("  PASS: sigmoid(32767) = %0d (saturated)", val);
+        else begin $display("  FAIL: sigmoid(32767) = %0d, expected 32767", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[22][2*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 0) $display("  PASS: sigmoid(-32768) = %0d (saturated)", val);
+        else begin $display("  FAIL: sigmoid(-32768) = %0d, expected 0", val); errors = errors + 1; end
+
+        #(CLK * 5);
+
+        //======================================================================
+        // TEST 6: Tanh
+        // PWL: y = clamp(2*x, -32768, 32767)
+        //   tanh(0)      = 0
+        //   tanh(32767)  = 32767 (saturated high)
+        //   tanh(-32768) = -32768 (saturated low)
+        //======================================================================
+        $display("");
+        $display("[TEST 6] Tanh: V23 = tanh(V7)");
+
+        init_vrf();
+        dut.vrf[7][0*DATA_WIDTH +: DATA_WIDTH] = 16'sh0000;
+        dut.vrf[7][1*DATA_WIDTH +: DATA_WIDTH] = 16'sh7FFF;
+        dut.vrf[7][2*DATA_WIDTH +: DATA_WIDTH] = 16'sh8000;
+
+        issue_cmd(make_cmd(VOP_TANH, 5'd23, 5'd7, 5'd0));
+
+        val = $signed(dut.vrf[23][0*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 0) $display("  PASS: tanh(0) = %0d", val);
+        else begin $display("  FAIL: tanh(0) = %0d, expected 0", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[23][1*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 32767) $display("  PASS: tanh(32767) = %0d (saturated)", val);
+        else begin $display("  FAIL: tanh(32767) = %0d, expected 32767", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[23][2*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == -32768) $display("  PASS: tanh(-32768) = %0d (saturated)", val);
+        else begin $display("  FAIL: tanh(-32768) = %0d, expected -32768", val); errors = errors + 1; end
+
+        #(CLK * 5);
+
+        //======================================================================
+        // TEST 7: SiLU = x * sigmoid(x) >> 15
+        //   silu(0)      = 0  (0 * sigmoid(0) = 0)
+        //   silu(16384)  = 16383  (16384 * 32767 >> 15)
+        //   silu(-32768) = 0  (sigmoid(-32768) = 0, so product = 0)
+        //======================================================================
+        $display("");
+        $display("[TEST 7] SiLU: V24 = silu(V8)");
+
+        init_vrf();
+        dut.vrf[8][0*DATA_WIDTH +: DATA_WIDTH] = 16'sh0000;
+        dut.vrf[8][1*DATA_WIDTH +: DATA_WIDTH] = 16'sh4000;  // 16384
+        dut.vrf[8][2*DATA_WIDTH +: DATA_WIDTH] = 16'sh8000;  // -32768
+
+        issue_cmd(make_cmd(VOP_SILU, 5'd24, 5'd8, 5'd0));
+
+        val = $signed(dut.vrf[24][0*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 0) $display("  PASS: silu(0) = %0d", val);
+        else begin $display("  FAIL: silu(0) = %0d, expected 0", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[24][1*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 16383) $display("  PASS: silu(16384) = %0d", val);
+        else begin $display("  FAIL: silu(16384) = %0d, expected 16383", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[24][2*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 0) $display("  PASS: silu(-32768) = %0d (sigmoid saturated to 0)", val);
+        else begin $display("  FAIL: silu(-32768) = %0d, expected 0", val); errors = errors + 1; end
+
+        #(CLK * 5);
+
+        //======================================================================
+        // TEST 8: GELU = x * sigmoid(1.702*x) >> 15, 1.702 ≈ 27/16 = 1.6875
+        //   gelu(0)      = 0
+        //   gelu(16384)  = 16383  (arg = 27648 → sigmoid saturates → 32767)
+        //   gelu(-16384) = 0  (arg = -27648 → sigmoid = 0 → product = 0)
+        //======================================================================
+        $display("");
+        $display("[TEST 8] GELU: V25 = gelu(V9)");
+
+        init_vrf();
+        dut.vrf[9][0*DATA_WIDTH +: DATA_WIDTH] = 16'sh0000;
+        dut.vrf[9][1*DATA_WIDTH +: DATA_WIDTH] = 16'sh4000;  // 16384
+        dut.vrf[9][2*DATA_WIDTH +: DATA_WIDTH] = 16'shC000;  // -16384
+
+        issue_cmd(make_cmd(VOP_GELU, 5'd25, 5'd9, 5'd0));
+
+        val = $signed(dut.vrf[25][0*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 0) $display("  PASS: gelu(0) = %0d", val);
+        else begin $display("  FAIL: gelu(0) = %0d, expected 0", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[25][1*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 16383) $display("  PASS: gelu(16384) = %0d", val);
+        else begin $display("  FAIL: gelu(16384) = %0d, expected 16383", val); errors = errors + 1; end
+
+        val = $signed(dut.vrf[25][2*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 0) $display("  PASS: gelu(-16384) = %0d (scaled arg saturates sigmoid to 0)", val);
+        else begin $display("  FAIL: gelu(-16384) = %0d, expected 0", val); errors = errors + 1; end
+
+        #(CLK * 5);
 
         //======================================================================
         // Summary

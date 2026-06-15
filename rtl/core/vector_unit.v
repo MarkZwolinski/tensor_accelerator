@@ -92,6 +92,11 @@ module vector_unit #(
     localparam VOP_BCAST     = 8'h32;
     localparam VOP_MOV       = 8'h33;
     localparam VOP_ZERO      = 8'h34;
+
+    // Activation PWL constants (tied to DATA_WIDTH)
+    localparam integer SIGMOID_BIAS = 1 << (DATA_WIDTH-2);         // 16384
+    localparam integer SIGNED_MAX   = (1 << (DATA_WIDTH-1)) - 1;   // 32767
+    localparam integer SIGNED_MIN   = -(1 << (DATA_WIDTH-1));       // -32768
     
     //--------------------------------------------------------------------------
     // Vector Register File
@@ -137,55 +142,108 @@ module vector_unit #(
         for (i = 0; i < LANES; i = i + 1) begin : lane_extract
             assign lane_a[i] = vs1_data[i*DATA_WIDTH +: DATA_WIDTH];
             assign lane_b[i] = vs2_data[i*DATA_WIDTH +: DATA_WIDTH];
-            
+
+            // Sigmoid: y = clamp(x + 2^(DATA_WIDTH-2), 0, 2^(DATA_WIDTH-1)-1)
+            // Active region x ∈ [-SIGMOID_BIAS, SIGMOID_BIAS-1] maps to [0, SIGNED_MAX]
+            wire signed [DATA_WIDTH:0] sig_a_raw =
+                $signed({lane_a[i][DATA_WIDTH-1], lane_a[i]}) + SIGMOID_BIAS;
+            wire [DATA_WIDTH-1:0] sig_a_out =
+                sig_a_raw[DATA_WIDTH]   ? {DATA_WIDTH{1'b0}}              :
+                sig_a_raw[DATA_WIDTH-1] ? {1'b0, {(DATA_WIDTH-1){1'b1}}} :
+                sig_a_raw[DATA_WIDTH-1:0];
+
+            // Tanh: y = clamp(2*x, SIGNED_MIN, SIGNED_MAX)
+            wire signed [DATA_WIDTH:0] tanh_2x =
+                {lane_a[i][DATA_WIDTH-1], lane_a[i]} <<< 1;
+            wire [DATA_WIDTH-1:0] tanh_out =
+                (tanh_2x > SIGNED_MAX) ? {1'b0, {(DATA_WIDTH-1){1'b1}}} :
+                (tanh_2x < SIGNED_MIN) ? {1'b1, {(DATA_WIDTH-1){1'b0}}} :
+                tanh_2x[DATA_WIDTH-1:0];
+
+            // GELU argument: clamp((27/16)*x, SIGNED_MIN, SIGNED_MAX) ≈ 1.6875*x ≈ 1.702*x
+            wire signed [DATA_WIDTH+4:0] gelu_arg_full =
+                $signed({{5{lane_a[i][DATA_WIDTH-1]}}, lane_a[i]}) * 21'sd27;
+            wire signed [DATA_WIDTH+4:0] gelu_arg_shr = gelu_arg_full >>> 4;
+            wire [DATA_WIDTH-1:0] gelu_arg_sat =
+                (gelu_arg_shr > SIGNED_MAX) ? {1'b0, {(DATA_WIDTH-1){1'b1}}} :
+                (gelu_arg_shr < SIGNED_MIN) ? {1'b1, {(DATA_WIDTH-1){1'b0}}} :
+                gelu_arg_shr[DATA_WIDTH-1:0];
+
+            // Sigmoid of scaled GELU argument
+            wire signed [DATA_WIDTH:0] sig_g_raw =
+                $signed(gelu_arg_sat) + SIGMOID_BIAS;
+            wire [DATA_WIDTH-1:0] sig_g_out =
+                sig_g_raw[DATA_WIDTH]   ? {DATA_WIDTH{1'b0}}              :
+                sig_g_raw[DATA_WIDTH-1] ? {1'b0, {(DATA_WIDTH-1){1'b1}}} :
+                sig_g_raw[DATA_WIDTH-1:0];
+
+            // SiLU: x * sigmoid(x) >> (DATA_WIDTH-1); operands widened to 2*DATA_WIDTH
+            wire signed [2*DATA_WIDTH-1:0] silu_prod =
+                $signed({{DATA_WIDTH{lane_a[i][DATA_WIDTH-1]}}, lane_a[i]}) *
+                $signed({{DATA_WIDTH{1'b0}}, sig_a_out});
+            wire [DATA_WIDTH-1:0] silu_out = silu_prod[2*DATA_WIDTH-2:DATA_WIDTH-1];
+
+            // GELU: x * sigmoid(1.702*x) >> (DATA_WIDTH-1)
+            wire signed [2*DATA_WIDTH-1:0] gelu_prod =
+                $signed({{DATA_WIDTH{lane_a[i][DATA_WIDTH-1]}}, lane_a[i]}) *
+                $signed({{DATA_WIDTH{1'b0}}, sig_g_out});
+            wire [DATA_WIDTH-1:0] gelu_out = gelu_prod[2*DATA_WIDTH-2:DATA_WIDTH-1];
+
             always @(*) begin
                 lane_result[i] = {DATA_WIDTH{1'b0}};
-                
+
                 case (subop_reg)
                     VOP_ADD: begin
-                        // Simple integer add (for BF16, would need FP adder)
                         lane_result[i] = lane_a[i] + lane_b[i];
                     end
-                    
+
                     VOP_SUB: begin
                         lane_result[i] = lane_a[i] - lane_b[i];
                     end
-                    
+
                     VOP_MUL: begin
-                        // Truncated multiply
                         lane_result[i] = lane_a[i] * lane_b[i];
                     end
-                    
+
                     VOP_RELU: begin
-                        // ReLU: max(0, x) - check sign bit
                         lane_result[i] = lane_a[i][DATA_WIDTH-1] ? {DATA_WIDTH{1'b0}} : lane_a[i];
                     end
-                    
+
+                    VOP_SIGMOID: begin
+                        lane_result[i] = sig_a_out;
+                    end
+
+                    VOP_TANH: begin
+                        lane_result[i] = tanh_out;
+                    end
+
+                    VOP_SILU: begin
+                        lane_result[i] = silu_out;
+                    end
+
                     VOP_GELU: begin
-                        // GELU approximation: x * sigmoid(1.702 * x)
-                        // For FPGA POC, use ReLU as placeholder
-                        lane_result[i] = lane_a[i][DATA_WIDTH-1] ? {DATA_WIDTH{1'b0}} : lane_a[i];
+                        // x * sigmoid(1.702*x), 1.702 ≈ 27/16 = 1.6875 (0.85% error)
+                        lane_result[i] = gelu_out;
                     end
-                    
+
                     VOP_ZERO: begin
                         lane_result[i] = {DATA_WIDTH{1'b0}};
                     end
-                    
+
                     VOP_MOV: begin
                         lane_result[i] = lane_a[i];
                     end
-                    
+
                     VOP_BCAST: begin
-                        // Broadcast immediate or first element
                         lane_result[i] = imm_reg;
                     end
-                    
+
                     default: begin
                         lane_result[i] = lane_a[i];
                     end
                 endcase
             end
-            
+
             // Pack results back
             always @(*) begin
                 alu_result[i*DATA_WIDTH +: DATA_WIDTH] = lane_result[i];
