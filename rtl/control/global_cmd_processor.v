@@ -141,8 +141,7 @@ module global_cmd_processor #(
     end
     
     // Check if all enabled TPCs are done
-    assign all_enabled_done = &((tpc_done_latch | ~tpc_enable[NUM_TPCS-1:0]) | 
-                                ~{NUM_TPCS{1'b1}});
+    assign all_enabled_done = &(tpc_done_latch | ~tpc_enable[NUM_TPCS-1:0]);
     
     //--------------------------------------------------------------------------
     // AXI-Lite State Machine
@@ -294,8 +293,7 @@ module global_cmd_processor #(
     //--------------------------------------------------------------------------
     
     // Simple barrier: wait for all TPCs to request, then grant all
-    wire all_sync_requested = &(sync_request | ~tpc_enable[NUM_TPCS-1:0] | 
-                                 ~{NUM_TPCS{1'b1}});
+    wire all_sync_requested = &(sync_request | ~tpc_enable[NUM_TPCS-1:0]);
     reg barrier_active;
     
     always @(posedge clk or negedge rst_n) begin

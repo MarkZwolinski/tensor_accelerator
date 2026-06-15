@@ -70,6 +70,17 @@ module systolic_array_formal #(
         if (f_past_valid && rst_n && !busy)
             assert (!act_ready);
 
+    // Precondition: cfg_k_tiles == 0 is undefined (would cause 16-bit underflow in comparison)
+    always @(posedge clk) if (f_past_valid && rst_n) assume (cfg_k_tiles > 0);
+
+    // A7: accumulator result stays within signed 32-bit range for INT8 inputs
+    // Worst-case single-PE tile sum: ARRAY_SIZE * 127 * 127 = 65,028 — well within INT32
+    always @(posedge clk)
+        if (f_past_valid && rst_n && result_valid) begin
+            assert ($signed(result_data[ACC_WIDTH-1:0]) >= -$signed(32'h7FFFFFFF));
+            assert ($signed(result_data[ACC_WIDTH-1:0]) <=  $signed(32'h7FFFFFFF));
+        end
+
     // Cover: a full computation completes
     always @(posedge clk)
         if (f_past_valid && rst_n) cover (done);

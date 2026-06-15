@@ -17,6 +17,7 @@ Architecture:
 Author: Tensor Accelerator Project
 """
 
+import ctypes
 from dataclasses import dataclass, field
 from typing import List, Dict, Optional, Tuple
 import numpy as np
@@ -108,11 +109,11 @@ class MAC_PE:
             # Pass activation to right neighbor (from registered value)
             self.act_out.set(self.act_reg.get())
             
-            # Compute psum_out = psum_in + product
+            # Compute psum_out = psum_in + product (truncated to signed 32-bit, matching RTL)
             if clear_acc:
-                self.psum_out.set(self.product.get())
+                self.psum_out.set(ctypes.c_int32(self.product.get()).value)
             else:
-                self.psum_out.set(psum_in + self.product.get())
+                self.psum_out.set(ctypes.c_int32(psum_in + self.product.get()).value)
     
     def posedge(self):
         """Clock edge - update all registers"""
