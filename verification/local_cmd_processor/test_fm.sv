@@ -67,11 +67,8 @@ module local_cmd_processor_formal;
             assert ($onehot0({mxu_valid, vpu_valid, dma_valid}));
 
     always @(posedge clk)
-        if (f_past_valid && rst_n && $past(rst_n)) begin
-            if (mxu_valid && !$past(mxu_valid)) assert ($past(busy));
-            if (vpu_valid && !$past(vpu_valid)) assert ($past(busy));
-            if (dma_valid && !$past(dma_valid)) assert ($past(busy));
-        end
+        if (f_past_valid && rst_n && !busy)
+            assert (!mxu_valid && !vpu_valid && !dma_valid);
 
     always @(posedge clk)
         if (f_past_valid && rst_n && $past(rst_n) && sync_request && !$past(sync_request))

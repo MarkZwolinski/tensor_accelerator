@@ -76,15 +76,10 @@ module local_cmd_processor_formal #(
         if (rst_n)
             assert ($onehot0({mxu_valid, vpu_valid, dma_valid}));
 
-    // A4: Dispatch valid signals only rise while the LCP is busy (set in S_ISSUE)
-    // Note: valid_reg can linger one extra cycle after S_ISSUE handshake (S_ISSUE
-    // case overrides the line-218 clear), so we check the transition, not the level.
+    // A4: No dispatch while not busy (LCP must be running to issue commands)
     always @(posedge clk)
-        if (f_past_valid && rst_n && $past(rst_n)) begin
-            if (mxu_valid && !$past(mxu_valid)) assert ($past(busy));
-            if (vpu_valid && !$past(vpu_valid)) assert ($past(busy));
-            if (dma_valid && !$past(dma_valid)) assert ($past(busy));
-        end
+        if (f_past_valid && rst_n && !busy)
+            assert (!mxu_valid && !vpu_valid && !dma_valid);
 
     // A5: sync_request only rises while busy (set in S_DECODE which is a busy state)
     always @(posedge clk)
