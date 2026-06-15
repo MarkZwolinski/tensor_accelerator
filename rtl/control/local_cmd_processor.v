@@ -163,15 +163,16 @@ module local_cmd_processor #(
             pending_vpu <= 8'd0;
             pending_dma <= 8'd0;
         end else begin
-            // Decrement on completion
-            if (mxu_done && pending_mxu > 0) pending_mxu <= pending_mxu - 1;
-            if (vpu_done && pending_vpu > 0) pending_vpu <= pending_vpu - 1;
-            if (dma_done && pending_dma > 0) pending_dma <= pending_dma - 1;
-            
-            // Increment on issue
-            if (mxu_valid_reg && mxu_ready) pending_mxu <= pending_mxu + 1;
-            if (vpu_valid_reg && vpu_ready) pending_vpu <= pending_vpu + 1;
-            if (dma_valid_reg && dma_ready) pending_dma <= pending_dma + 1;
+            // Simultaneous issue+done handled correctly in one expression
+            pending_mxu <= pending_mxu
+                + (mxu_valid_reg && mxu_ready                  ? 8'd1 : 8'd0)
+                - (mxu_done      && pending_mxu > 0            ? 8'd1 : 8'd0);
+            pending_vpu <= pending_vpu
+                + (vpu_valid_reg && vpu_ready                  ? 8'd1 : 8'd0)
+                - (vpu_done      && pending_vpu > 0            ? 8'd1 : 8'd0);
+            pending_dma <= pending_dma
+                + (dma_valid_reg && dma_ready                  ? 8'd1 : 8'd0)
+                - (dma_done      && pending_dma > 0            ? 8'd1 : 8'd0);
         end
     end
     
