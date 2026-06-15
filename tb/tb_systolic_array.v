@@ -171,6 +171,49 @@ module tb_systolic_array;
         end
     endtask
 
+    // Test 3: 2x2 GEMM with negative weights
+    // A = [[1,0],[0,1]] (identity), B = [[-3,0],[0,-7]] (negative diagonal)
+    // Expected C = [[-3,0],[0,-7]]
+    task init_neg_weights_2x2;
+        begin
+            clear_matrices();
+            matrix_A[0][0] = 1;  matrix_A[1][1] = 1;
+            matrix_B[0][0] = -3; matrix_B[1][1] = -7;
+            matrix_C_expected[0][0] = -3;
+            matrix_C_expected[1][1] = -7;
+            $display("  A = [[1,0],[0,1]]  B = [[-3,0],[0,-7]]");
+            $display("  Expected C = [[-3,0],[0,-7]]");
+        end
+    endtask
+
+    // Test 4: INT8 boundary values — (-128) × (-128) = 16384
+    task init_boundary_128;
+        begin
+            clear_matrices();
+            matrix_A[0][0] = -128;
+            matrix_B[0][0] = -128;
+            matrix_C_expected[0][0] = 16384;
+            $display("  A[0][0]=-128, B[0][0]=-128");
+            $display("  Expected C[0][0] = (-128)*(-128) = 16384");
+        end
+    endtask
+
+    // Test 5: Multi-tile signed accumulation (k_tiles=4, expects cancellation)
+    // A[0] = [1, -1, 1, -1, 0, ...]  B[:,0] = [2, 2, 2, 2, 0, ...]
+    // C[0][0] = 1*2 + (-1)*2 + 1*2 + (-1)*2 = 0
+    task init_signed_multitile_k4;
+        begin
+            clear_matrices();
+            matrix_A[0][0] = 1; matrix_A[0][1] = -1;
+            matrix_A[0][2] = 1; matrix_A[0][3] = -1;
+            matrix_B[0][0] = 2; matrix_B[1][0] = 2;
+            matrix_B[2][0] = 2; matrix_B[3][0] = 2;
+            matrix_C_expected[0][0] = 0;
+            $display("  A[0]=[1,-1,1,-1,0..], B[:,0]=[2,2,2,2,0..]");
+            $display("  Expected C[0][0] = 1*2+(-1)*2+1*2+(-1)*2 = 0");
+        end
+    endtask
+
     //==========================================================================
     // Systolic Array Operation Tasks
     //==========================================================================
@@ -287,6 +330,64 @@ module tb_systolic_array;
         end
     endtask
 
+    // run_computation with a configurable k_tiles (for K != ARRAY_SIZE)
+    task run_computation_k;
+        input integer k_tiles_val;
+        integer k, row, col;
+        integer row_idx;
+        integer wait_cycles;
+        begin
+            $display("[%0t] Running computation (k_tiles=%0d)...", $time, k_tiles_val);
+
+            row_idx = 0;
+            for (row = 0; row < ARRAY_SIZE; row = row + 1)
+                for (col = 0; col < ARRAY_SIZE; col = col + 1)
+                    matrix_C_actual[row][col] = 32'hDEADBEEF;
+
+            @(posedge clk);
+            start = 1;
+            clear_acc = 1;
+            cfg_k_tiles = k_tiles_val;
+            result_ready = 1;
+            @(posedge clk);
+            start = 0;
+            clear_acc = 0;
+
+            for (row = 0; row < ARRAY_SIZE; row = row + 1) begin
+                act_valid = 1;
+                for (k = 0; k < ARRAY_SIZE; k = k + 1)
+                    act_data[k*DATA_WIDTH +: DATA_WIDTH] = matrix_A[row][k];
+                @(posedge clk);
+            end
+
+            act_valid = 0;
+            act_data = 0;
+
+            wait_cycles = 0;
+            while (row_idx < ARRAY_SIZE && wait_cycles < ARRAY_SIZE * 6) begin
+                @(posedge clk);
+                wait_cycles = wait_cycles + 1;
+                if (result_valid) begin
+                    for (col = 0; col < ARRAY_SIZE; col = col + 1)
+                        matrix_C_actual[row_idx][col] = $signed(result_data[col*ACC_WIDTH +: ACC_WIDTH]);
+                    row_idx = row_idx + 1;
+                end
+            end
+
+            result_ready = 0;
+            $display("[%0t] Computation complete, %0d result rows", $time, row_idx);
+        end
+    endtask
+
+    task run_gemm_k;
+        input integer k_tiles_val;
+        begin
+            load_weights();
+            run_computation_k(k_tiles_val);
+            collect_results();
+        end
+    endtask
+
     //==========================================================================
     // Verification
     //==========================================================================
@@ -392,6 +493,60 @@ module tb_systolic_array;
         run_gemm();
         verify_results(4);
         
+        // Reset between tests
+        rst_n = 0;
+        #(CLK_PERIOD * 5);
+        rst_n = 1;
+        #(CLK_PERIOD * 5);
+
+        //----------------------------------------------------------------------
+        // Test 3: Negative weights (INT8 signed arithmetic)
+        //----------------------------------------------------------------------
+        $display("");
+        $display("────────────────────────────────────────────────────────────────");
+        $display("[TEST 3] Negative Weights: A×B with B negative diagonal");
+        $display("────────────────────────────────────────────────────────────────");
+
+        init_neg_weights_2x2();
+        run_gemm();
+        verify_results(2);
+
+        // Reset between tests
+        rst_n = 0;
+        #(CLK_PERIOD * 5);
+        rst_n = 1;
+        #(CLK_PERIOD * 5);
+
+        //----------------------------------------------------------------------
+        // Test 4: INT8 boundary values (-128 × -128 = 16384)
+        //----------------------------------------------------------------------
+        $display("");
+        $display("────────────────────────────────────────────────────────────────");
+        $display("[TEST 4] INT8 Boundary: (-128) × (-128) = 16384");
+        $display("────────────────────────────────────────────────────────────────");
+
+        init_boundary_128();
+        run_gemm();
+        verify_results(1);
+
+        // Reset between tests
+        rst_n = 0;
+        #(CLK_PERIOD * 5);
+        rst_n = 1;
+        #(CLK_PERIOD * 5);
+
+        //----------------------------------------------------------------------
+        // Test 5: Multi-tile signed accumulation (k_tiles=4, cancels to zero)
+        //----------------------------------------------------------------------
+        $display("");
+        $display("────────────────────────────────────────────────────────────────");
+        $display("[TEST 5] Signed Accumulation: k=4 tiles, mixed-sign cancel");
+        $display("────────────────────────────────────────────────────────────────");
+
+        init_signed_multitile_k4();
+        run_gemm_k(4);
+        verify_results(1);
+
         //----------------------------------------------------------------------
         // Summary
         //----------------------------------------------------------------------
@@ -402,14 +557,14 @@ module tb_systolic_array;
         $display("╠════════════════════════════════════════════════════════════╣");
         $display("║   Passed: %0d / %0d                                          ║", passed_tests, total_tests);
         $display("╚════════════════════════════════════════════════════════════╝");
-        
+
         if (passed_tests == total_tests) begin
             $display("   >>> ALL TESTS PASSED! <<<");
         end else begin
             $display("   >>> SOME TESTS FAILED <<<");
         end
         $display("");
-        
+
         $finish;
     end
 

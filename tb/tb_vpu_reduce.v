@@ -281,6 +281,47 @@ module tb_vpu_reduce;
         end
 
         //======================================================================
+        // Test 8: SUM with all-negative values → non-zero negative result
+        // [-8,-7,-6,-5,-4,-3,-2,-1] = -36
+        //======================================================================
+        $display("");
+        $display("[TEST 8] SUM all-negative: [-8..-1] → -36");
+
+        for (i = 0; i < LANES; i = i + 1)
+            dut.vrf[14][i*DATA_WIDTH +: DATA_WIDTH] = -(i + 1);  // -1 to -8
+
+        issue_cmd(make_cmd(VOP_SUM, 5'd15, 5'd14, 5'd14));
+
+        val = $signed(dut.vrf[15][0*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == -36) begin
+            $display("  PASS: SUM([-8..-1]) = -36");
+        end else begin
+            $display("  FAIL: SUM([-8..-1]) = %0d (expected -36)", val);
+            errors = errors + 1;
+        end
+
+        //======================================================================
+        // Test 9: SUM large values (stress widened reduction tree)
+        // 8 lanes × 4000 = 32000 (fits in 16-bit signed, but intermediate
+        // stages reach 32000 which is near the 15-bit boundary)
+        //======================================================================
+        $display("");
+        $display("[TEST 9] SUM large values: 8 × 4000 = 32000");
+
+        for (i = 0; i < LANES; i = i + 1)
+            dut.vrf[16][i*DATA_WIDTH +: DATA_WIDTH] = 16'd4000;
+
+        issue_cmd(make_cmd(VOP_SUM, 5'd17, 5'd16, 5'd16));
+
+        val = $signed(dut.vrf[17][0*DATA_WIDTH +: DATA_WIDTH]);
+        if (val == 32000) begin
+            $display("  PASS: SUM([4000×8]) = 32000");
+        end else begin
+            $display("  FAIL: SUM([4000×8]) = %0d (expected 32000)", val);
+            errors = errors + 1;
+        end
+
+        //======================================================================
         // Summary
         //======================================================================
         $display("");
