@@ -67,6 +67,8 @@ module tensor_processing_cluster #(
     // Transmit port
     output wire [SRAM_WIDTH-1:0]        noc_tx_data,
     output wire [SRAM_ADDR_W-1:0]       noc_tx_addr,
+    output wire [3:0]                   noc_tx_dest_x,
+    output wire [3:0]                   noc_tx_dest_y,
     output wire                         noc_tx_valid,
     input  wire                         noc_tx_ready,
     
@@ -148,6 +150,16 @@ module tensor_processing_cluster #(
     wire [SRAM_WIDTH-1:0]    dma_sram_wdata, dma_sram_rdata;
     wire                     dma_sram_we, dma_sram_re;
     wire                     dma_sram_ready;
+
+    // DMA <-> NoC TX
+    wire [SRAM_WIDTH-1:0]    dma_noc_tx_data;
+    wire [SRAM_ADDR_W-1:0]   dma_noc_tx_addr;
+    wire [3:0]               dma_noc_tx_dest_x;
+    wire [3:0]               dma_noc_tx_dest_y;
+    wire                     dma_noc_tx_valid;
+
+    // NoC RX <-> SRAM (Port F)
+    wire                     noc_sram_ready;
     
     //==========================================================================
     // Instruction Memory (dedicated SRAM bank for instructions)
@@ -465,7 +477,15 @@ module tensor_processing_cluster #(
         .axi_rdata  (axi_rdata),
         .axi_rlast  (axi_rlast),
         .axi_rvalid (axi_rvalid),
-        .axi_rready (axi_rready)
+        .axi_rready (axi_rready),
+
+        // NoC TX interface
+        .noc_tx_data   (dma_noc_tx_data),
+        .noc_tx_addr   (dma_noc_tx_addr),
+        .noc_tx_dest_x (dma_noc_tx_dest_x),
+        .noc_tx_dest_y (dma_noc_tx_dest_y),
+        .noc_tx_valid  (dma_noc_tx_valid),
+        .noc_tx_ready  (noc_tx_ready)
     );
     
     //==========================================================================
@@ -511,22 +531,29 @@ module tensor_processing_cluster #(
         .dma_we      (dma_sram_we),
         .dma_re      (dma_sram_re),
         .dma_rdata   (dma_sram_rdata),
-        .dma_ready   (dma_sram_ready)
+        .dma_ready   (dma_sram_ready),
+
+        // NoC RX port (data writes from peer TPCs via NoC)
+        .noc_addr    (noc_rx_addr),
+        .noc_wdata   (noc_rx_data),
+        .noc_we      (noc_rx_valid && !noc_rx_is_instr && noc_rx_ready),
+        .noc_ready   (noc_sram_ready)
     );
     
     //==========================================================================
     // NoC Interface Logic
     //==========================================================================
-    
-    // Accept NoC writes when not busy with internal operations
+
+    // Accept NoC data when TPC is idle.  When !tpc_busy, all MXU/VPU/DMA SRAM
+    // ports are inactive, so Port F is always granted — no need to gate on
+    // noc_sram_ready here (which would also create a combinational loop via noc_we).
     assign noc_rx_ready = !tpc_busy;
-    
-    // NoC data loading to SRAM (when not instruction)
-    wire noc_data_write = noc_rx_valid && noc_rx_ready && !noc_rx_is_instr;
-    
-    // TODO: Implement proper NoC TX for sending results
-    assign noc_tx_data = {SRAM_WIDTH{1'b0}};
-    assign noc_tx_addr = {SRAM_ADDR_W{1'b0}};
-    assign noc_tx_valid = 1'b0;
+
+    // NoC TX: driven by DMA engine's NOC_SEND operation
+    assign noc_tx_data   = dma_noc_tx_data;
+    assign noc_tx_addr   = dma_noc_tx_addr;
+    assign noc_tx_dest_x = dma_noc_tx_dest_x;
+    assign noc_tx_dest_y = dma_noc_tx_dest_y;
+    assign noc_tx_valid  = dma_noc_tx_valid;
 
 endmodule

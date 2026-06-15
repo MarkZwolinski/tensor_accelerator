@@ -52,14 +52,22 @@ module sram_subsystem #(
     output wire                           vpu_ready,
     
     //--------------------------------------------------------------------------
-    // Port E: DMA Read/Write (lowest priority)
+    // Port E: DMA Read/Write
     //--------------------------------------------------------------------------
     input  wire [ADDR_WIDTH-1:0]          dma_addr,
     input  wire [DATA_WIDTH-1:0]          dma_wdata,
     input  wire                           dma_we,
     input  wire                           dma_re,
     output wire [DATA_WIDTH-1:0]          dma_rdata,
-    output wire                           dma_ready
+    output wire                           dma_ready,
+
+    //--------------------------------------------------------------------------
+    // Port F: NoC RX Write (lowest priority, write-only)
+    //--------------------------------------------------------------------------
+    input  wire [ADDR_WIDTH-1:0]          noc_addr,
+    input  wire [DATA_WIDTH-1:0]          noc_wdata,
+    input  wire                           noc_we,
+    output wire                           noc_ready
 );
 
     //--------------------------------------------------------------------------
@@ -94,22 +102,24 @@ module sram_subsystem #(
     wire [BANK_BITS-1:0] bank_mxu_o = get_bank(mxu_o_addr);
     wire [BANK_BITS-1:0] bank_vpu   = get_bank(vpu_addr);
     wire [BANK_BITS-1:0] bank_dma   = get_bank(dma_addr);
-    
+    wire [BANK_BITS-1:0] bank_noc   = get_bank(noc_addr);
+
     wire [WORD_BITS-1:0] word_mxu_w = get_word(mxu_w_addr);
     wire [WORD_BITS-1:0] word_mxu_a = get_word(mxu_a_addr);
     wire [WORD_BITS-1:0] word_mxu_o = get_word(mxu_o_addr);
     wire [WORD_BITS-1:0] word_vpu   = get_word(vpu_addr);
     wire [WORD_BITS-1:0] word_dma   = get_word(dma_addr);
+    wire [WORD_BITS-1:0] word_noc   = get_word(noc_addr);
     
     //--------------------------------------------------------------------------
     // Per-Bank Arbitration
     //--------------------------------------------------------------------------
     
     // Request signals per bank
-    reg [NUM_BANKS-1:0] req_mxu_w, req_mxu_a, req_mxu_o, req_vpu, req_dma;
-    
+    reg [NUM_BANKS-1:0] req_mxu_w, req_mxu_a, req_mxu_o, req_vpu, req_dma, req_noc;
+
     // Grant signals per bank
-    reg [NUM_BANKS-1:0] grant_mxu_w, grant_mxu_a, grant_mxu_o, grant_vpu, grant_dma;
+    reg [NUM_BANKS-1:0] grant_mxu_w, grant_mxu_a, grant_mxu_o, grant_vpu, grant_dma, grant_noc;
     
     // Bank interface signals
     reg  [WORD_BITS-1:0]  bank_addr  [0:NUM_BANKS-1];
@@ -127,19 +137,21 @@ module sram_subsystem #(
             req_mxu_o[b] = mxu_o_we && (bank_mxu_o == b);
             req_vpu[b]   = (vpu_we || vpu_re) && (bank_vpu == b);
             req_dma[b]   = (dma_we || dma_re) && (bank_dma == b);
+            req_noc[b]   = noc_we && (bank_noc == b);
         end
     end
-    
+
     // Priority arbitration per bank
-    // Priority: MXU_W > MXU_A > MXU_O > VPU > DMA
+    // Priority: MXU_W > MXU_A > MXU_O > VPU > DMA > NoC_RX
     always @(*) begin
         for (b = 0; b < NUM_BANKS; b = b + 1) begin
             grant_mxu_w[b] = req_mxu_w[b];
             grant_mxu_a[b] = req_mxu_a[b] && !req_mxu_w[b];
             grant_mxu_o[b] = req_mxu_o[b] && !req_mxu_w[b] && !req_mxu_a[b];
-            grant_vpu[b]   = req_vpu[b] && !req_mxu_w[b] && !req_mxu_a[b] && !req_mxu_o[b];
-            grant_dma[b]   = req_dma[b] && !req_mxu_w[b] && !req_mxu_a[b] && !req_mxu_o[b] && !req_vpu[b];
-            
+            grant_vpu[b]   = req_vpu[b]   && !req_mxu_w[b] && !req_mxu_a[b] && !req_mxu_o[b];
+            grant_dma[b]   = req_dma[b]   && !req_mxu_w[b] && !req_mxu_a[b] && !req_mxu_o[b] && !req_vpu[b];
+            grant_noc[b]   = req_noc[b]   && !req_mxu_w[b] && !req_mxu_a[b] && !req_mxu_o[b] && !req_vpu[b] && !req_dma[b];
+
             // Mux bank inputs based on grants
             if (grant_mxu_w[b]) begin
                 bank_addr[b]  = word_mxu_w;
@@ -166,6 +178,11 @@ module sram_subsystem #(
                 bank_wdata[b] = dma_wdata;
                 bank_we[b]    = dma_we;
                 bank_re[b]    = dma_re;
+            end else if (grant_noc[b]) begin
+                bank_addr[b]  = word_noc;
+                bank_wdata[b] = noc_wdata;
+                bank_we[b]    = 1'b1;
+                bank_re[b]    = 1'b0;
             end else begin
                 bank_addr[b]  = {WORD_BITS{1'b0}};
                 bank_wdata[b] = {DATA_WIDTH{1'b0}};
@@ -234,6 +251,7 @@ module sram_subsystem #(
     assign mxu_o_ready = grant_mxu_o[bank_mxu_o];
     assign vpu_ready   = grant_vpu[bank_vpu];
     assign dma_ready   = grant_dma[bank_dma];
+    assign noc_ready   = grant_noc[bank_noc];
     
     //--------------------------------------------------------------------------
     // Output Assignments

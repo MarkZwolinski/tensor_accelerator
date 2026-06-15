@@ -76,7 +76,7 @@ run_test "TPC Integration" \
     "iverilog -g2012 -DSIM -o sim/tb_tpc rtl/control/local_cmd_processor.v rtl/core/systolic_array.v rtl/core/mac_pe.v rtl/core/vector_unit.v rtl/core/dma_engine.v rtl/memory/sram_subsystem.v rtl/top/tensor_processing_cluster.v tb/tb_tpc.v" "tb_tpc"
 
 run_test "Full Chip (Top Level)" \
-    "iverilog -g2012 -DSIM -o sim/tb_top rtl/control/local_cmd_processor.v rtl/control/global_cmd_processor.v rtl/core/systolic_array.v rtl/core/mac_pe.v rtl/core/vector_unit.v rtl/core/dma_engine.v rtl/memory/sram_subsystem.v rtl/top/tensor_processing_cluster.v rtl/top/tensor_accelerator_top.v tb/tb_top.v" "tb_top"
+    "iverilog -g2012 -DSIM -o sim/tb_top rtl/control/local_cmd_processor.v rtl/control/global_cmd_processor.v rtl/core/systolic_array.v rtl/core/mac_pe.v rtl/core/vector_unit.v rtl/core/dma_engine.v rtl/memory/sram_subsystem.v rtl/noc/noc_router.v rtl/top/tensor_processing_cluster.v rtl/top/tensor_accelerator_top.v tb/tb_top.v" "tb_top"
 
 echo ""
 echo "═══════════════ END-TO-END TESTS ═══════════════"
@@ -120,7 +120,7 @@ run_test "DMA: LOAD/STORE with AXI Memory" \
 echo ""
 echo "═══════════════ MULTI-TPC TESTS ═══════════════"
 
-TOP_FILES="rtl/control/local_cmd_processor.v rtl/control/global_cmd_processor.v rtl/core/systolic_array.v rtl/core/mac_pe.v rtl/core/vector_unit.v rtl/core/dma_engine.v rtl/memory/sram_subsystem.v rtl/memory/axi_memory_model.v rtl/top/tensor_processing_cluster.v rtl/top/tensor_accelerator_top.v"
+TOP_FILES="rtl/control/local_cmd_processor.v rtl/control/global_cmd_processor.v rtl/core/systolic_array.v rtl/core/mac_pe.v rtl/core/vector_unit.v rtl/core/dma_engine.v rtl/memory/sram_subsystem.v rtl/memory/axi_memory_model.v rtl/noc/noc_router.v rtl/top/tensor_processing_cluster.v rtl/top/tensor_accelerator_top.v"
 
 run_test "Multi-TPC: 4-way Parallel Tiled GEMM" \
     "iverilog -g2012 -DSIM -o sim/tb_multi_tpc_gemm $TOP_FILES tb/tb_multi_tpc_gemm.v" \

@@ -58,18 +58,29 @@ module dma_engine #(
     input  wire [1:0]                   axi_bresp,
     input  wire                         axi_bvalid,
     output wire                         axi_bready,
-    
+
     // Read address channel
     output wire [EXT_ADDR_W-1:0]        axi_araddr,
     output wire [7:0]                   axi_arlen,
     output wire                         axi_arvalid,
     input  wire                         axi_arready,
-    
+
     // Read data channel
     input  wire [DATA_WIDTH-1:0]        axi_rdata,
     input  wire                         axi_rlast,
     input  wire                         axi_rvalid,
-    output wire                         axi_rready
+    output wire                         axi_rready,
+
+    //--------------------------------------------------------------------------
+    // NoC TX Interface (for DMA_NOC_SEND: SRAM → peer TPC via NoC)
+    // Command ext_addr field: [39:36]=dest_x, [35:32]=dest_y, [19:0]=dest_sram_base
+    //--------------------------------------------------------------------------
+    output reg  [DATA_WIDTH-1:0]        noc_tx_data,
+    output reg  [INT_ADDR_W-1:0]        noc_tx_addr,
+    output reg  [3:0]                   noc_tx_dest_x,
+    output reg  [3:0]                   noc_tx_dest_y,
+    output reg                          noc_tx_valid,
+    input  wire                         noc_tx_ready
 );
 
     //--------------------------------------------------------------------------
@@ -95,8 +106,9 @@ module dma_engine #(
     wire [11:0] ext_stride = cmd[27:16];
     wire [11:0] int_stride = cmd[15:4];
     
-    localparam DMA_LOAD  = 8'h01;
-    localparam DMA_STORE = 8'h02;
+    localparam DMA_LOAD     = 8'h01;
+    localparam DMA_STORE    = 8'h02;
+    localparam DMA_NOC_SEND = 8'h03;  // SRAM → peer TPC via NoC
     
     localparam BYTES_PER_WORD = DATA_WIDTH / 8;
     
@@ -121,9 +133,13 @@ module dma_engine #(
     localparam S_NEXT_COL   = 4'd10;
     localparam S_NEXT_ROW   = 4'd11;
     localparam S_DONE       = 4'd12;
+    // NOC_SEND state
+    localparam S_NOC_SEND   = 4'd14;  // Assert noc_tx_valid, wait for noc_tx_ready
     
     reg [3:0] state;
-    reg [7:0] op_type;  // Latched subop
+    reg [7:0] op_type;       // Latched subop
+    reg [3:0] noc_dest_x_r;  // Latched destination TPC coordinates for NOC_SEND
+    reg [3:0] noc_dest_y_r;
     
     // Transfer tracking
     reg [11:0] row_count;
@@ -188,7 +204,15 @@ module dma_engine #(
             axi_wlast_reg <= 1'b0;
             axi_wvalid_reg <= 1'b0;
             axi_rready_reg <= 1'b0;
-            
+
+            noc_tx_data   <= {DATA_WIDTH{1'b0}};
+            noc_tx_addr   <= {INT_ADDR_W{1'b0}};
+            noc_tx_dest_x <= 4'b0;
+            noc_tx_dest_y <= 4'b0;
+            noc_tx_valid  <= 1'b0;
+            noc_dest_x_r  <= 4'b0;
+            noc_dest_y_r  <= 4'b0;
+
             done_reg <= 1'b0;
         end else begin
             // Default: clear single-cycle signals
@@ -219,10 +243,22 @@ module dma_engine #(
                     int_ptr <= int_base;
                     row_count <= 12'd0;
                     col_count <= 12'd0;
-                    
+
                     case (op_type)
                         DMA_LOAD:  state <= S_LOAD_ADDR;
                         DMA_STORE: state <= S_STORE_REQ;
+                        DMA_NOC_SEND: begin
+                            // Decode routing header from ext_addr field:
+                            //   [39:36]=dest_x, [35:32]=dest_y, [19:0]=dest_sram_base
+                            noc_dest_x_r   <= ext_base[39:36];
+                            noc_dest_y_r   <= ext_base[35:32];
+                            // Repurpose ext_base/ptr to hold dest SRAM base address only
+                            ext_base       <= {{(EXT_ADDR_W-INT_ADDR_W){1'b0}}, ext_base[INT_ADDR_W-1:0]};
+                            ext_ptr        <= {{(EXT_ADDR_W-INT_ADDR_W){1'b0}}, ext_base[INT_ADDR_W-1:0]};
+                            // Reuse int_stride for destination row advancement
+                            ext_stride_cfg <= int_stride_cfg;
+                            state          <= S_STORE_REQ;
+                        end
                         default:   state <= S_DONE;
                     endcase
                 end
@@ -289,9 +325,29 @@ module dma_engine #(
                 end
                 
                 S_STORE_CAP: begin
-                    // Cycle 2: sram_rdata is now valid, capture it
                     data_buf <= sram_rdata;
-                    state <= S_STORE_ADDR;
+                    case (op_type)
+                        DMA_STORE:    state <= S_STORE_ADDR;
+                        DMA_NOC_SEND: state <= S_NOC_SEND;
+                        default:      state <= S_DONE;
+                    endcase
+                end
+
+                //==============================================================
+                // NOC_SEND Path: SRAM → peer TPC via NoC
+                //==============================================================
+
+                S_NOC_SEND: begin
+                    noc_tx_data   <= data_buf;
+                    noc_tx_addr   <= ext_ptr[INT_ADDR_W-1:0];
+                    noc_tx_dest_x <= noc_dest_x_r;
+                    noc_tx_dest_y <= noc_dest_y_r;
+                    noc_tx_valid  <= 1'b1;
+
+                    if (noc_tx_valid && noc_tx_ready) begin
+                        noc_tx_valid <= 1'b0;
+                        state <= S_NEXT_COL;
+                    end
                 end
                 
                 S_STORE_ADDR: begin
@@ -341,9 +397,10 @@ module dma_engine #(
                     end else begin
                         // More columns
                         case (op_type)
-                            DMA_LOAD:  state <= S_LOAD_ADDR;
-                            DMA_STORE: state <= S_STORE_REQ;
-                            default:   state <= S_DONE;
+                            DMA_LOAD:     state <= S_LOAD_ADDR;
+                            DMA_STORE:    state <= S_STORE_REQ;
+                            DMA_NOC_SEND: state <= S_STORE_REQ;
+                            default:      state <= S_DONE;
                         endcase
                     end
                 end
@@ -361,13 +418,14 @@ module dma_engine #(
                         int_ptr <= int_base + (row_count + 1) * int_stride_cfg;
                         
                         case (op_type)
-                            DMA_LOAD:  state <= S_LOAD_ADDR;
-                            DMA_STORE: state <= S_STORE_REQ;
-                            default:   state <= S_DONE;
+                            DMA_LOAD:     state <= S_LOAD_ADDR;
+                            DMA_STORE:    state <= S_STORE_REQ;
+                            DMA_NOC_SEND: state <= S_STORE_REQ;
+                            default:      state <= S_DONE;
                         endcase
                     end
                 end
-                
+
                 //--------------------------------------------------------------
                 S_DONE: begin
                     done_reg <= 1'b1;
