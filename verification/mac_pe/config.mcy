@@ -1,0 +1,28 @@
+[options]
+size 10
+
+[script]
+read_verilog -sv ../../rtl/core/mac_pe.v
+prep -top mac_pe
+
+[files]
+../../rtl/core/mac_pe.v
+
+[logic]
+if result("test_fm") == "PASS":
+    tag("COVERED")
+elif result("test_fm") == "FAIL":
+    tag("UNCOVERED")
+else:
+    tag("ERROR")
+
+[report]
+if tags("COVERED") / (tags("COVERED") + tags("UNCOVERED")) == 1.0:
+    print("FULL MUTATION COVERAGE")
+else:
+    print(f"INCOMPLETE: {tags('COVERED')}/{tags('COVERED')+tags('UNCOVERED')} mutations covered")
+
+[test test_fm]
+maxbatchsize 1
+expect PASS FAIL
+run bash "$PRJDIR/test_fm.sh"

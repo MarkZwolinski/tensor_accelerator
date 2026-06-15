@@ -1,0 +1,23 @@
+initial
+assume (= [$auto$async2sync.cc:107:execute$277] false)
+assume (= [$auto$async2sync.cc:116:execute$275] true)
+assume (= [$auto$async2sync.cc:116:execute$281] true)
+assume (= [$past$mac_pe_formal.sv:113$23$0] false)
+assume (= [$past$mac_pe_formal.sv:113$24$0] false)
+assume (= [$past$mac_pe_formal.sv:47$1$0] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$215] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$217] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$219] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$221] #b00000000)
+assume (= [f_past_valid] false)
+assume (= [f_weight] #b00000000)
+
+state 0
+
+state 1
+
+state 2
+
+state 3
+
+state 4

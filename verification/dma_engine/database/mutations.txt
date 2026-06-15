@@ -1,0 +1,20 @@
+mutate -mode none
+mutate -mode cnot0 -module dma_engine -cell $procdff$446 -port Q -portbit 7 -ctrlbit 9 -wire ext_base -wirebit 7 -src ../../rtl/core/dma_engine.v:133.26-133.34 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode const0 -module dma_engine -cell $procmux$137 -port Y -portbit 7 -src ../../rtl/core/dma_engine.v:295.20-295.20 -src ../../rtl/core/dma_engine.v:199.13-378.20
+mutate -mode cnot0 -module dma_engine -cell $procdff$506 -port Q -portbit 7 -ctrlbit 2 -wire axi_arlen -wirebit 7 -src ../../rtl/core/dma_engine.v:64.41-64.50 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode const0 -module dma_engine -cell $procdff$511 -port Q -portbit 0 -wire axi_awvalid -wirebit 0 -src ../../rtl/core/dma_engine.v:48.41-48.52 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode const0 -module dma_engine -cell $procmux$361 -port B -portbit 45 -src ../../rtl/core/dma_engine.v:349.20-349.20 -src ../../rtl/core/dma_engine.v:199.13-378.20
+mutate -mode const1 -module dma_engine -cell $procmux$247 -port B -portbit 7 -src ../../rtl/core/dma_engine.v:202.25-202.34 -src ../../rtl/core/dma_engine.v:202.21-212.24
+mutate -mode cnot0 -module dma_engine -cell $procdff$411 -port Q -portbit 4 -ctrlbit 2 -wire op_type -wirebit 4 -src ../../rtl/core/dma_engine.v:126.15-126.22 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode cnot0 -module dma_engine -cell $procdff$471 -port Q -portbit 17 -ctrlbit 3 -wire sram_addr -wirebit 17 -src ../../rtl/core/dma_engine.v:35.41-35.50 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode const0 -module dma_engine -cell $procdff$466 -port Q -portbit 75 -wire data_buf -wirebit 75 -src ../../rtl/core/dma_engine.v:137.26-137.34 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode cnot1 -module dma_engine -cell $procmux$89 -port B -portbit 68 -ctrlbit 127 -src ../../rtl/core/dma_engine.v:307.20-307.20 -src ../../rtl/core/dma_engine.v:199.13-378.20
+mutate -mode const1 -module dma_engine -cell $procdff$511 -port Q -portbit 0 -wire axi_awvalid -wirebit 0 -src ../../rtl/core/dma_engine.v:48.41-48.52 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode const1 -module dma_engine -cell $procmux$249 -port B -portbit 13 -src ../../rtl/core/dma_engine.v:199.25-199.25 -src ../../rtl/core/dma_engine.v:199.13-378.20
+mutate -mode const1 -module dma_engine -cell $procdff$536 -port Q -portbit 0 -wire axi_rready -wirebit 0 -src ../../rtl/core/dma_engine.v:72.41-72.51 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode cnot0 -module dma_engine -cell $procdff$431 -port Q -portbit 3 -ctrlbit 2 -wire cols_cfg -wirebit 3 -src ../../rtl/core/dma_engine.v:131.26-131.34 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode cnot1 -module dma_engine -cell $add$../../rtl/core/dma_engine.v:361$18 -port Y -portbit 1 -ctrlbit 0 -src ../../rtl/core/dma_engine.v:361.48-361.61
+mutate -mode const1 -module dma_engine -cell $procmux$194 -port Y -portbit 110 -src ../../rtl/core/dma_engine.v:249.25-249.53 -src ../../rtl/core/dma_engine.v:249.21-253.24
+mutate -mode cnot0 -module dma_engine -cell $procdff$521 -port Q -portbit 188 -ctrlbit 38 -wire axi_wdata -wirebit 188 -src ../../rtl/core/dma_engine.v:52.41-52.50 -src ../../rtl/core/dma_engine.v:160.5-380.8
+mutate -mode const1 -module dma_engine -cell $procmux$171 -port A -portbit 191 -src ../../rtl/core/dma_engine.v:254.20-254.20 -src ../../rtl/core/dma_engine.v:199.13-378.20
+mutate -mode cnot0 -module dma_engine -cell $mul$../../rtl/core/dma_engine.v:360$16 -port B -portbit 9 -ctrlbit 11 -src ../../rtl/core/dma_engine.v:360.47-360.79

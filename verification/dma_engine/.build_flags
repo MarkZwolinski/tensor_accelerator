@@ -1,0 +1,1 @@
+DUT=../../rtl/core/dma_engine.v TRACE=0

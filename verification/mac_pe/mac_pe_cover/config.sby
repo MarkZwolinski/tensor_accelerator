@@ -1,0 +1,15 @@
+[options]
+mode cover
+depth 20
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal mac_pe_formal.sv mac_pe.v
+prep -top mac_pe_formal
+setundef -init -zero
+
+[files]
+mac_pe_formal.sv
+../../rtl/core/mac_pe.v

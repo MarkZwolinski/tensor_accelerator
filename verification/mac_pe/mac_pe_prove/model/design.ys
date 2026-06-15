@@ -1,0 +1,9 @@
+# running in mac_pe_prove/src/
+read -formal mac_pe_formal.sv mac_pe.v
+prep -top mac_pe_formal
+setundef -init -zero
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

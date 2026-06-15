@@ -1,0 +1,10 @@
+mutate -mode none
+mutate -mode cnot0 -module mac_pe -cell $procdff$35 -port D -portbit 1 -ctrlbit 3 -src ../../rtl/core/mac_pe.v:64.5-94.8
+mutate -mode const1 -module mac_pe -cell $procmux$5 -port B -portbit 6 -wire act_in -wirebit 6 -src ../../rtl/core/mac_pe.v:30.37-30.43 -src ../../rtl/core/mac_pe.v:77.17-77.23 -src ../../rtl/core/mac_pe.v:77.13-92.16
+mutate -mode const1 -module mac_pe -cell $procmux$7 -port B -portbit 0 -wire weight_in -wirebit 0 -src ../../rtl/core/mac_pe.v:27.37-27.46 -src ../../rtl/core/mac_pe.v:72.17-72.28 -src ../../rtl/core/mac_pe.v:72.13-74.16
+mutate -mode cnot1 -module mac_pe -cell $procdff$25 -port Q -portbit 21 -ctrlbit 28 -wire psum_out -wirebit 21 -src ../../rtl/core/mac_pe.v:35.37-35.45 -src ../../rtl/core/mac_pe.v:64.5-94.8
+mutate -mode cnot0 -module mac_pe -cell $add$../../rtl/core/mac_pe.v:90$4 -port B -portbit 21 -ctrlbit 6 -src ../../rtl/core/mac_pe.v:90.33-90.54
+mutate -mode cnot1 -module mac_pe -cell $procdff$30 -port Q -portbit 3 -ctrlbit 1 -wire weight_reg -wirebit 3 -src ../../rtl/core/mac_pe.v:43.26-43.36 -src ../../rtl/core/mac_pe.v:64.5-94.8
+mutate -mode cnot0 -module mac_pe -cell $procdff$25 -port Q -portbit 6 -ctrlbit 20 -wire psum_out -wirebit 6 -src ../../rtl/core/mac_pe.v:35.37-35.45 -src ../../rtl/core/mac_pe.v:64.5-94.8
+mutate -mode inv -module mac_pe -cell $mul$../../rtl/core/mac_pe.v:55$1 -port Y -portbit 15 -wire product_ext -wirebit 31 -src ../../rtl/core/mac_pe.v:58.33-58.44 -src ../../rtl/core/mac_pe.v:55.47-55.66
+mutate -mode const1 -module mac_pe -cell $procmux$12 -port A -portbit 13 -wire psum_out -wirebit 13 -src ../../rtl/core/mac_pe.v:35.37-35.45 -src ../../rtl/core/mac_pe.v:77.17-77.23 -src ../../rtl/core/mac_pe.v:77.13-92.16

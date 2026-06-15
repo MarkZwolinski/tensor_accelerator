@@ -1,0 +1,9 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+engine_0 (smtbmc boolector) returned pass
+cover trace: engine_0/trace0.vcd
+cover trace: engine_0/trace0.yw
+  reached cover statement mac_pe_formal._witness_.check_cover_mac_pe_formal_sv_109_107 at mac_pe_formal.sv:109.13-109.70 step 3
+cover trace: engine_0/trace1.vcd
+cover trace: engine_0/trace1.yw
+  reached cover statement mac_pe_formal._witness_.check_cover_mac_pe_formal_sv_113_116 at mac_pe_formal.sv:113.13-113.72 step 4

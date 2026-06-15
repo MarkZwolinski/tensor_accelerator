@@ -1,0 +1,21 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+engine_0 (smtbmc boolector) returned pass
+cover trace: engine_0/trace0.vcd
+cover trace: engine_0/trace0.yw
+  reached cover statement dma_engine_formal._witness_.check_cover_dma_engine_formal_sv_118_53 at dma_engine_formal.sv:118.9-118.49 step 3
+cover trace: engine_0/trace1.vcd
+cover trace: engine_0/trace1.yw
+  reached cover statement dma_engine_formal._witness_.check_cover_dma_engine_formal_sv_116_49 at dma_engine_formal.sv:116.9-116.37 step 5
+cover trace: engine_0/trace2.vcd
+cover trace: engine_0/trace2.yw
+  reached cover statement dma_engine_formal._witness_.check_cover_dma_engine_formal_sv_115_47 at dma_engine_formal.sv:115.9-115.33 step 5
+cover trace: engine_0/trace3.vcd
+cover trace: engine_0/trace3.yw
+  reached cover statement dma_engine_formal._witness_.check_cover_dma_engine_formal_sv_113_43 at dma_engine_formal.sv:113.9-113.34 step 5
+cover trace: engine_0/trace4.vcd
+cover trace: engine_0/trace4.yw
+  reached cover statement dma_engine_formal._witness_.check_cover_dma_engine_formal_sv_114_45 at dma_engine_formal.sv:114.9-114.33 step 8
+cover trace: engine_0/trace5.vcd
+cover trace: engine_0/trace5.yw
+  reached cover statement dma_engine_formal._witness_.check_cover_dma_engine_formal_sv_117_51 at dma_engine_formal.sv:117.9-117.37 step 8

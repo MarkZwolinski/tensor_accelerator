@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-06-15T11:37:54" hostname="Ubuntu" package="mac_pe_bmc" id="0" name="default" tests="8" errors="0" failures="0" time="505" skipped="2">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="default" name="build execution" time="0">
+</testcase>
+<testcase classname="default" name="Property ASSERT in mac_pe_formal at mac_pe_formal.sv:103.13-103.39" time="0" type="ASSERT" location="mac_pe_formal.sv:103.13-103.39" id="_witness_.check_assert_mac_pe_formal_sv_103_102">
+</testcase>
+<testcase classname="default" name="Property ASSERT in mac_pe_formal at mac_pe_formal.sv:78.13-78.53" time="0" type="ASSERT" location="mac_pe_formal.sv:78.13-78.53" id="_witness_.check_assert_mac_pe_formal_sv_78_42">
+</testcase>
+<testcase classname="default" name="Property ASSERT in mac_pe_formal at mac_pe_formal.sv:83.13-83.59" time="0" type="ASSERT" location="mac_pe_formal.sv:83.13-83.59" id="_witness_.check_assert_mac_pe_formal_sv_83_56">
+</testcase>
+<testcase classname="default" name="Property ASSERT in mac_pe_formal at mac_pe_formal.sv:88.13-88.49" time="0" type="ASSERT" location="mac_pe_formal.sv:88.13-88.49" id="_witness_.check_assert_mac_pe_formal_sv_88_67">
+</testcase>
+<testcase classname="default" name="Property ASSERT in mac_pe_formal at mac_pe_formal.sv:93.13-93.70" time="0" type="ASSERT" location="mac_pe_formal.sv:93.13-93.70" id="_witness_.check_assert_mac_pe_formal_sv_93_80">
+</testcase>
+<testcase classname="default" name="Property ASSERT in mac_pe_formal at mac_pe_formal.sv:98.13-98.51" time="0" type="ASSERT" location="mac_pe_formal.sv:98.13-98.51" id="_witness_.check_assert_mac_pe_formal_sv_98_92">
+</testcase>
+<testcase classname="default" name="Property COVER in mac_pe_formal at mac_pe_formal.sv:109.13-109.70" time="0" type="COVER" location="mac_pe_formal.sv:109.13-109.70" id="_witness_.check_cover_mac_pe_formal_sv_109_107">
+<skipped />
+</testcase>
+<testcase classname="default" name="Property COVER in mac_pe_formal at mac_pe_formal.sv:113.13-113.72" time="0" type="COVER" location="mac_pe_formal.sv:113.13-113.72" id="_witness_.check_cover_mac_pe_formal_sv_113_116">
+<skipped />
+</testcase>
+<system-out>SBY 11:29:12 [mac_pe_bmc] Removing directory '/home/mark/Projects/tensor_accelerator/verification/mac_pe/mac_pe_bmc'.
+SBY 11:29:12 [mac_pe_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/mac_pe/mac_pe_formal.sv' to '/home/mark/Projects/tensor_accelerator/verification/mac_pe/mac_pe_bmc/src/mac_pe_formal.sv'.
+SBY 11:29:12 [mac_pe_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/mac_pe/../../rtl/core/mac_pe.v' to '/home/mark/Projects/tensor_accelerator/verification/mac_pe/mac_pe_bmc/src/mac_pe.v'.
+SBY 11:29:12 [mac_pe_bmc] engine_0: smtbmc boolector
+SBY 11:29:12 [mac_pe_bmc] base: starting process &quot;cd mac_pe_bmc/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [7] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [6] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [5] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [4] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [3] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [2] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [1] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\act_in [0] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [7] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [6] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [5] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [4] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [3] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [2] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [1] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\weight_in [0] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\load_weight is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\clear_acc is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [31] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [30] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [29] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [28] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [27] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [26] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [25] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [24] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [23] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [22] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [21] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [20] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [19] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [18] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [17] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [16] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [15] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [14] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [13] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [12] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [11] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [10] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [9] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [8] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [7] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [6] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [5] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [4] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [3] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [2] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [1] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\psum_in [0] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\rst_n is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\enable is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: Warning: Wire mac_pe_formal.\clk is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] base: finished (returncode=0)
+SBY 11:29:12 [mac_pe_bmc] prep: starting process &quot;cd mac_pe_bmc/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\clk is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [7] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [6] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [5] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [4] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [3] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [2] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [1] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\weight_in [0] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [7] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [6] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [5] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [4] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [3] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [2] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [1] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\act_in [0] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [31] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [30] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [29] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [28] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [27] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [26] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [25] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [24] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [23] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [22] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [21] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [20] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [19] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [18] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [17] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [16] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [15] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [14] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [13] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [12] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [11] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [10] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [9] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [8] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [7] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [6] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [5] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [4] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [3] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [2] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [1] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\psum_in [0] is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\clear_acc is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\enable is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\load_weight is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: Warning: Wire mac_pe_formal.\rst_n is used but has no driver.
+SBY 11:29:12 [mac_pe_bmc] prep: finished (returncode=0)
+SBY 11:29:12 [mac_pe_bmc] smt2: starting process &quot;cd mac_pe_bmc/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 11:29:12 [mac_pe_bmc] smt2: finished (returncode=0)
+SBY 11:29:12 [mac_pe_bmc] engine_0: starting process &quot;cd mac_pe_bmc; yosys-smtbmc -s boolector --presat --unroll --noprogress -t 40  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Solver: boolector
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assumptions in step 1..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assertions in step 1..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assumptions in step 2..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assertions in step 2..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assumptions in step 3..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assertions in step 3..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assumptions in step 4..
+SBY 11:29:12 [mac_pe_bmc] engine_0: ##   0:00:00  Checking assertions in step 4..
+SBY 11:29:21 [mac_pe_bmc] engine_0: ##   0:00:09  Checking assumptions in step 5..
+SBY 11:29:21 [mac_pe_bmc] engine_0: ##   0:00:09  Checking assertions in step 5..
+SBY 11:29:31 [mac_pe_bmc] engine_0: ##   0:00:19  Checking assumptions in step 6..
+SBY 11:29:31 [mac_pe_bmc] engine_0: ##   0:00:19  Checking assertions in step 6..
+SBY 11:29:44 [mac_pe_bmc] engine_0: ##   0:00:31  Checking assumptions in step 7..
+SBY 11:29:44 [mac_pe_bmc] engine_0: ##   0:00:31  Checking assertions in step 7..
+SBY 11:29:58 [mac_pe_bmc] engine_0: ##   0:00:46  Checking assumptions in step 8..
+SBY 11:29:58 [mac_pe_bmc] engine_0: ##   0:00:46  Checking assertions in step 8..
+SBY 11:30:12 [mac_pe_bmc] engine_0: ##   0:01:00  Checking assumptions in step 9..
+SBY 11:30:12 [mac_pe_bmc] engine_0: ##   0:01:00  Checking assertions in step 9..
+SBY 11:30:26 [mac_pe_bmc] engine_0: ##   0:01:13  Checking assumptions in step 10..
+SBY 11:30:26 [mac_pe_bmc] engine_0: ##   0:01:13  Checking assertions in step 10..
+SBY 11:30:39 [mac_pe_bmc] engine_0: ##   0:01:27  Checking assumptions in step 11..
+SBY 11:30:39 [mac_pe_bmc] engine_0: ##   0:01:27  Checking assertions in step 11..
+SBY 11:30:54 [mac_pe_bmc] engine_0: ##   0:01:41  Checking assumptions in step 12..
+SBY 11:30:54 [mac_pe_bmc] engine_0: ##   0:01:41  Checking assertions in step 12..
+SBY 11:31:06 [mac_pe_bmc] engine_0: ##   0:01:54  Checking assumptions in step 13..
+SBY 11:31:06 [mac_pe_bmc] engine_0: ##   0:01:54  Checking assertions in step 13..
+SBY 11:31:22 [mac_pe_bmc] engine_0: ##   0:02:09  Checking assumptions in step 14..
+SBY 11:31:22 [mac_pe_bmc] engine_0: ##   0:02:09  Checking assertions in step 14..
+SBY 11:31:33 [mac_pe_bmc] engine_0: ##   0:02:20  Checking assumptions in step 15..
+SBY 11:31:33 [mac_pe_bmc] engine_0: ##   0:02:20  Checking assertions in step 15..
+SBY 11:31:43 [mac_pe_bmc] engine_0: ##   0:02:31  Checking assumptions in step 16..
+SBY 11:31:43 [mac_pe_bmc] engine_0: ##   0:02:31  Checking assertions in step 16..
+SBY 11:31:56 [mac_pe_bmc] engine_0: ##   0:02:43  Checking assumptions in step 17..
+SBY 11:31:56 [mac_pe_bmc] engine_0: ##   0:02:44  Checking assertions in step 17..
+SBY 11:32:14 [mac_pe_bmc] engine_0: ##   0:03:02  Checking assumptions in step 18..
+SBY 11:32:14 [mac_pe_bmc] engine_0: ##   0:03:02  Checking assertions in step 18..
+SBY 11:32:38 [mac_pe_bmc] engine_0: ##   0:03:25  Checking assumptions in step 19..
+SBY 11:32:38 [mac_pe_bmc] engine_0: ##   0:03:25  Checking assertions in step 19..
+SBY 11:32:50 [mac_pe_bmc] engine_0: ##   0:03:38  Checking assumptions in step 20..
+SBY 11:32:50 [mac_pe_bmc] engine_0: ##   0:03:38  Checking assertions in step 20..
+SBY 11:33:03 [mac_pe_bmc] engine_0: ##   0:03:51  Checking assumptions in step 21..
+SBY 11:33:03 [mac_pe_bmc] engine_0: ##   0:03:51  Checking assertions in step 21..
+SBY 11:33:18 [mac_pe_bmc] engine_0: ##   0:04:05  Checking assumptions in step 22..
+SBY 11:33:18 [mac_pe_bmc] engine_0: ##   0:04:05  Checking assertions in step 22..
+SBY 11:33:32 [mac_pe_bmc] engine_0: ##   0:04:19  Checking assumptions in step 23..
+SBY 11:33:32 [mac_pe_bmc] engine_0: ##   0:04:20  Checking assertions in step 23..
+SBY 11:33:43 [mac_pe_bmc] engine_0: ##   0:04:31  Checking assumptions in step 24..
+SBY 11:33:43 [mac_pe_bmc] engine_0: ##   0:04:31  Checking assertions in step 24..
+SBY 11:33:58 [mac_pe_bmc] engine_0: ##   0:04:45  Checking assumptions in step 25..
+SBY 11:33:58 [mac_pe_bmc] engine_0: ##   0:04:45  Checking assertions in step 25..
+SBY 11:34:12 [mac_pe_bmc] engine_0: ##   0:05:00  Checking assumptions in step 26..
+SBY 11:34:12 [mac_pe_bmc] engine_0: ##   0:05:00  Checking assertions in step 26..
+SBY 11:34:26 [mac_pe_bmc] engine_0: ##   0:05:14  Checking assumptions in step 27..
+SBY 11:34:26 [mac_pe_bmc] engine_0: ##   0:05:14  Checking assertions in step 27..
+SBY 11:34:41 [mac_pe_bmc] engine_0: ##   0:05:28  Checking assumptions in step 28..
+SBY 11:34:41 [mac_pe_bmc] engine_0: ##   0:05:29  Checking assertions in step 28..
+SBY 11:34:57 [mac_pe_bmc] engine_0: ##   0:05:44  Checking assumptions in step 29..
+SBY 11:34:57 [mac_pe_bmc] engine_0: ##   0:05:44  Checking assertions in step 29..
+SBY 11:35:09 [mac_pe_bmc] engine_0: ##   0:05:57  Checking assumptions in step 30..
+SBY 11:35:09 [mac_pe_bmc] engine_0: ##   0:05:57  Checking assertions in step 30..
+SBY 11:35:24 [mac_pe_bmc] engine_0: ##   0:06:11  Checking assumptions in step 31..
+SBY 11:35:24 [mac_pe_bmc] engine_0: ##   0:06:11  Checking assertions in step 31..
+SBY 11:35:41 [mac_pe_bmc] engine_0: ##   0:06:28  Checking assumptions in step 32..
+SBY 11:35:41 [mac_pe_bmc] engine_0: ##   0:06:28  Checking assertions in step 32..
+SBY 11:36:01 [mac_pe_bmc] engine_0: ##   0:06:49  Checking assumptions in step 33..
+SBY 11:36:01 [mac_pe_bmc] engine_0: ##   0:06:49  Checking assertions in step 33..
+SBY 11:36:16 [mac_pe_bmc] engine_0: ##   0:07:03  Checking assumptions in step 34..
+SBY 11:36:16 [mac_pe_bmc] engine_0: ##   0:07:03  Checking assertions in step 34..
+SBY 11:36:28 [mac_pe_bmc] engine_0: ##   0:07:16  Checking assumptions in step 35..
+SBY 11:36:28 [mac_pe_bmc] engine_0: ##   0:07:16  Checking assertions in step 35..
+SBY 11:36:46 [mac_pe_bmc] engine_0: ##   0:07:33  Checking assumptions in step 36..
+SBY 11:36:46 [mac_pe_bmc] engine_0: ##   0:07:33  Checking assertions in step 36..
+SBY 11:37:07 [mac_pe_bmc] engine_0: ##   0:07:55  Checking assumptions in step 37..
+SBY 11:37:08 [mac_pe_bmc] engine_0: ##   0:07:55  Checking assertions in step 37..
+SBY 11:37:23 [mac_pe_bmc] engine_0: ##   0:08:11  Checking assumptions in step 38..
+SBY 11:37:23 [mac_pe_bmc] engine_0: ##   0:08:11  Checking assertions in step 38..
+SBY 11:37:36 [mac_pe_bmc] engine_0: ##   0:08:24  Checking assumptions in step 39..
+SBY 11:37:36 [mac_pe_bmc] engine_0: ##   0:08:24  Checking assertions in step 39..
+SBY 11:37:54 [mac_pe_bmc] engine_0: ##   0:08:41  Status: passed
+SBY 11:37:54 [mac_pe_bmc] engine_0: finished (returncode=0)
+SBY 11:37:54 [mac_pe_bmc] engine_0: Status returned by engine: pass
+SBY 11:37:54 [mac_pe_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:08:42 (522)
+SBY 11:37:54 [mac_pe_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:08:25 (505)
+SBY 11:37:54 [mac_pe_bmc] summary: engine_0 (smtbmc boolector) returned pass
+SBY 11:37:54 [mac_pe_bmc] summary: engine_0 did not produce any traces
+SBY 11:37:54 [mac_pe_bmc] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

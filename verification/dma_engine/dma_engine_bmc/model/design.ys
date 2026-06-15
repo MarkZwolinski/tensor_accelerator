@@ -1,0 +1,9 @@
+# running in dma_engine_bmc/src/
+read -formal -D FORMAL_BMC dma_engine_formal.sv
+read -formal dma_engine.v
+prep -top dma_engine_formal
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

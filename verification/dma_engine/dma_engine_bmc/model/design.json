@@ -1,0 +1,2685 @@
+{
+  "$schema": "https://raw.githubusercontent.com/YosysHQ/yosys/main/misc/jny.schema.json",
+  "generator": "Yosys 0.66+70 (git sha1 8eb313307, Release, GNU /usr/bin/aarch64-linux-gnu-g++ 11.4.0)",
+  "version": "0.0.1",
+  "invocation": "write_jny -no-connections ../model/design.json ",
+  "features": ["attributes", "properties"],
+  "modules": [
+      {
+        "name": "$paramod$9011ecf222c92e5c6fd92151eb89a72720f6ed45\\dma_engine",
+        "cell_sorts": [
+          {
+            "type": "$sub",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [13, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$sub$dma_engine.v:338$79",
+                  "attributes": {
+                    "src": "dma_engine.v:338.38-338.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000001101"
+                  }
+                },
+                {
+                  "name": "$sub$dma_engine.v:355$82",
+                  "attributes": {
+                    "src": "dma_engine.v:355.38-355.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000001101"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$470_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$eq",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$431_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:349.20-349.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$439_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:327.20-327.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$442_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:320.20-320.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$445_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:307.20-307.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$448_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:295.20-295.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$449_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:289.20-289.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$450_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:284.20-284.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$453_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:265.20-265.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$456_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:254.20-254.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$459_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:245.20-245.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$462_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:228.20-228.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$465_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:224.57-224.57|dma_engine.v:223.21-227.28"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$466_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:223.35-223.35|dma_engine.v:223.21-227.28"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$467_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:213.20-213.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$93_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:369.20-369.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$103",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:265.20-265.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$115",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:254.20-254.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$128",
+                  "attributes": {
+                    "src": "dma_engine.v:249.25-249.53|dma_engine.v:249.21-253.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$132",
+                  "attributes": {
+                    "src": "dma_engine.v:240.25-240.55|dma_engine.v:240.21-244.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$142",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:307.20-307.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$149",
+                  "attributes": {
+                    "src": "dma_engine.v:315.25-315.53|dma_engine.v:315.21-319.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$151",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:307.20-307.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$158",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:307.20-307.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procmux$172",
+                  "attributes": {
+                    "src": "dma_engine.v:240.25-240.55|dma_engine.v:240.21-244.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$174",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:228.20-228.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$182",
+                  "attributes": {
+                    "src": "dma_engine.v:303.25-303.55|dma_engine.v:303.21-306.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$184",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:295.20-295.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$198",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:228.20-228.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$206",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:295.20-295.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$220",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:228.20-228.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procmux$228",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:295.20-295.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procmux$240",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:254.20-254.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procmux$251",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:265.20-265.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$263",
+                  "attributes": {
+                    "src": "dma_engine.v:249.25-249.53|dma_engine.v:249.21-253.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procmux$269",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:355.25-355.50|dma_engine.v:355.21-368.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$289",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$291",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$296",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:355.25-355.50|dma_engine.v:355.21-368.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procmux$316",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procmux$318",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procmux$334",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$336",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$352",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$354",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$370",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$372",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$388",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$390",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$417",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$419",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:199.25-199.25|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$428",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:355.25-355.50|dma_engine.v:355.21-368.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$437",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:338.25-338.50|dma_engine.v:338.21-348.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$440",
+                  "attributes": {
+                    "src": "dma_engine.v:324.25-324.35|dma_engine.v:324.21-326.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$443",
+                  "attributes": {
+                    "src": "dma_engine.v:315.25-315.53|dma_engine.v:315.21-319.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$446",
+                  "attributes": {
+                    "src": "dma_engine.v:303.25-303.55|dma_engine.v:303.21-306.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$451",
+                  "attributes": {
+                    "src": "dma_engine.v:280.25-280.35|dma_engine.v:280.21-283.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$454",
+                  "attributes": {
+                    "src": "dma_engine.v:262.25-262.35|dma_engine.v:262.21-264.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$457",
+                  "attributes": {
+                    "src": "dma_engine.v:249.25-249.53|dma_engine.v:249.21-253.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$460",
+                  "attributes": {
+                    "src": "dma_engine.v:240.25-240.55|dma_engine.v:240.21-244.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$468",
+                  "attributes": {
+                    "src": "dma_engine.v:202.25-202.34|dma_engine.v:202.21-212.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$92",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:369.20-369.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mul",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [13, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [25, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$mul$dma_engine.v:360$85",
+                  "attributes": {
+                    "src": "dma_engine.v:360.47-360.79"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001101",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001100",
+                    "Y_WIDTH": "00000000000000000000000000011001"
+                  }
+                },
+                {
+                  "name": "$mul$dma_engine.v:361$88",
+                  "attributes": {
+                    "src": "dma_engine.v:361.47-361.79"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001101",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001100",
+                    "Y_WIDTH": "00000000000000000000000000010100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_and",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_and$dma_engine.v:240$72",
+                  "attributes": {
+                    "src": "dma_engine.v:240.25-240.55"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine.v:249$73",
+                  "attributes": {
+                    "src": "dma_engine.v:249.25-249.53"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine.v:303$74",
+                  "attributes": {
+                    "src": "dma_engine.v:303.25-303.55"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine.v:315$75",
+                  "attributes": {
+                    "src": "dma_engine.v:315.25-315.53"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [4, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$495",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procdff$500",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$505",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procdff$510",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procdff$515",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procdff$520",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procdff$525",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procdff$530",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procdff$535",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procdff$540",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procdff$545",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$550",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$555",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procdff$560",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$565",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procdff$570",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$575",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$580",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procdff$585",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procdff$590",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$595",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$600",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$605",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$610",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procdff$615",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$620",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$625",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$630",
+                  "attributes": {
+                    "src": "dma_engine.v:160.5-380.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$ge",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ge$dma_engine.v:338$80",
+                  "attributes": {
+                    "src": "dma_engine.v:338.25-338.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000100000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$ge$dma_engine.v:355$83",
+                  "attributes": {
+                    "src": "dma_engine.v:355.25-355.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000100000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$reduce_or",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$auto$opt_reduce.cc:129:opt_pmux$642",
+                  "attributes": {
+
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$auto$opt_reduce.cc:129:opt_pmux$644",
+                  "attributes": {
+
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$pmux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$130",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:245.20-245.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$261",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:289.20-289.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000100000000"
+                  }
+                },
+                {
+                  "name": "$procmux$271",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:349.20-349.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000011",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$298",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:349.20-349.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000011",
+                    "WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$procmux$394",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:349.20-349.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$400",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:349.20-349.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$procmux$430",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:349.20-349.20|dma_engine.v:199.13-378.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000001101",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$procmux$433",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "dma_engine.v:344.61-344.61|dma_engine.v:343.25-347.32"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000010",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$add",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [12, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$add$dma_engine.v:334$76",
+                  "attributes": {
+                    "src": "dma_engine.v:334.34-334.47"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000001100"
+                  }
+                },
+                {
+                  "name": "$add$dma_engine.v:335$77",
+                  "attributes": {
+                    "src": "dma_engine.v:335.32-335.56"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000101000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000110",
+                    "Y_WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$add$dma_engine.v:336$78",
+                  "attributes": {
+                    "src": "dma_engine.v:336.32-336.56"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000010100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000110",
+                    "Y_WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$add$dma_engine.v:360$86",
+                  "attributes": {
+                    "src": "dma_engine.v:360.36-360.79"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000101000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000011001",
+                    "Y_WIDTH": "00000000000000000000000000101000"
+                  }
+                },
+                {
+                  "name": "$add$dma_engine.v:361$87",
+                  "attributes": {
+                    "src": "dma_engine.v:361.48-361.61"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000001101"
+                  }
+                },
+                {
+                  "name": "$add$dma_engine.v:361$89",
+                  "attributes": {
+                    "src": "dma_engine.v:361.36-361.79"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000010100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000010100",
+                    "Y_WIDTH": "00000000000000000000000000010100"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "dma_engine",
+            "src": "dma_engine.v:14.1-410.10"
+        }
+      },
+      {
+        "name": "dma_engine_formal",
+        "cell_sorts": [
+          {
+            "type": "$paramod$9011ecf222c92e5c6fd92151eb89a72720f6ed45\\dma_engine",
+            "ports": [
+                {
+                  "name": "axi_araddr",
+                  "direction": "",
+                  "range": [40, 0]
+                },
+                {
+                  "name": "axi_arlen",
+                  "direction": "",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "axi_arready",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_arvalid",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_awaddr",
+                  "direction": "",
+                  "range": [40, 0]
+                },
+                {
+                  "name": "axi_awlen",
+                  "direction": "",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "axi_awready",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_awvalid",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_bready",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_bresp",
+                  "direction": "io",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "axi_bvalid",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_rdata",
+                  "direction": "io",
+                  "range": [256, 0]
+                },
+                {
+                  "name": "axi_rlast",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_rready",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_rvalid",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_wdata",
+                  "direction": "",
+                  "range": [256, 0]
+                },
+                {
+                  "name": "axi_wlast",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_wready",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "axi_wvalid",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "cmd",
+                  "direction": "io",
+                  "range": [128, 0]
+                },
+                {
+                  "name": "cmd_done",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "cmd_ready",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "cmd_valid",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "sram_addr",
+                  "direction": "",
+                  "range": [20, 0]
+                },
+                {
+                  "name": "sram_rdata",
+                  "direction": "io",
+                  "range": [256, 0]
+                },
+                {
+                  "name": "sram_re",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "sram_ready",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "sram_wdata",
+                  "direction": "",
+                  "range": [256, 0]
+                },
+                {
+                  "name": "sram_we",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "dut",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:57.7-57.15"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$471",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:130.18-130.26|dma_engine_formal.sv:130.14-131.46"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$473",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:107.13-107.30|dma_engine_formal.sv:107.9-108.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$477",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:92.17-92.32|dma_engine_formal.sv:92.13-93.36"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$479",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:91.13-91.50|dma_engine_formal.sv:91.9-94.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$481",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:84.17-84.46|dma_engine_formal.sv:84.13-85.37"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$483",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:83.13-83.50|dma_engine_formal.sv:83.9-86.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$485",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:75.13-75.18|dma_engine_formal.sv:75.9-76.44"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$487",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:71.13-71.25|dma_engine_formal.sv:71.9-71.59"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$489",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:65.13-65.26|dma_engine_formal.sv:65.9-65.44"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$dff",
+            "ports": [
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$636",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:90.5-95.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$637",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:90.5-95.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$638",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:82.5-87.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$639",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:82.5-87.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$640",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:70.5-71.59"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$641",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:61.5-61.45"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_or",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_or$dma_engine_formal.sv:71$15",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:71.35-71.57"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_not$dma_engine_formal.sv:100$38",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:100.21-100.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$dma_engine_formal.sv:118$54",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:118.25-118.35"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$dma_engine_formal.sv:123$68",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:123.21-123.27"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$dma_engine_formal.sv:71$14",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:71.44-71.57"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$dma_engine_formal.sv:76$19",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:76.21-76.42"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$dma_engine_formal.sv:93$34",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:93.25-93.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$check",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "ARGS",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "EN",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "TRG",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "_witness_.check_assert_dma_engine_formal_sv_100_36",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_dma_engine_formal_sv_100_36",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:100.13-100.51"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_dma_engine_formal_sv_108_41",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_dma_engine_formal_sv_108_41",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:108.13-108.31"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_dma_engine_formal_sv_76_17",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_dma_engine_formal_sv_76_17",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:76.13-76.43"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_dma_engine_formal_sv_85_25",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_dma_engine_formal_sv_85_25",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:85.17-85.36"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_dma_engine_formal_sv_93_33",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_dma_engine_formal_sv_93_33",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:93.17-93.35"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_dma_engine_formal_sv_123_67",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_dma_engine_formal_sv_123_67",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:123.13-123.28"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": true,
+                    "TRG_WIDTH": "00000000000000000000000000000000"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_dma_engine_formal_sv_65_9",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_dma_engine_formal_sv_65_9",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:65.28-65.43"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_dma_engine_formal_sv_71_13",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_dma_engine_formal_sv_71_13",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:71.27-71.58"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_113_43",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_113_43",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:113.9-113.34"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_114_45",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_114_45",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:114.9-114.33"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111110",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_115_47",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_115_47",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:115.9-115.33"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111101",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_116_49",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_116_49",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:116.9-116.37"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111100",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_117_51",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_117_51",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:117.9-117.37"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111011",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_118_53",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_118_53",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:118.9-118.49"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111010",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_136_61",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_136_61",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:136.9-136.34"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_dma_engine_formal_sv_137_63",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_dma_engine_formal_sv_137_63",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "dma_engine_formal.sv:137.9-137.34"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111110",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_and",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:100$37",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:100.23-100.49"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:113$44",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:113.16-113.33"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:114$46",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:114.16-114.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:115$48",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:115.16-115.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:116$50",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:116.16-116.36"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:117$52",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:117.16-117.36"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:118$55",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:118.16-118.35"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:118$56",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:118.16-118.48"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:76$18",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:76.23-76.41"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:83$24",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:83.13-83.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:84$27",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:84.23-84.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:91$31",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:91.13-91.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$dma_engine_formal.sv:91$32",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:91.13-91.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$635",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:127.5-132.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$ge",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ge$dma_engine_formal.sv:136$62",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:136.16-136.33"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$ge$dma_engine_formal.sv:137$64",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:137.16-137.33"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$add",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [8, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [8, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$add$dma_engine_formal.sv:131$59",
+                  "attributes": {
+                    "src": "dma_engine_formal.sv:131.29-131.45"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000001000"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "keep": "00000000000000000000000000000001",
+            "hdlname": "dma_engine_formal",
+            "dynports": "00000000000000000000000000000001",
+            "top": "00000000000000000000000000000001",
+            "src": "dma_engine_formal.sv:4.1-141.10"
+        }
+      }
+  ]
+}

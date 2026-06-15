@@ -1,0 +1,4 @@
+read -sv ../../rtl/core/dma_engine.v
+prep -top dma_engine
+
+write_rtlil database/design.il

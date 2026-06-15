@@ -1,0 +1,120 @@
+SBY 12:30:16 [dma_engine_bmc] Removing directory '/home/mark/Projects/tensor_accelerator/verification/dma_engine/dma_engine_bmc'.
+SBY 12:30:16 [dma_engine_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/dma_engine/dma_engine_formal.sv' to '/home/mark/Projects/tensor_accelerator/verification/dma_engine/dma_engine_bmc/src/dma_engine_formal.sv'.
+SBY 12:30:16 [dma_engine_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/dma_engine/../../rtl/core/dma_engine.v' to '/home/mark/Projects/tensor_accelerator/verification/dma_engine/dma_engine_bmc/src/dma_engine.v'.
+SBY 12:30:16 [dma_engine_bmc] engine_0: smtbmc boolector
+SBY 12:30:16 [dma_engine_bmc] base: starting process "cd dma_engine_bmc/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 12:30:16 [dma_engine_bmc] base: finished (returncode=0)
+SBY 12:30:16 [dma_engine_bmc] prep: starting process "cd dma_engine_bmc/model; yosys -ql design_prep.log design_prep.ys"
+SBY 12:30:16 [dma_engine_bmc] prep: finished (returncode=0)
+SBY 12:30:16 [dma_engine_bmc] smt2: starting process "cd dma_engine_bmc/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY 12:30:16 [dma_engine_bmc] smt2: finished (returncode=0)
+SBY 12:30:16 [dma_engine_bmc] engine_0: starting process "cd dma_engine_bmc; yosys-smtbmc -s boolector --presat --unroll --noprogress -t 50  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Solver: boolector
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 1..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 1..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 2..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 2..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 3..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 3..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 4..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 4..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 5..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 5..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 6..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 6..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 7..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 7..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 8..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 8..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 9..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 9..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 10..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 10..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 11..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 11..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 12..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 12..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 13..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 13..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 14..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 14..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 15..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 15..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 16..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 16..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 17..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 17..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 18..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 18..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 19..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 19..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 20..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 20..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 21..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 21..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 22..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 22..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 23..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 23..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 24..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 24..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 25..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 25..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 26..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 26..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 27..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 27..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 28..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 28..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 29..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 29..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 30..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 30..
+SBY 12:30:16 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 31..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 31..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 32..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 32..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 33..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 33..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 34..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 34..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 35..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 35..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 36..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 36..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 37..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 37..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assumptions in step 38..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:00  Checking assertions in step 38..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 39..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 39..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 40..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 40..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 41..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 41..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 42..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 42..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 43..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 43..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 44..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 44..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 45..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 45..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 46..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 46..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 47..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 47..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 48..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 48..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assumptions in step 49..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Checking assertions in step 49..
+SBY 12:30:17 [dma_engine_bmc] engine_0: ##   0:00:01  Status: passed
+SBY 12:30:17 [dma_engine_bmc] engine_0: finished (returncode=0)
+SBY 12:30:17 [dma_engine_bmc] engine_0: Status returned by engine: pass
+SBY 12:30:17 [dma_engine_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 12:30:17 [dma_engine_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 12:30:17 [dma_engine_bmc] summary: engine_0 (smtbmc boolector) returned pass
+SBY 12:30:17 [dma_engine_bmc] summary: engine_0 did not produce any traces
+SBY 12:30:17 [dma_engine_bmc] DONE (PASS, rc=0)

@@ -1,0 +1,16 @@
+[options]
+mode cover
+depth 40
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal dma_engine_formal.sv
+read -formal dma_engine.v
+prep -top dma_engine_formal
+setundef -init -zero
+
+[files]
+dma_engine_formal.sv
+../../rtl/core/dma_engine.v

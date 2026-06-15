@@ -1,0 +1,4 @@
+read_verilog -sv ../../rtl/core/mac_pe.v
+prep -top mac_pe
+
+write_rtlil database/design.il

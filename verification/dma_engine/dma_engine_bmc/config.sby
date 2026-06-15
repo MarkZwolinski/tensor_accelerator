@@ -1,0 +1,15 @@
+[options]
+mode bmc
+depth 50
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal -D FORMAL_BMC dma_engine_formal.sv
+read -formal dma_engine.v
+prep -top dma_engine_formal
+
+[files]
+dma_engine_formal.sv
+../../rtl/core/dma_engine.v
