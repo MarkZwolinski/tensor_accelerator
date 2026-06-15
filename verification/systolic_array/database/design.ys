@@ -1,0 +1,5 @@
+read -sv ../../rtl/core/mac_pe.v
+read -sv ../../rtl/core/systolic_array.v
+prep -top systolic_array
+
+write_rtlil database/design.il

@@ -1,0 +1,10 @@
+# running in noc_router_cover/src/
+read -formal noc_router_formal.sv
+read -formal noc_router.v
+prep -top noc_router_formal
+setundef -init -zero
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

@@ -1,0 +1,4 @@
+read -sv ../../rtl/memory/sram_subsystem.v
+prep -top sram_subsystem
+
+write_rtlil database/design.il

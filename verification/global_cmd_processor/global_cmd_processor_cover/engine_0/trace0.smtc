@@ -1,0 +1,32 @@
+initial
+assume (= [$auto$async2sync.cc:107:execute$739] false)
+assume (= [$auto$async2sync.cc:116:execute$737] true)
+assume (= [$auto$async2sync.cc:116:execute$743] true)
+assume (= [$auto$async2sync.cc:116:execute$749] true)
+assume (= [$auto$async2sync.cc:116:execute$755] true)
+assume (= [$past$global_cmd_processor_formal.sv:47$7$0] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$627] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$629] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$631] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$633] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$635] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$637] #b000)
+assume (= [dut.$auto$async2sync.cc:253:execute$639] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$641] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$645] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$647] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$649] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$651] #b00000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$653] #b00000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$655] #b00000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$657] #b00000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$659] #b0000)
+assume (= [f_past_valid] false)
+
+state 0
+
+state 1
+
+state 2
+
+state 3

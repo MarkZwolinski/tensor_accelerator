@@ -1,0 +1,16 @@
+[options]
+mode bmc
+depth 20
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal noc_router_formal.sv
+read -formal noc_router.v
+prep -top noc_router_formal
+setundef -init -zero
+
+[files]
+noc_router_formal.sv
+../../rtl/noc/noc_router.v

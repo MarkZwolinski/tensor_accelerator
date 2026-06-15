@@ -1,0 +1,11 @@
+# running in systolic_array_cover/src/
+read -formal systolic_array_formal.sv
+read -formal mac_pe.v
+read -formal systolic_array.v
+prep -top systolic_array_formal
+setundef -init -zero
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

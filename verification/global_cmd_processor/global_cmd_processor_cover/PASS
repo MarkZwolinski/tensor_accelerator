@@ -1,0 +1,15 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+engine_0 (smtbmc boolector) returned pass
+cover trace: engine_0/trace0.vcd
+cover trace: engine_0/trace0.yw
+  reached cover statement global_cmd_processor_formal._witness_.check_cover_global_cmd_processor_formal_sv_87_65 at global_cmd_processor_formal.sv:87.36-87.59 step 3
+cover trace: engine_0/trace1.vcd
+cover trace: engine_0/trace1.yw
+  reached cover statement global_cmd_processor_formal._witness_.check_cover_global_cmd_processor_formal_sv_99_77 at global_cmd_processor_formal.sv:99.36-99.47 step 4
+cover trace: engine_0/trace2.vcd
+cover trace: engine_0/trace2.yw
+  reached cover statement global_cmd_processor_formal._witness_.check_cover_global_cmd_processor_formal_sv_91_69 at global_cmd_processor_formal.sv:91.36-91.72 step 4
+cover trace: engine_0/trace3.vcd
+cover trace: engine_0/trace3.yw
+  reached cover statement global_cmd_processor_formal._witness_.check_cover_global_cmd_processor_formal_sv_95_73 at global_cmd_processor_formal.sv:95.36-95.72 step 4

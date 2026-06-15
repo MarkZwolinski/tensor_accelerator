@@ -117,7 +117,7 @@ module tensor_accelerator_top #(
     
     // GCP <-> TPC control
     wire [NUM_TPCS-1:0]          tpc_start;
-    wire [SRAM_ADDR_W-1:0]       tpc_start_pc [0:NUM_TPCS-1];
+    wire [NUM_TPCS*SRAM_ADDR_W-1:0] tpc_start_pc;
     wire [NUM_TPCS-1:0]          tpc_busy;
     wire [NUM_TPCS-1:0]          tpc_done;
     wire [NUM_TPCS-1:0]          tpc_error;
@@ -229,7 +229,7 @@ module tensor_accelerator_top #(
                 
                 // Control
                 .tpc_start        (tpc_start[t]),
-                .tpc_start_pc     (tpc_start_pc[t]),
+                .tpc_start_pc     (tpc_start_pc[t*SRAM_ADDR_W +: SRAM_ADDR_W]),
                 .tpc_busy         (tpc_busy[t]),
                 .tpc_done         (tpc_done[t]),
                 .tpc_error        (tpc_error[t]),

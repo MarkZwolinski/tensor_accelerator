@@ -1,0 +1,4 @@
+read -sv ../../rtl/noc/noc_router.v
+prep -top noc_router
+
+write_rtlil database/design.il

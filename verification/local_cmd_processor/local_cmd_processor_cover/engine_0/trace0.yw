@@ -1,0 +1,27 @@
+{
+  "format": "Yosys Witness Trace",
+  "generator": "smtbmc",
+  "clocks": [],
+  "signals": [
+    {"path": ["\\clk"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\dma_done"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\dma_ready"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\global_sync_in"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\imem_data"], "width": 128, "offset": 0, "init_only": false},
+    {"path": ["\\imem_valid"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\mxu_done"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\mxu_ready"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\rst_n"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\start"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\start_pc"], "width": 20, "offset": 0, "init_only": false},
+    {"path": ["\\sync_grant"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\vpu_done"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\vpu_ready"], "width": 1, "offset": 0, "init_only": false}
+  ],
+  "steps": [
+    {"bits": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+    {"bits": "0000000000000000000000011000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+    {"bits": "0000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+    {"bits": "0000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"}
+  ]
+}

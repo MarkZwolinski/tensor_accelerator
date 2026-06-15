@@ -1,0 +1,10 @@
+# running in local_cmd_processor_cover/src/
+read -formal local_cmd_processor_formal.sv
+read -formal local_cmd_processor.v
+prep -top local_cmd_processor_formal
+setundef -init -zero
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

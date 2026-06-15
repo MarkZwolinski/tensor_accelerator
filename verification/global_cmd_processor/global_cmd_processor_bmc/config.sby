@@ -1,0 +1,16 @@
+[options]
+mode bmc
+depth 30
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal global_cmd_processor_formal.sv
+read -formal global_cmd_processor.v
+prep -top global_cmd_processor_formal
+setundef -init -zero
+
+[files]
+global_cmd_processor_formal.sv
+../../rtl/control/global_cmd_processor.v

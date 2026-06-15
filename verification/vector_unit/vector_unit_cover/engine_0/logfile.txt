@@ -1,0 +1,21 @@
+##   0:00:00  Solver: boolector
+##   0:00:00  Checking cover reachability in step 0..
+##   0:00:00  Checking cover reachability in step 1..
+##   0:00:00  Checking cover reachability in step 2..
+##   0:00:00  Checking cover reachability in step 3..
+##   0:00:00  Checking cover reachability in step 4..
+##   0:00:00  Reached cover statement in step 4 at vector_unit_formal: vector_unit_formal.sv:76.36-76.51 (_witness_.check_cover_vector_unit_formal_sv_76_73)
+##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+##   0:00:00  Checking cover reachability in step 4..
+##   0:00:00  Checking cover reachability in step 5..
+##   0:00:00  Checking cover reachability in step 6..
+##   0:00:00  Reached cover statement in step 6 at vector_unit_formal: vector_unit_formal.sv:72.36-72.52 (_witness_.check_cover_vector_unit_formal_sv_72_70)
+##   0:00:00  Reached cover statement in step 6 at vector_unit_formal: vector_unit_formal.sv:80.36-80.65 (_witness_.check_cover_vector_unit_formal_sv_80_76)
+##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace1.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace1.yw
+##   0:00:00  Status: passed

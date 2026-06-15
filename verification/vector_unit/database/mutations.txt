@@ -1,0 +1,15 @@
+mutate -mode none
+mutate -mode const0 -module vector_unit -cell $procmux$3724 -port Y -portbit 9 -wire reduce_tree[192] -wirebit 9 -src ../../rtl/core/vector_unit.v:203.26-203.37 -src ../../rtl/core/vector_unit.v:227.24-227.24 -src ../../rtl/core/vector_unit.v:217.17-237.24
+mutate -mode const1 -module vector_unit -cell $auto$proc_dff.cc:242:proc_dff$4252 -port A -portbit 134
+mutate -mode const0 -module vector_unit -cell $gt$../../rtl/core/vector_unit.v:223$146 -port A -portbit 14 -src ../../rtl/core/vector_unit.v:223.53-224.92
+mutate -mode const0 -module vector_unit -cell $procmux$929 -port B -portbit 8523 -src ../../rtl/core/vector_unit.v:105.44-105.47
+mutate -mode cnot0 -module vector_unit -cell $gt$../../rtl/core/vector_unit.v:223$96 -port B -portbit 15 -ctrlbit 8 -src ../../rtl/core/vector_unit.v:223.53-224.92
+mutate -mode inv -module vector_unit -cell $ternary$../../rtl/core/vector_unit.v:167$380 -port A -portbit 4 -src ../../rtl/core/vector_unit.v:167.42-167.98
+mutate -mode const1 -module vector_unit -cell $procdff$4142 -port Q -portbit 362 -wire vrf[12] -wirebit 362 -src ../../rtl/core/vector_unit.v:100.32-100.35 -src ../../rtl/core/vector_unit.v:253.5-359.8
+mutate -mode inv -module vector_unit -cell $procmux$3652_CMP0 -port Y -portbit 0 -wire cmd_ready -wirebit 0 -src ../../rtl/core/vector_unit.v:31.45-31.54 -src ../../rtl/core/vector_unit.v:275.25-275.25 -src ../../rtl/core/vector_unit.v:275.13-357.20
+mutate -mode const1 -module vector_unit -cell $procmux$1338 -port Y -portbit 1 -wire lane_result[25] -wirebit 1 -src ../../rtl/core/vector_unit.v:133.27-133.38 -src ../../rtl/core/vector_unit.v:176.24-176.24 -src ../../rtl/core/vector_unit.v:144.17-186.24
+mutate -mode const1 -module vector_unit -cell $procmux$2744 -port A -portbit 954 -src ../../rtl/core/vector_unit.v:321.21-321.46
+mutate -mode cnot1 -module vector_unit -cell $procdff$4058 -port Q -portbit 87 -ctrlbit 64 -wire vrf[0] -wirebit 87 -src ../../rtl/core/vector_unit.v:100.32-100.35 -src ../../rtl/core/vector_unit.v:253.5-359.8
+mutate -mode inv -module vector_unit -cell $procmux$2145 -port B -portbit 1975 -src ../../rtl/core/vector_unit.v:341.20-341.20 -src ../../rtl/core/vector_unit.v:275.13-357.20
+mutate -mode const1 -module vector_unit -cell $ternary$../../rtl/core/vector_unit.v:223$102 -port A -portbit 15 -src ../../rtl/core/vector_unit.v:223.52-226.82
+mutate -mode cnot0 -module vector_unit -cell $procmux$2612 -port A -portbit 311 -ctrlbit 354 -src ../../rtl/core/vector_unit.v:345.21-345.81

@@ -1,0 +1,10 @@
+# running in sram_subsystem_cover/src/
+read -formal sram_subsystem_formal.sv
+read -formal sram_subsystem.v
+prep -top sram_subsystem_formal
+setundef -init -zero
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

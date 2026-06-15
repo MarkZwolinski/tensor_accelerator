@@ -1,0 +1,15 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:04 (4)
+Elapsed process time [H:MM:SS (secs)]: 0:00:02 (2)
+engine_0 (smtbmc boolector) returned pass
+cover trace: engine_0/trace0.vcd
+cover trace: engine_0/trace0.yw
+  reached cover statement sram_subsystem_formal._witness_.check_cover_sram_subsystem_formal_sv_84_55 at sram_subsystem_formal.sv:84.36-84.53 step 2
+cover trace: engine_0/trace1.vcd
+cover trace: engine_0/trace1.yw
+  reached cover statement sram_subsystem_formal._witness_.check_cover_sram_subsystem_formal_sv_82_52 at sram_subsystem_formal.sv:82.36-82.53 step 2
+cover trace: engine_0/trace2.vcd
+cover trace: engine_0/trace2.yw
+  reached cover statement sram_subsystem_formal._witness_.check_cover_sram_subsystem_formal_sv_80_49 at sram_subsystem_formal.sv:80.36-80.55 step 2
+cover trace: engine_0/trace3.vcd
+cover trace: engine_0/trace3.yw
+  reached cover statement sram_subsystem_formal._witness_.check_cover_sram_subsystem_formal_sv_78_46 at sram_subsystem_formal.sv:78.36-78.55 step 2

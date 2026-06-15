@@ -1,0 +1,28 @@
+{
+  "format": "Yosys Witness Trace",
+  "generator": "smtbmc",
+  "clocks": [],
+  "signals": [
+    {"path": ["\\clk"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\rst_n"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_araddr"], "width": 12, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_arvalid"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_awaddr"], "width": 12, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_awvalid"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_bready"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_rready"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_wdata"], "width": 32, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_wstrb"], "width": 4, "offset": 0, "init_only": false},
+    {"path": ["\\s_axi_wvalid"], "width": 1, "offset": 0, "init_only": false},
+    {"path": ["\\sync_request"], "width": 4, "offset": 0, "init_only": false},
+    {"path": ["\\tpc_busy"], "width": 4, "offset": 0, "init_only": false},
+    {"path": ["\\tpc_done"], "width": 4, "offset": 0, "init_only": false},
+    {"path": ["\\tpc_error"], "width": 4, "offset": 0, "init_only": false}
+  ],
+  "steps": [
+    {"bits": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000"},
+    {"bits": "00000000000000001000000000000000000000001000100000001001000000000000000000000000010"},
+    {"bits": "00000000000000000000000000000000000000000000000000000000000000000000000000000000010"},
+    {"bits": "00000000000000000000000000000000000000000000000000000000000000000000000000000000010"}
+  ]
+}

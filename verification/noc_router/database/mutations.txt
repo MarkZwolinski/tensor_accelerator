@@ -1,0 +1,15 @@
+mutate -mode none
+mutate -mode cnot0 -module $paramod$b4aab1ba7db7794be56ef3e50e09ca7aea38a05c\sync_fifo -cell $procdff$2801 -port D -portbit 24 -ctrlbit 172 -src ../../rtl/noc/noc_router.v:361.5-374.8
+mutate -mode const1 -module noc_router -cell $lt$../../rtl/noc/noc_router.v:180$1495 -port B -portbit 0 -src ../../rtl/noc/noc_router.v:180.18-180.38
+mutate -mode const0 -module noc_router -cell $logic_and$../../rtl/noc/noc_router.v:135$898 -port A -portbit 0 -wire west_in_valid -wirebit 0 -src ../../rtl/noc/noc_router.v:73.41-73.54 -src ../../rtl/noc/noc_router.v:135.37-135.75
+mutate -mode cnot0 -module $paramod$b4aab1ba7db7794be56ef3e50e09ca7aea38a05c\sync_fifo -cell $procmux$2695 -port B -portbit 119 -ctrlbit 29 -src ../../rtl/noc/noc_router.v:366.17-366.31 -src ../../rtl/noc/noc_router.v:366.13-369.16
+mutate -mode const0 -module $paramod$b4aab1ba7db7794be56ef3e50e09ca7aea38a05c\sync_fifo -cell $procdff$2808 -port Q -portbit 252 -wire mem[1] -wirebit 252 -src ../../rtl/noc/noc_router.v:349.21-349.24 -src ../../rtl/noc/noc_router.v:361.5-374.8
+mutate -mode cnot0 -module noc_router -cell fifo_gen[3].input_fifo -port rd_data -portbit 9 -ctrlbit 11 -wire fifo_out[3] -wirebit 9 -src ../../rtl/noc/noc_router.v:119.27-119.35 -src ../../rtl/noc/noc_router.v:151.15-160.14
+mutate -mode const1 -module noc_router -cell $procmux$1626 -port Y -portbit 0 -wire local_out_valid -wirebit 0 -src ../../rtl/noc/noc_router.v:94.41-94.56 -src ../../rtl/noc/noc_router.v:285.21-285.39 -src ../../rtl/noc/noc_router.v:285.17-288.20
+mutate -mode inv -module noc_router -cell $logic_or$../../rtl/noc/noc_router.v:263$1455 -port Y -portbit 0 -wire fifo_rd_en -wirebit 3 -src ../../rtl/noc/noc_router.v:121.27-121.37 -src ../../rtl/noc/noc_router.v:263.36-267.56
+mutate -mode const0 -module noc_router -cell fifo_gen[1].input_fifo -port wr_data -portbit 111 -wire south_in_data -wirebit 111 -src ../../rtl/noc/noc_router.v:40.41-40.54 -src ../../rtl/noc/noc_router.v:151.15-160.14
+mutate -mode const0 -module $paramod$b4aab1ba7db7794be56ef3e50e09ca7aea38a05c\sync_fifo -cell $eq$../../rtl/noc/noc_router.v:355$790 -port A -portbit 1 -src ../../rtl/noc/noc_router.v:355.21-355.37
+mutate -mode cnot1 -module noc_router -cell fifo_gen[3].input_fifo -port wr_data -portbit 210 -ctrlbit 42 -wire west_in_data -wirebit 210 -src ../../rtl/noc/noc_router.v:70.41-70.53 -src ../../rtl/noc/noc_router.v:151.15-160.14
+mutate -mode const0 -module noc_router -cell fifo_gen[1].input_fifo -port wr_data -portbit 184 -wire south_in_data -wirebit 184 -src ../../rtl/noc/noc_router.v:40.41-40.54 -src ../../rtl/noc/noc_router.v:151.15-160.14
+mutate -mode cnot1 -module noc_router -cell $procmux$1749 -port Y -portbit 204 -ctrlbit 232 -wire north_out_data -wirebit 204 -src ../../rtl/noc/noc_router.v:31.41-31.55 -src ../../rtl/noc/noc_router.v:285.21-285.39 -src ../../rtl/noc/noc_router.v:285.17-288.20
+mutate -mode inv -module $paramod$b4aab1ba7db7794be56ef3e50e09ca7aea38a05c\sync_fifo -cell $procmux$2660 -port Y -portbit 64 -wire rd_data -wirebit 64 -src ../../rtl/noc/noc_router.v:342.29-342.36 -src ../../rtl/noc/noc_router.v:359.22-359.25

@@ -1,0 +1,18 @@
+[options]
+mode cover
+depth 20
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal systolic_array_formal.sv
+read -formal mac_pe.v
+read -formal systolic_array.v
+prep -top systolic_array_formal
+setundef -init -zero
+
+[files]
+systolic_array_formal.sv
+../../rtl/core/mac_pe.v
+../../rtl/core/systolic_array.v

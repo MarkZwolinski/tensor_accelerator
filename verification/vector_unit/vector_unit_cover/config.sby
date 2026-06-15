@@ -1,0 +1,16 @@
+[options]
+mode cover
+depth 30
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal vector_unit_formal.sv
+read -formal vector_unit.v
+prep -top vector_unit_formal
+setundef -init -zero
+
+[files]
+vector_unit_formal.sv
+../../rtl/core/vector_unit.v

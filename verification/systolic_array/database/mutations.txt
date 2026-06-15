@@ -1,0 +1,10 @@
+mutate -mode none
+mutate -mode const0 -module systolic_array -cell $procmux$577 -port B -portbit 14 -src ../../rtl/core/systolic_array.v:264.34-264.43 -src ../../rtl/core/systolic_array.v:264.30-268.24
+mutate -mode const0 -module systolic_array -cell $procdff$772 -port D -portbit 18 -src ../../rtl/core/systolic_array.v:260.17-269.20
+mutate -mode const1 -module $paramod$8392c0aee371eac30cfcd917af9a6c37ac869d3e\mac_pe -cell $procmux$702 -port Y -portbit 0 -src ../../rtl/core/mac_pe.v:77.17-77.23 -src ../../rtl/core/mac_pe.v:77.13-92.16
+mutate -mode const0 -module systolic_array -cell $procdff$817 -port Q -portbit 7 -wire skew_output[2] -wirebit 7 -src ../../rtl/core/systolic_array.v:137.27-137.38 -src ../../rtl/core/systolic_array.v:164.17-178.20
+mutate -mode const1 -module systolic_array -cell $procmux$565 -port A -portbit 24 -wire result_data -wirebit 24 -src ../../rtl/core/systolic_array.v:42.49-42.60 -src ../../rtl/core/systolic_array.v:264.34-264.43 -src ../../rtl/core/systolic_array.v:264.30-268.24
+mutate -mode const1 -module $paramod$8392c0aee371eac30cfcd917af9a6c37ac869d3e\mac_pe -cell $add$../../rtl/core/mac_pe.v:90$224 -port A -portbit 14 -wire psum_in -wirebit 14 -src ../../rtl/core/mac_pe.v:34.37-34.44 -src ../../rtl/core/mac_pe.v:90.33-90.54
+mutate -mode const1 -module systolic_array -cell pe_row[1].pe_col[0].pe_inst -port psum_out -portbit 6 -wire psum_v[8] -wirebit 6 -src ../../rtl/core/systolic_array.v:193.26-193.32 -src ../../rtl/core/systolic_array.v:222.19-233.18
+mutate -mode cnot0 -module systolic_array -cell $procdff$762 -port Q -portbit 7 -ctrlbit 18 -wire gen_deskew[0].col_with_delay.delay_stages[0] -wirebit 7 -src ../../rtl/core/systolic_array.v:257.37-257.49 -src ../../rtl/core/systolic_array.v:260.17-269.20
+mutate -mode cnot1 -module systolic_array -cell $procdff$847 -port Q -portbit 1 -ctrlbit 0 -wire gen_skew[1].rowN_skew.delay_stages[0] -wirebit 1 -src ../../rtl/core/systolic_array.v:160.38-160.50 -src ../../rtl/core/systolic_array.v:164.17-178.20

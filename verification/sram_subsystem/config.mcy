@@ -1,0 +1,29 @@
+[options]
+size 15
+
+[script]
+read -sv ../../rtl/memory/sram_subsystem.v
+prep -top sram_subsystem
+
+[files]
+../../rtl/memory/sram_subsystem.v
+
+[logic]
+if result("test_fm") == "PASS":
+    tag("COVERED")
+elif result("test_fm") == "FAIL":
+    tag("UNCOVERED")
+else:
+    tag("ERROR")
+
+[report]
+if tags("COVERED") + tags("UNCOVERED") > 0:
+    pct = 100 * tags("COVERED") // (tags("COVERED") + tags("UNCOVERED"))
+    print(f"Mutation coverage: {tags('COVERED')}/{tags('COVERED')+tags('UNCOVERED')} ({pct}%)")
+else:
+    print("No mutations tested")
+
+[test test_fm]
+maxbatchsize 1
+expect PASS FAIL
+run bash "$PRJDIR/test_fm.sh"

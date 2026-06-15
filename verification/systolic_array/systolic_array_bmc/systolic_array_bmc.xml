@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2026-06-15T14:59:44" hostname="Ubuntu" package="systolic_array" id="0" name="bmc" tests="8" errors="0" failures="0" time="1" skipped="2">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="PASS"/>
+</properties>
+<testcase classname="bmc" name="build execution" time="0">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in systolic_array_formal at systolic_array_formal.sv:45.13-45.53" time="0" type="ASSERT" location="systolic_array_formal.sv:45.13-45.53" id="_witness_.check_assert_systolic_array_formal_sv_45_27">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in systolic_array_formal at systolic_array_formal.sv:50.13-50.27" time="0" type="ASSERT" location="systolic_array_formal.sv:50.13-50.27" id="_witness_.check_assert_systolic_array_formal_sv_50_40">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in systolic_array_formal at systolic_array_formal.sv:55.13-55.35" time="0" type="ASSERT" location="systolic_array_formal.sv:55.13-55.35" id="_witness_.check_assert_systolic_array_formal_sv_55_48">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in systolic_array_formal at systolic_array_formal.sv:60.13-60.26" time="0" type="ASSERT" location="systolic_array_formal.sv:60.13-60.26" id="_witness_.check_assert_systolic_array_formal_sv_60_55">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in systolic_array_formal at systolic_array_formal.sv:65.13-65.35" time="0" type="ASSERT" location="systolic_array_formal.sv:65.13-65.35" id="_witness_.check_assert_systolic_array_formal_sv_65_60">
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in systolic_array_formal at systolic_array_formal.sv:71.13-71.32" time="0" type="ASSERT" location="systolic_array_formal.sv:71.13-71.32" id="_witness_.check_assert_systolic_array_formal_sv_71_66">
+</testcase>
+<testcase classname="bmc" name="Property COVER in systolic_array_formal at systolic_array_formal.sv:75.36-75.48" time="0" type="COVER" location="systolic_array_formal.sv:75.36-75.48" id="_witness_.check_cover_systolic_array_formal_sv_75_70">
+<skipped />
+</testcase>
+<testcase classname="bmc" name="Property COVER in systolic_array_formal at systolic_array_formal.sv:79.36-79.56" time="0" type="COVER" location="systolic_array_formal.sv:79.36-79.56" id="_witness_.check_cover_systolic_array_formal_sv_79_73">
+<skipped />
+</testcase>
+<system-out>SBY 14:59:42 [systolic_array_bmc] Removing directory '/home/mark/Projects/tensor_accelerator/verification/systolic_array/systolic_array_bmc'.
+SBY 14:59:42 [systolic_array_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/systolic_array/systolic_array_formal.sv' to '/home/mark/Projects/tensor_accelerator/verification/systolic_array/systolic_array_bmc/src/systolic_array_formal.sv'.
+SBY 14:59:42 [systolic_array_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/systolic_array/../../rtl/core/mac_pe.v' to '/home/mark/Projects/tensor_accelerator/verification/systolic_array/systolic_array_bmc/src/mac_pe.v'.
+SBY 14:59:42 [systolic_array_bmc] Copy '/home/mark/Projects/tensor_accelerator/verification/systolic_array/../../rtl/core/systolic_array.v' to '/home/mark/Projects/tensor_accelerator/verification/systolic_array/systolic_array_bmc/src/systolic_array.v'.
+SBY 14:59:42 [systolic_array_bmc] engine_0: smtbmc boolector
+SBY 14:59:42 [systolic_array_bmc] base: starting process &quot;cd systolic_array_bmc/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Replacing memory \gen_deskew[2].col_with_delay.delay_stages with list of registers. See systolic_array.v:263
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Replacing memory \gen_deskew[1].col_with_delay.delay_stages with list of registers. See systolic_array.v:263
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Replacing memory \gen_deskew[0].col_with_delay.delay_stages with list of registers. See systolic_array.v:263
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Replacing memory \gen_skew[3].rowN_skew.delay_stages with list of registers. See systolic_array.v:167
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Replacing memory \gen_skew[2].rowN_skew.delay_stages with list of registers. See systolic_array.v:167
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Replacing memory \gen_skew[1].rowN_skew.delay_stages with list of registers. See systolic_array.v:167
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\result_ready is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [31] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [30] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [29] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [28] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [27] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [26] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [25] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [24] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [23] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [22] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [21] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [20] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [19] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [18] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [17] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [16] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [15] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [14] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [13] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [12] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [11] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [10] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [9] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [8] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [7] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [6] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [5] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [4] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [3] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [2] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [1] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_data [0] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\act_valid is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [31] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [30] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [29] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [28] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [27] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [26] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [25] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [24] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [23] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [22] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [21] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [20] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [19] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [18] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [17] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [16] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [15] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [14] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [13] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [12] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [11] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [10] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [9] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [8] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [7] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [6] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [5] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [4] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [3] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [2] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [1] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_data [0] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_col [1] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_col [0] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\weight_load_en is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [15] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [14] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [13] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [12] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [11] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [10] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [9] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [8] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [7] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [6] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [5] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [4] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [3] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [2] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [1] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\cfg_k_tiles [0] is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\clear_acc is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\start is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\rst_n is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: Warning: Wire systolic_array_formal.\clk is used but has no driver.
+SBY 14:59:42 [systolic_array_bmc] base: finished (returncode=0)
+SBY 14:59:42 [systolic_array_bmc] prep: starting process &quot;cd systolic_array_bmc/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_en is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [31] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [30] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [29] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [28] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [27] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [26] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [25] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [24] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [23] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [22] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [21] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [20] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [19] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [18] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [17] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [16] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [15] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [14] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [13] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [12] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [11] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [10] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [9] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [8] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [7] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [6] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [5] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [4] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [3] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [2] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [1] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_data [0] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_col [1] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\weight_load_col [0] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\result_ready is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\clk is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\clear_acc is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [15] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [14] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [13] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [12] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [11] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [10] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [9] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [8] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [7] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [6] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [5] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [4] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [3] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [2] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [1] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\cfg_k_tiles [0] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_valid is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [31] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [30] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [29] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [28] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [27] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [26] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [25] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [24] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [23] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [22] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [21] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [20] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [19] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [18] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [17] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [16] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [15] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [14] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [13] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [12] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [11] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [10] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [9] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [8] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [7] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [6] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [5] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [4] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [3] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [2] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [1] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\act_data [0] is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\start is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: Warning: Wire systolic_array_formal.\rst_n is used but has no driver.
+SBY 14:59:43 [systolic_array_bmc] prep: finished (returncode=0)
+SBY 14:59:43 [systolic_array_bmc] smt2: starting process &quot;cd systolic_array_bmc/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 14:59:43 [systolic_array_bmc] smt2: finished (returncode=0)
+SBY 14:59:43 [systolic_array_bmc] engine_0: starting process &quot;cd systolic_array_bmc; yosys-smtbmc -s boolector --presat --unroll --noprogress -t 20  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Solver: boolector
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 1..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 1..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 2..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 2..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 3..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 3..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 4..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 4..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 5..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 5..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 6..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 6..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 7..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 7..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 8..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 8..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 9..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 9..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 10..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 10..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 11..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 11..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 12..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 12..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 13..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 13..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 14..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 14..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 15..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 15..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 16..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 16..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 17..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 17..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 18..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 18..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assumptions in step 19..
+SBY 14:59:43 [systolic_array_bmc] engine_0: ##   0:00:00  Checking assertions in step 19..
+SBY 14:59:44 [systolic_array_bmc] engine_0: ##   0:00:00  Status: passed
+SBY 14:59:44 [systolic_array_bmc] engine_0: finished (returncode=0)
+SBY 14:59:44 [systolic_array_bmc] engine_0: Status returned by engine: pass
+SBY 14:59:44 [systolic_array_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 14:59:44 [systolic_array_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:01 (1)
+SBY 14:59:44 [systolic_array_bmc] summary: engine_0 (smtbmc boolector) returned pass
+SBY 14:59:44 [systolic_array_bmc] summary: engine_0 did not produce any traces
+SBY 14:59:44 [systolic_array_bmc] DONE (PASS, rc=0)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>

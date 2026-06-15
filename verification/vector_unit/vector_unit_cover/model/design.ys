@@ -1,0 +1,10 @@
+# running in vector_unit_cover/src/
+read -formal vector_unit_formal.sv
+read -formal vector_unit.v
+prep -top vector_unit_formal
+setundef -init -zero
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

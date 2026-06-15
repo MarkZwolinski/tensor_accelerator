@@ -1,0 +1,15 @@
+mutate -mode none
+mutate -mode const1 -module local_cmd_processor -cell $procmux$1159 -port A -portbit 10 -src ../../rtl/control/local_cmd_processor.v:332.20-332.20 -src ../../rtl/control/local_cmd_processor.v:225.13-444.20
+mutate -mode const1 -module local_cmd_processor -cell $procmux$1101 -port B -portbit 0 -src ../../rtl/control/local_cmd_processor.v:285.33-285.44 -src ../../rtl/control/local_cmd_processor.v:285.29-300.32
+mutate -mode const1 -module local_cmd_processor -cell $procdff$1407 -port Q -portbit 99 -wire mxu_cmd -wirebit 99 -src ../../rtl/control/local_cmd_processor.v:41.41-41.48 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode cnot1 -module local_cmd_processor -cell $procdff$1457 -port Q -portbit 2 -ctrlbit 3 -wire decoded_subop -wirebit 2 -src ../../rtl/control/local_cmd_processor.v:183.15-183.28 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode inv -module local_cmd_processor -cell $procdff$1397 -port Q -portbit 5 -wire imem_addr -wirebit 5 -src ../../rtl/control/local_cmd_processor.v:33.41-33.50 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode const1 -module local_cmd_processor -cell $procdff$1487 -port Q -portbit 8 -wire loop_counter[0] -wirebit 8 -src ../../rtl/control/local_cmd_processor.v:120.27-120.39 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode const1 -module local_cmd_processor -cell $procdff$1387 -port Q -portbit 22 -wire instr_reg -wirebit 22 -src ../../rtl/control/local_cmd_processor.v:113.27-113.36 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode const0 -module local_cmd_processor -cell $procdff$1387 -port Q -portbit 84 -wire instr_reg -wirebit 84 -src ../../rtl/control/local_cmd_processor.v:113.27-113.36 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode const0 -module local_cmd_processor -cell $procmux$1008 -port Y -portbit 17 -src ../../rtl/control/local_cmd_processor.v:251.20-251.20 -src ../../rtl/control/local_cmd_processor.v:225.13-444.20
+mutate -mode const1 -module local_cmd_processor -cell $ne$../../rtl/control/local_cmd_processor.v:464$137 -port B -portbit 2 -src ../../rtl/control/local_cmd_processor.v:464.64-464.80
+mutate -mode const1 -module local_cmd_processor -cell $procmux$1233 -port B -portbit 79 -wire imem_data -wirebit 79 -src ../../rtl/control/local_cmd_processor.v:34.41-34.50 -src ../../rtl/control/local_cmd_processor.v:245.25-245.35 -src ../../rtl/control/local_cmd_processor.v:245.21-250.24
+mutate -mode cnot1 -module local_cmd_processor -cell $gt$../../rtl/control/local_cmd_processor.v:167$19 -port A -portbit 2 -ctrlbit 4 -src ../../rtl/control/local_cmd_processor.v:167.29-167.44
+mutate -mode const1 -module local_cmd_processor -cell $procdff$1407 -port Q -portbit 52 -wire mxu_cmd -wirebit 52 -src ../../rtl/control/local_cmd_processor.v:41.41-41.48 -src ../../rtl/control/local_cmd_processor.v:185.5-446.8
+mutate -mode const0 -module local_cmd_processor -cell $logic_and$../../rtl/control/local_cmd_processor.v:464$136 -port B -portbit 0 -src ../../rtl/control/local_cmd_processor.v:464.19-464.59

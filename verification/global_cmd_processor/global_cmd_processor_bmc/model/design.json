@@ -1,0 +1,2754 @@
+{
+  "$schema": "https://raw.githubusercontent.com/YosysHQ/yosys/main/misc/jny.schema.json",
+  "generator": "Yosys 0.66+70 (git sha1 8eb313307, Release, GNU /usr/bin/aarch64-linux-gnu-g++ 11.4.0)",
+  "version": "0.0.1",
+  "invocation": "write_jny -no-connections ../model/design.json ",
+  "features": ["attributes", "properties"],
+  "modules": [
+      {
+        "name": "$paramod$176225e875dcfce31473d145288429e2d18466d7\\global_cmd_processor",
+        "cell_sorts": [
+          {
+            "type": "$pmux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [25, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [100, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [25, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$381",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:245.32-245.32|global_cmd_processor.v:231.25-263.32"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000100",
+                    "WIDTH": "00000000000000000000000000011001"
+                  }
+                },
+                {
+                  "name": "$procmux$407",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:275.20-275.20|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "S_WIDTH": "00000000000000000000000000000011",
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$150",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:305.17-305.54|global_cmd_processor.v:305.13-309.16"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$239",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:226.34-226.47|global_cmd_processor.v:226.30-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$242",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$244",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$258",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$260",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$269",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:197.37-197.51|global_cmd_processor.v:197.33-197.80"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$271",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:195.44-195.44|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$273",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$275",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$282",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94|global_cmd_processor.v:217.41-219.44"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$284",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:212.37-212.66|global_cmd_processor.v:212.33-221.36"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$287",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:203.32-203.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$291",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$293",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$300",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94|global_cmd_processor.v:217.41-219.44"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$302",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:212.37-212.66|global_cmd_processor.v:212.33-221.36"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$305",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:203.32-203.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$309",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$311",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$318",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94|global_cmd_processor.v:217.41-219.44"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$320",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:212.37-212.66|global_cmd_processor.v:212.33-221.36"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$323",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:203.32-203.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$327",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$329",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$336",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94|global_cmd_processor.v:217.41-219.44"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$338",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:212.37-212.66|global_cmd_processor.v:212.33-221.36"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$341",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:203.32-203.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$345",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$347",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$350",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:279.25-279.57|global_cmd_processor.v:279.21-282.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$352",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:275.20-275.20|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$356",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:271.25-271.57|global_cmd_processor.v:271.21-274.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$358",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:267.20-267.20|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$364",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90|global_cmd_processor.v:255.37-257.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$366",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94|global_cmd_processor.v:258.37-260.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$368",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90|global_cmd_processor.v:255.37-257.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$370",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94|global_cmd_processor.v:258.37-260.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$372",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90|global_cmd_processor.v:255.37-257.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$374",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94|global_cmd_processor.v:258.37-260.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$376",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90|global_cmd_processor.v:255.37-257.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$378",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94|global_cmd_processor.v:258.37-260.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procmux$386",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:226.34-226.47|global_cmd_processor.v:226.30-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procmux$389",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procmux$391",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procmux$405",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:279.25-279.57|global_cmd_processor.v:279.21-282.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procmux$409",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:271.25-271.57|global_cmd_processor.v:271.21-274.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procmux$413",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:226.34-226.47|global_cmd_processor.v:226.30-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procmux$416",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procmux$419",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:182.17-182.47|global_cmd_processor.v:182.13-184.16"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$426",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:207.37-207.51|global_cmd_processor.v:207.33-207.72"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$428",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:203.32-203.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$430",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$432",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$440",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:199.32-199.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$442",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$444",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$453",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:195.44-195.44|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$455",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:189.25-189.54|global_cmd_processor.v:189.21-266.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$457",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$460",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:135.17-135.35|global_cmd_processor.v:135.13-139.16"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$reduce_and",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$reduce_and$global_cmd_processor.v:144$97",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:144.31-145.51"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$reduce_and$global_cmd_processor.v:297$134",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:297.31-298.52"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_not$global_cmd_processor.v:305$137",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:305.39-305.54"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$344_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:195.44-195.44|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$385_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:231.44-231.44|global_cmd_processor.v:231.25-263.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$392_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:186.29-186.29|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_and",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_and$global_cmd_processor.v:182$106",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:182.17-182.47"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:189$109",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:189.25-189.54"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:271$129",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:271.25-271.57"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:279$130",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:279.25-279.57"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:305$138",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:305.17-305.54"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:331$139",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:331.35-331.70"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:331$141",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:331.35-331.70"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:331$143",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:331.35-331.70"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:331$145",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:331.35-331.70"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:333$140",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:333.36-333.69"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:333$142",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:333.36-333.69"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:333$144",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:333.36-333.69"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor.v:333$146",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:333.36-333.69"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$adff",
+            "ports": [
+                {
+                  "name": "ARST",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$498",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:301.5-311.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$503",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "11111111",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$508",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$513",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$518",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$523",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procdff$533",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$538",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$543",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$548",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$553",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$558",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$582",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$587",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$592",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$597",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:156.5-290.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000010100"
+                  }
+                },
+                {
+                  "name": "$procdff$602",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:131.5-141.8"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "0000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$ge",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ge$global_cmd_processor.v:212$113",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:212.37-212.66"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$or",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [4, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$or$global_cmd_processor.v:138$93",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:138.35-138.60"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$or$global_cmd_processor.v:144$95",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:144.34-144.76"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000100"
+                  }
+                },
+                {
+                  "name": "$or$global_cmd_processor.v:297$132",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:297.33-297.73"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$eq",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [9, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$eq$global_cmd_processor.v:217$115",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:217$116",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:217$117",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:217$118",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:217.45-217.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:255$121",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:255$123",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:255$125",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:255$127",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:255.41-255.90"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:258$122",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:258$124",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:258$126",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor.v:258$128",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:258.41-258.94"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000001001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$342_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:203.32-203.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$343_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:199.32-199.32|global_cmd_processor.v:195.25-223.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$353_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:275.20-275.20|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000011",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$359_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:267.20-267.20|global_cmd_processor.v:186.13-288.20"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000011",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$382_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:245.32-245.32|global_cmd_processor.v:231.25-263.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$383_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:241.32-241.32|global_cmd_processor.v:231.25-263.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$384_CMP0",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor.v:234.32-234.32|global_cmd_processor.v:231.25-263.32"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000001100",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [4, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$not$global_cmd_processor.v:297$131",
+                  "attributes": {
+                    "src": "global_cmd_processor.v:297.48-297.73"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000100"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$reduce_or",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [3, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$auto$opt_reduce.cc:129:opt_pmux$616",
+                  "attributes": {
+
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000011",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "dynports": "00000000000000000000000000000001",
+            "hdlname": "global_cmd_processor",
+            "src": "global_cmd_processor.v:13.1-340.10"
+        }
+      },
+      {
+        "name": "global_cmd_processor_formal",
+        "cell_sorts": [
+          {
+            "type": "$paramod$176225e875dcfce31473d145288429e2d18466d7\\global_cmd_processor",
+            "ports": [
+                {
+                  "name": "clk",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "global_sync_out",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "irq",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "rst_n",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_araddr",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "s_axi_arready",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_arvalid",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_awaddr",
+                  "direction": "io",
+                  "range": [12, 0]
+                },
+                {
+                  "name": "s_axi_awready",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_awvalid",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_bready",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_bresp",
+                  "direction": "",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "s_axi_bvalid",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_rdata",
+                  "direction": "",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "s_axi_rready",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_rresp",
+                  "direction": "",
+                  "range": [2, 0]
+                },
+                {
+                  "name": "s_axi_rvalid",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_wdata",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "s_axi_wready",
+                  "direction": "",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "s_axi_wstrb",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "s_axi_wvalid",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "sync_grant",
+                  "direction": "",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "sync_request",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "tpc_busy",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "tpc_done",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "tpc_error",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "tpc_start",
+                  "direction": "",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "tpc_start_pc",
+                  "direction": "",
+                  "range": [80, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "dut",
+                  "attributes": {
+                    "module_not_derived": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:41.7-41.15"
+                  },
+                  "parameters": {
+
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$dff",
+            "ports": [
+                {
+                  "name": "CLK",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "D",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Q",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procdff$603",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:81.5-83.39"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$604",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:81.5-83.39"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$605",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:55.5-57.38"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$606",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:55.5-57.38"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$607",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:50.5-52.66"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$608",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:47.5-47.78"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$609",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:44.5-44.48"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$mux",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "S",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$procmux$462",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43|global_cmd_processor_formal.sv:75.17-76.46"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$464",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43|global_cmd_processor_formal.sv:75.17-76.46"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$466",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43|global_cmd_processor_formal.sv:75.17-76.46"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$468",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43|global_cmd_processor_formal.sv:75.17-76.46"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$476",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:87.13-87.34|global_cmd_processor_formal.sv:87.9-87.60"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$478",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:82.13-82.76|global_cmd_processor_formal.sv:82.9-83.39"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$480",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:68.13-68.18|global_cmd_processor_formal.sv:68.9-68.61"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$482",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:64.13-64.34|global_cmd_processor_formal.sv:64.9-64.66"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$484",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:61.13-61.34|global_cmd_processor_formal.sv:61.9-61.66"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$486",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:56.13-56.76|global_cmd_processor_formal.sv:56.9-57.38"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$488",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:51.13-51.51|global_cmd_processor_formal.sv:51.9-52.66"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$490",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:47.31-47.43|global_cmd_processor_formal.sv:47.27-47.78"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$492",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:46.31-46.44|global_cmd_processor_formal.sv:46.27-46.62"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$reduce_bool",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ne$global_cmd_processor_formal.sv:87$66",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:87.43-87.58"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_or",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_or$global_cmd_processor_formal.sv:47$22",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:47.54-47.76"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$check",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "ARGS",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "EN",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "TRG",
+                  "direction": "io",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_52_27",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_52_27",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:52.13-52.65"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_57_40",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_57_40",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:57.13-57.37"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_61_45",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_61_45",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:61.36-61.65"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_64_49",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_64_49",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:64.36-64.65"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_68_52",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_68_52",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:68.20-68.60"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_76_80",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_76_80",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:76.21-76.45"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_76_83",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_76_83",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:76.21-76.45"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_76_86",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_76_86",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:76.21-76.45"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_76_89",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_76_89",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:76.21-76.45"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_global_cmd_processor_formal_sv_83_61",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_global_cmd_processor_formal_sv_83_61",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:83.13-83.38"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_global_cmd_processor_formal_sv_46_16",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_global_cmd_processor_formal_sv_46_16",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:46.46-46.61"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_global_cmd_processor_formal_sv_47_20",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_global_cmd_processor_formal_sv_47_20",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:47.46-47.77"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_global_cmd_processor_formal_sv_87_65",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_global_cmd_processor_formal_sv_87_65",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:87.36-87.59"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_global_cmd_processor_formal_sv_91_69",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_global_cmd_processor_formal_sv_91_69",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:91.36-91.72"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_global_cmd_processor_formal_sv_95_73",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_global_cmd_processor_formal_sv_95_73",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:95.36-95.72"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_global_cmd_processor_formal_sv_99_77",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_global_cmd_processor_formal_sv_99_77",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "global_cmd_processor_formal.sv:99.36-99.47"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "cover",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_and",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:51$26",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:51.13-51.51"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:52$30",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:52.21-52.56"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:52$32",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:52.21-52.64"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:56$38",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:56.13-56.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:56$39",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:56.13-56.76"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:61$44",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:61.13-61.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:64$48",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:64.13-64.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:68$53",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:68.30-68.58"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:75$79",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:75$82",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:75$85",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:75$88",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:75.21-75.43"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:82$59",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:82.13-82.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:82$60",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:82.13-82.76"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:91$70",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:91.43-91.71"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:95$74",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:95.43-95.71"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$global_cmd_processor_formal.sv:99$76",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:99.13-99.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [4, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$eq$global_cmd_processor_formal.sv:57$41",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:57.21-57.36"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000100",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor_formal.sv:61$46",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:61.44-61.64"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$eq$global_cmd_processor_formal.sv:64$50",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:64.44-64.64"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000010",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$global_cmd_processor_formal.sv:47$21",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:47.63-47.76"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$global_cmd_processor_formal.sv:51$33",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:51.44-51.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$global_cmd_processor_formal.sv:52$31",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:52.60-52.64"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$global_cmd_processor_formal.sv:68$54",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:68.28-68.59"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$global_cmd_processor_formal.sv:83$62",
+                  "attributes": {
+                    "src": "global_cmd_processor_formal.sv:83.21-83.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          }
+        ],
+        "attributes": {
+            "keep": "00000000000000000000000000000001",
+            "hdlname": "global_cmd_processor_formal",
+            "dynports": "00000000000000000000000000000001",
+            "top": "00000000000000000000000000000001",
+            "src": "global_cmd_processor_formal.sv:2.1-101.10"
+        }
+      }
+  ]
+}

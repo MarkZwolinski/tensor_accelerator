@@ -1,0 +1,4 @@
+read -sv ../../rtl/control/local_cmd_processor.v
+prep -top local_cmd_processor
+
+write_rtlil database/design.il

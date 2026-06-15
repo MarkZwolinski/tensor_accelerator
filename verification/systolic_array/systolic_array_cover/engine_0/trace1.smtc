@@ -1,0 +1,130 @@
+initial
+assume (= [$auto$async2sync.cc:107:execute$1102] false)
+assume (= [$auto$async2sync.cc:116:execute$1100] true)
+assume (= [$auto$async2sync.cc:116:execute$1106] true)
+assume (= [$past$systolic_array_formal.sv:31$5$0] false)
+assume (= [dut.$auto$async2sync.cc:253:execute$1000] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1002] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1004] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1006] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1008] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1010] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1012] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1014] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1016] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1018] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1020] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1022] #b00000000000000000000000000000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1024] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1026] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1028] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1030] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1032] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1034] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1036] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1038] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1040] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1042] #b00000000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1044] #b000)
+assume (= [dut.$auto$async2sync.cc:253:execute$1046] #b0000000000000000)
+assume (= [dut.pe_row[0].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[0].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[0].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[0].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[0].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[0].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[0].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[0].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[0].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[0].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[0].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[0].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[0].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[0].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[0].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[0].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[1].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[1].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[1].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[1].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[1].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[1].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[1].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[1].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[1].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[1].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[1].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[1].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[1].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[1].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[1].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[1].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[2].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[2].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[2].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[2].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[2].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[2].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[2].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[2].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[2].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[2].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[2].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[2].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[2].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[2].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[2].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[2].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[3].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[3].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[3].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[3].pe_col[0].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[3].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[3].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[3].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[3].pe_col[1].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[3].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[3].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[3].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[3].pe_col[2].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [dut.pe_row[3].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$992] #b00000000)
+assume (= [dut.pe_row[3].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$994] #b00000000000000000000000000000000)
+assume (= [dut.pe_row[3].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$996] #b00000000)
+assume (= [dut.pe_row[3].pe_col[3].pe_inst.$auto$async2sync.cc:253:execute$998] #b00000000)
+assume (= [f_past_valid] false)
+
+state 0
+
+state 1
+
+state 2
+
+state 3
+
+state 4
+
+state 5
+
+state 6
+
+state 7
+
+state 8
+
+state 9
+
+state 10
+
+state 11
+
+state 12
+
+state 13
+
+state 14
+
+state 15
+
+state 16
+
+state 17

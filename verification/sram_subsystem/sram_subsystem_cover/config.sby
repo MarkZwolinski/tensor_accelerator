@@ -1,0 +1,16 @@
+[options]
+mode cover
+depth 20
+
+[engines]
+smtbmc boolector
+
+[script]
+read -formal sram_subsystem_formal.sv
+read -formal sram_subsystem.v
+prep -top sram_subsystem_formal
+setundef -init -zero
+
+[files]
+sram_subsystem_formal.sv
+../../rtl/memory/sram_subsystem.v

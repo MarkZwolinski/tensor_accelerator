@@ -1,0 +1,4 @@
+read -sv ../../rtl/core/vector_unit.v
+prep -top vector_unit
+
+write_rtlil database/design.il
