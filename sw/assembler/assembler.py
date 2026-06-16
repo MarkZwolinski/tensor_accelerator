@@ -75,6 +75,7 @@ class VectorSubop(IntEnum):
     ZERO       = 0x34
     SCALE      = 0x35
     SCALE_SHIFT = 0x36  # y = x * scale + shift
+    SCALE_Q8   = 0x37  # y = x * (scale/256), Q8 fixed-point multiplier
     
     # Softmax passes
     SOFTMAX_P1 = 0x40  # Pass 1: compute max
@@ -382,6 +383,7 @@ class Assembler:
                 'ZERO': VectorSubop.ZERO,
                 'SCALE': VectorSubop.SCALE,
                 'SCALE_SHIFT': VectorSubop.SCALE_SHIFT,
+                'SCALE_Q8': VectorSubop.SCALE_Q8,
                 # Softmax
                 'SOFTMAX_P1': VectorSubop.SOFTMAX_P1,
                 'SOFTMAX_P2': VectorSubop.SOFTMAX_P2,
@@ -393,7 +395,9 @@ class Assembler:
                 'LAYERNORM_NORM': VectorSubop.LAYERNORM_NORM,
             }
             
-            instr.subop = subop_map.get(subop, 0)
+            if subop not in subop_map:
+                raise ValueError(f"Unknown VECTOR subop '{subop}' at line {self.line_num}")
+            instr.subop = subop_map[subop]
             
             # Format varies by operation
             if subop in ['LOAD', 'STORE']:
@@ -454,8 +458,10 @@ class Assembler:
                 if len(ops) >= 2:
                     instr.dst = self.parse_value(ops[0])
                     instr.dim_n = self.parse_value(ops[1])
-            elif subop == 'SCALE':
-                # VEC.SCALE dst, src, scale, count
+            elif subop in ['SCALE', 'SCALE_Q8']:
+                # VEC.SCALE / VEC.SCALE_Q8  dst, src, scale, count
+                # SCALE:    scale is an integer multiplier
+                # SCALE_Q8: scale is Q8 fixed-point (actual = scale/256)
                 if len(ops) >= 4:
                     instr.dst = self.parse_value(ops[0])
                     instr.src0 = self.parse_value(ops[1])
