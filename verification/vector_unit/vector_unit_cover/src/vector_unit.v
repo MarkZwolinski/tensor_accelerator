@@ -199,37 +199,44 @@ module vector_unit #(
     
     // Log2(LANES) stages of reduction
     localparam REDUCE_STAGES = $clog2(LANES);
-    
-    reg [DATA_WIDTH-1:0] reduce_tree [0:REDUCE_STAGES][0:LANES-1];
-    reg [DATA_WIDTH-1:0] reduce_result;
+    // Extra bits to hold carry growth across all SUM stages (log2(LANES) extra bits)
+    localparam REDUCE_W = DATA_WIDTH + REDUCE_STAGES;
+
+    reg [REDUCE_W-1:0] reduce_tree [0:REDUCE_STAGES][0:LANES-1];
+    reg [REDUCE_W-1:0] reduce_result;
     reg [$clog2(REDUCE_STAGES+1)-1:0] reduce_stage;
-    
+
     // Initialize first stage with input data
     integer stage, lane;
     always @(*) begin
         for (lane = 0; lane < LANES; lane = lane + 1) begin
-            reduce_tree[0][lane] = lane_a[lane];
+            // Zero-extend to REDUCE_W; upper bits will carry SUM growth
+            reduce_tree[0][lane] = {{REDUCE_STAGES{1'b0}}, lane_a[lane]};
         end
-        
+
         // Build reduction tree
         for (stage = 1; stage <= REDUCE_STAGES; stage = stage + 1) begin
             for (lane = 0; lane < (LANES >> stage); lane = lane + 1) begin
                 case (subop_reg)
                     VOP_SUM: begin
-                        reduce_tree[stage][lane] = reduce_tree[stage-1][lane*2] + 
+                        // Addition in REDUCE_W — no truncation across any stage
+                        reduce_tree[stage][lane] = reduce_tree[stage-1][lane*2] +
                                                    reduce_tree[stage-1][lane*2+1];
                     end
                     VOP_MAX: begin
-                        reduce_tree[stage][lane] = ($signed(reduce_tree[stage-1][lane*2]) > 
-                                                    $signed(reduce_tree[stage-1][lane*2+1])) ?
-                                                   reduce_tree[stage-1][lane*2] :
-                                                   reduce_tree[stage-1][lane*2+1];
+                        // Compare on DATA_WIDTH-bit signed view; value passes through
+                        reduce_tree[stage][lane] =
+                            ($signed(reduce_tree[stage-1][lane*2][DATA_WIDTH-1:0]) >
+                             $signed(reduce_tree[stage-1][lane*2+1][DATA_WIDTH-1:0])) ?
+                            reduce_tree[stage-1][lane*2] :
+                            reduce_tree[stage-1][lane*2+1];
                     end
                     VOP_MIN: begin
-                        reduce_tree[stage][lane] = ($signed(reduce_tree[stage-1][lane*2]) < 
-                                                    $signed(reduce_tree[stage-1][lane*2+1])) ?
-                                                   reduce_tree[stage-1][lane*2] :
-                                                   reduce_tree[stage-1][lane*2+1];
+                        reduce_tree[stage][lane] =
+                            ($signed(reduce_tree[stage-1][lane*2][DATA_WIDTH-1:0]) <
+                             $signed(reduce_tree[stage-1][lane*2+1][DATA_WIDTH-1:0])) ?
+                            reduce_tree[stage-1][lane*2] :
+                            reduce_tree[stage-1][lane*2+1];
                     end
                     default: begin
                         reduce_tree[stage][lane] = reduce_tree[stage-1][lane*2];
@@ -237,7 +244,7 @@ module vector_unit #(
                 endcase
             end
         end
-        
+
         reduce_result = reduce_tree[REDUCE_STAGES][0];
     end
     
@@ -342,7 +349,7 @@ module vector_unit #(
                 
                 S_REDUCE: begin
                     // Reduction result goes to first element of destination
-                    vrf[vd_reg] <= {{(LANES-1)*DATA_WIDTH{1'b0}}, reduce_result};
+                    vrf[vd_reg] <= {{(LANES-1)*DATA_WIDTH{1'b0}}, reduce_result[DATA_WIDTH-1:0]};
                     state <= S_DONE;
                 end
                 

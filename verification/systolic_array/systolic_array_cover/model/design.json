@@ -34,7 +34,7 @@
             ],
             "cells": [
                 {
-                  "name": "$procmux$773",
+                  "name": "$procmux$809",
                   "attributes": {
                     "src": "mac_pe.v:77.17-77.23|mac_pe.v:77.13-92.16"
                   },
@@ -43,7 +43,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$775",
+                  "name": "$procmux$811",
                   "attributes": {
                     "src": "mac_pe.v:72.17-72.28|mac_pe.v:72.13-74.16"
                   },
@@ -52,7 +52,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$778",
+                  "name": "$procmux$814",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "mac_pe.v:87.21-87.30|mac_pe.v:87.17-91.20"
@@ -62,7 +62,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$780",
+                  "name": "$procmux$816",
                   "attributes": {
                     "src": "mac_pe.v:77.17-77.23|mac_pe.v:77.13-92.16"
                   },
@@ -71,7 +71,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$782",
+                  "name": "$procmux$818",
                   "attributes": {
                     "src": "mac_pe.v:77.17-77.23|mac_pe.v:77.13-92.16"
                   },
@@ -107,7 +107,7 @@
             ],
             "cells": [
                 {
-                  "name": "$procdff$966",
+                  "name": "$procdff$1019",
                   "attributes": {
                     "src": "mac_pe.v:64.5-94.8"
                   },
@@ -119,7 +119,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$971",
+                  "name": "$procdff$1024",
                   "attributes": {
                     "src": "mac_pe.v:64.5-94.8"
                   },
@@ -131,7 +131,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$976",
+                  "name": "$procdff$1029",
                   "attributes": {
                     "src": "mac_pe.v:64.5-94.8"
                   },
@@ -143,7 +143,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$981",
+                  "name": "$procdff$1034",
                   "attributes": {
                     "src": "mac_pe.v:64.5-94.8"
                   },
@@ -177,7 +177,7 @@
             ],
             "cells": [
                 {
-                  "name": "$mul$mac_pe.v:55$292",
+                  "name": "$mul$mac_pe.v:55$326",
                   "attributes": {
                     "src": "mac_pe.v:55.47-55.66"
                   },
@@ -202,7 +202,7 @@
                 {
                   "name": "B",
                   "direction": "io",
-                  "range": [32, 0]
+                  "range": [16, 0]
                 },
                 {
                   "name": "Y",
@@ -212,15 +212,15 @@
             ],
             "cells": [
                 {
-                  "name": "$add$mac_pe.v:90$295",
+                  "name": "$add$mac_pe.v:90$329",
                   "attributes": {
-                    "src": "mac_pe.v:90.33-90.54"
+                    "src": "mac_pe.v:90.33-90.63"
                   },
                   "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_SIGNED": "00000000000000000000000000000001",
                     "A_WIDTH": "00000000000000000000000000100000",
-                    "B_SIGNED": "00000000000000000000000000000000",
-                    "B_WIDTH": "00000000000000000000000000100000",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000010000",
                     "Y_WIDTH": "00000000000000000000000000100000"
                   }
                 }
@@ -257,7 +257,7 @@
             ],
             "cells": [
                 {
-                  "name": "$add$systolic_array.v:101$368",
+                  "name": "$add$systolic_array.v:101$404",
                   "attributes": {
                     "src": "systolic_array.v:101.36-101.51"
                   },
@@ -297,7 +297,7 @@
             ],
             "cells": [
                 {
-                  "name": "$procmux$761",
+                  "name": "$procmux$797",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:98.16-98.16|systolic_array.v:77.9-113.16"
@@ -308,7 +308,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$767",
+                  "name": "$procmux$803",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:108.16-108.16|systolic_array.v:77.9-113.16"
@@ -341,7 +341,7 @@
             ],
             "cells": [
                 {
-                  "name": "$eq$systolic_array.v:215$515",
+                  "name": "$eq$systolic_array.v:215$551",
                   "attributes": {
                     "src": "systolic_array.v:215.55-215.77"
                   },
@@ -354,7 +354,7 @@
                   }
                 },
                 {
-                  "name": "$eq$systolic_array.v:215$524",
+                  "name": "$eq$systolic_array.v:215$560",
                   "attributes": {
                     "src": "systolic_array.v:215.55-215.77"
                   },
@@ -367,7 +367,7 @@
                   }
                 },
                 {
-                  "name": "$eq$systolic_array.v:215$533",
+                  "name": "$eq$systolic_array.v:215$569",
                   "attributes": {
                     "src": "systolic_array.v:215.55-215.77"
                   },
@@ -380,7 +380,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$768_CMP0",
+                  "name": "$procmux$804_CMP0",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:108.16-108.16|systolic_array.v:77.9-113.16"
@@ -394,7 +394,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$769_CMP0",
+                  "name": "$procmux$805_CMP0",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:98.16-98.16|systolic_array.v:77.9-113.16"
@@ -408,7 +408,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$770_CMP0",
+                  "name": "$procmux$806_CMP0",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:90.16-90.16|systolic_array.v:77.9-113.16"
@@ -422,7 +422,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$771_CMP0",
+                  "name": "$procmux$807_CMP0",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:83.16-83.16|systolic_array.v:77.9-113.16"
@@ -458,7 +458,7 @@
             ],
             "cells": [
                 {
-                  "name": "$ge$systolic_array.v:104$370",
+                  "name": "$ge$systolic_array.v:104$406",
                   "attributes": {
                     "src": "systolic_array.v:104.21-104.60"
                   },
@@ -471,7 +471,7 @@
                   }
                 },
                 {
-                  "name": "$ge$systolic_array.v:128$385",
+                  "name": "$ge$systolic_array.v:128$421",
                   "attributes": {
                     "src": "systolic_array.v:128.28-128.54"
                   },
@@ -484,9 +484,9 @@
                   }
                 },
                 {
-                  "name": "$ge$systolic_array.v:94$367",
+                  "name": "$ge$systolic_array.v:94$402",
                   "attributes": {
-                    "src": "systolic_array.v:94.21-94.51"
+                    "src": "systolic_array.v:94.41-94.71"
                   },
                   "parameters": {
                     "A_SIGNED": "00000000000000000000000000000000",
@@ -514,269 +514,17 @@
                 {
                   "name": "D",
                   "direction": "io",
-                  "range": [32, 0]
+                  "range": [8, 0]
                 },
                 {
                   "name": "Q",
                   "direction": "",
-                  "range": [32, 0]
+                  "range": [8, 0]
                 }
             ],
             "cells": [
                 {
-                  "name": "$procdff$821",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$826",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$836",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$841",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$846",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$851",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$861",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$866",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$871",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$876",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$881",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$886",
-                  "attributes": {
-                    "src": "systolic_array.v:260.17-269.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000000000000000000000000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procdff$891",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$901",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$906",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$911",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$916",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$926",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$931",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$936",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$946",
-                  "attributes": {
-                    "src": "systolic_array.v:164.17-178.20"
-                  },
-                  "parameters": {
-                    "ARST_POLARITY": "00000000000000000000000000000000",
-                    "ARST_VALUE": "00000000",
-                    "CLK_POLARITY": "1",
-                    "WIDTH": "00000000000000000000000000001000"
-                  }
-                },
-                {
-                  "name": "$procdff$951",
+                  "name": "$procdff$1004",
                   "attributes": {
                     "src": "systolic_array.v:149.17-154.20"
                   },
@@ -788,7 +536,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$956",
+                  "name": "$procdff$1009",
                   "attributes": {
                     "src": "systolic_array.v:62.5-70.8"
                   },
@@ -800,7 +548,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$961",
+                  "name": "$procdff$1014",
                   "attributes": {
                     "src": "systolic_array.v:62.5-70.8"
                   },
@@ -809,6 +557,258 @@
                     "ARST_VALUE": "0000000000000000",
                     "CLK_POLARITY": "1",
                     "WIDTH": "00000000000000000000000000010000"
+                  }
+                },
+                {
+                  "name": "$procdff$874",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$879",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$889",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$894",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$899",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$904",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$914",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$919",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$924",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$929",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$934",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$939",
+                  "attributes": {
+                    "src": "systolic_array.v:260.17-269.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000000000000000000000000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procdff$944",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$954",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$959",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$964",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$969",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$979",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$984",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$989",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procdff$999",
+                  "attributes": {
+                    "src": "systolic_array.v:164.17-178.20"
+                  },
+                  "parameters": {
+                    "ARST_POLARITY": "00000000000000000000000000000000",
+                    "ARST_VALUE": "00000000",
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000001000"
                   }
                 }
             ]
@@ -834,7 +834,7 @@
             ],
             "cells": [
                 {
-                  "name": "$logic_and$systolic_array.v:118$377",
+                  "name": "$logic_and$systolic_array.v:118$413",
                   "attributes": {
                     "src": "systolic_array.v:118.23-118.66"
                   },
@@ -847,7 +847,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:121$381",
+                  "name": "$logic_and$systolic_array.v:121$417",
                   "attributes": {
                     "src": "systolic_array.v:121.19-121.57"
                   },
@@ -860,7 +860,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:127$386",
+                  "name": "$logic_and$systolic_array.v:127$422",
                   "attributes": {
                     "src": "systolic_array.v:127.27-128.55"
                   },
@@ -873,7 +873,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:127$389",
+                  "name": "$logic_and$systolic_array.v:127$425",
                   "attributes": {
                     "src": "systolic_array.v:127.27-129.67"
                   },
@@ -886,7 +886,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:215$507",
+                  "name": "$logic_and$systolic_array.v:215$543",
                   "attributes": {
                     "src": "systolic_array.v:215.36-215.78"
                   },
@@ -899,7 +899,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:215$516",
+                  "name": "$logic_and$systolic_array.v:215$552",
                   "attributes": {
                     "src": "systolic_array.v:215.36-215.78"
                   },
@@ -912,7 +912,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:215$525",
+                  "name": "$logic_and$systolic_array.v:215$561",
                   "attributes": {
                     "src": "systolic_array.v:215.36-215.78"
                   },
@@ -925,7 +925,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:215$534",
+                  "name": "$logic_and$systolic_array.v:215$570",
                   "attributes": {
                     "src": "systolic_array.v:215.36-215.78"
                   },
@@ -938,7 +938,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:217$487",
+                  "name": "$logic_and$systolic_array.v:217$523",
                   "attributes": {
                     "src": "systolic_array.v:217.33-217.118"
                   },
@@ -951,7 +951,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:217$494",
+                  "name": "$logic_and$systolic_array.v:217$530",
                   "attributes": {
                     "src": "systolic_array.v:217.33-217.96"
                   },
@@ -964,7 +964,7 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array.v:217$537",
+                  "name": "$logic_and$systolic_array.v:217$573",
                   "attributes": {
                     "src": "systolic_array.v:217.70-217.94"
                   },
@@ -999,7 +999,7 @@
             ],
             "cells": [
                 {
-                  "name": "$logic_or$systolic_array.v:117$373",
+                  "name": "$logic_or$systolic_array.v:117$409",
                   "attributes": {
                     "src": "systolic_array.v:117.22-117.64"
                   },
@@ -1012,7 +1012,7 @@
                   }
                 },
                 {
-                  "name": "$logic_or$systolic_array.v:117$378",
+                  "name": "$logic_or$systolic_array.v:117$414",
                   "attributes": {
                     "src": "systolic_array.v:117.22-118.67"
                   },
@@ -1025,9 +1025,22 @@
                   }
                 },
                 {
-                  "name": "$logic_or$systolic_array.v:217$511",
+                  "name": "$logic_or$systolic_array.v:217$547",
                   "attributes": {
                     "src": "systolic_array.v:217.47-217.95"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_or$systolic_array.v:94$403",
+                  "attributes": {
+                    "src": "systolic_array.v:94.21-94.71"
                   },
                   "parameters": {
                     "A_SIGNED": "00000000000000000000000000000000",
@@ -1055,7 +1068,7 @@
             ],
             "cells": [
                 {
-                  "name": "$eq$systolic_array.v:215$506",
+                  "name": "$eq$systolic_array.v:215$542",
                   "attributes": {
                     "src": "systolic_array.v:215.55-215.77"
                   },
@@ -1066,7 +1079,7 @@
                   }
                 },
                 {
-                  "name": "$eq$systolic_array.v:217$540",
+                  "name": "$eq$systolic_array.v:217$576",
                   "attributes": {
                     "src": "systolic_array.v:217.101-217.117"
                   },
@@ -1077,7 +1090,18 @@
                   }
                 },
                 {
-                  "name": "$logic_not$systolic_array.v:118$376",
+                  "name": "$eq$systolic_array.v:94$400",
+                  "attributes": {
+                    "src": "systolic_array.v:94.21-94.37"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000010000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array.v:118$412",
                   "attributes": {
                     "src": "systolic_array.v:118.51-118.66"
                   },
@@ -1088,7 +1112,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$772_CMP0",
+                  "name": "$procmux$808_CMP0",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:77.21-77.21|systolic_array.v:77.9-113.16"
@@ -1122,7 +1146,7 @@
             ],
             "cells": [
                 {
-                  "name": "$lt$systolic_array.v:129$388",
+                  "name": "$lt$systolic_array.v:129$424",
                   "attributes": {
                     "src": "systolic_array.v:129.28-129.66"
                   },
@@ -1152,7 +1176,7 @@
             ],
             "cells": [
                 {
-                  "name": "$ne$systolic_array.v:121$379",
+                  "name": "$ne$systolic_array.v:121$415",
                   "attributes": {
                     "src": "systolic_array.v:121.20-121.35"
                   },
@@ -1407,106 +1431,6 @@
             ],
             "cells": [
                 {
-                  "name": "$procmux$612",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$615",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$621",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$624",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$627",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$630",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$636",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$639",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$642",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
-                  "name": "$procmux$645",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000100000"
-                  }
-                },
-                {
                   "name": "$procmux$648",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
@@ -1530,84 +1454,104 @@
                   "name": "$procmux$657",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$660",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$663",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$666",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$672",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$675",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$678",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procmux$681",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$684",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
                   },
                   "parameters": {
-                    "WIDTH": "00000000000000000000000000001000"
+                    "WIDTH": "00000000000000000000000000100000"
                   }
                 },
                 {
                   "name": "$procmux$687",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:264.34-264.43|systolic_array.v:264.30-268.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000100000"
+                  }
+                },
+                {
+                  "name": "$procmux$693",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
@@ -1617,7 +1561,87 @@
                   }
                 },
                 {
-                  "name": "$procmux$689",
+                  "name": "$procmux$696",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$699",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$702",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$708",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$711",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$714",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$720",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$723",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:169.34-169.45|systolic_array.v:169.30-177.24"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000001000"
+                  }
+                },
+                {
+                  "name": "$procmux$725",
                   "attributes": {
                     "src": "systolic_array.v:152.30-152.41|systolic_array.v:152.26-153.52"
                   },
@@ -1626,7 +1650,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$694",
+                  "name": "$procmux$730",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:104.21-104.60|systolic_array.v:104.17-107.20"
@@ -1636,50 +1660,10 @@
                   }
                 },
                 {
-                  "name": "$procmux$701",
+                  "name": "$procmux$737",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:104.21-104.60|systolic_array.v:104.17-107.20"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000000011"
-                  }
-                },
-                {
-                  "name": "$procmux$709",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:94.21-94.51|systolic_array.v:94.17-97.20"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000010000"
-                  }
-                },
-                {
-                  "name": "$procmux$717",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:94.21-94.51|systolic_array.v:94.17-97.20"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000000011"
-                  }
-                },
-                {
-                  "name": "$procmux$726",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:86.21-86.36|systolic_array.v:86.17-89.20"
-                  },
-                  "parameters": {
-                    "WIDTH": "00000000000000000000000000010000"
-                  }
-                },
-                {
-                  "name": "$procmux$735",
-                  "attributes": {
-                    "full_case": "00000000000000000000000000000001",
-                    "src": "systolic_array.v:86.21-86.36|systolic_array.v:86.17-89.20"
                   },
                   "parameters": {
                     "WIDTH": "00000000000000000000000000000011"
@@ -1689,6 +1673,46 @@
                   "name": "$procmux$745",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:94.21-94.71|systolic_array.v:94.17-97.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010000"
+                  }
+                },
+                {
+                  "name": "$procmux$753",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:94.21-94.71|systolic_array.v:94.17-97.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procmux$762",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:86.21-86.36|systolic_array.v:86.17-89.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000010000"
+                  }
+                },
+                {
+                  "name": "$procmux$771",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array.v:86.21-86.36|systolic_array.v:86.17-89.20"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000011"
+                  }
+                },
+                {
+                  "name": "$procmux$781",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:79.21-79.26|systolic_array.v:79.17-82.20"
                   },
                   "parameters": {
@@ -1696,7 +1720,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$755",
+                  "name": "$procmux$791",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array.v:79.21-79.26|systolic_array.v:79.17-82.20"
@@ -1706,7 +1730,7 @@
                   }
                 },
                 {
-                  "name": "$ternary$systolic_array.v:143$549",
+                  "name": "$ternary$systolic_array.v:143$585",
                   "attributes": {
                     "src": "systolic_array.v:143.38-143.109"
                   },
@@ -1715,7 +1739,7 @@
                   }
                 },
                 {
-                  "name": "$ternary$systolic_array.v:143$552",
+                  "name": "$ternary$systolic_array.v:143$588",
                   "attributes": {
                     "src": "systolic_array.v:143.38-143.109"
                   },
@@ -1724,7 +1748,7 @@
                   }
                 },
                 {
-                  "name": "$ternary$systolic_array.v:143$555",
+                  "name": "$ternary$systolic_array.v:143$591",
                   "attributes": {
                     "src": "systolic_array.v:143.38-143.109"
                   },
@@ -1733,7 +1757,7 @@
                   }
                 },
                 {
-                  "name": "$ternary$systolic_array.v:143$558",
+                  "name": "$ternary$systolic_array.v:143$594",
                   "attributes": {
                     "src": "systolic_array.v:143.38-143.109"
                   },
@@ -1742,7 +1766,7 @@
                   }
                 },
                 {
-                  "name": "$ternary$systolic_array.v:80$363",
+                  "name": "$ternary$systolic_array.v:80$397",
                   "attributes": {
                     "src": "systolic_array.v:80.34-80.69"
                   },
@@ -1773,7 +1797,7 @@
             ],
             "cells": [
                 {
-                  "name": "$ne$systolic_array.v:121$380",
+                  "name": "$ne$systolic_array.v:121$416",
                   "attributes": {
                     "src": "systolic_array.v:121.41-121.56"
                   },
@@ -1808,9 +1832,9 @@
             ],
             "cells": [
                 {
-                  "name": "$sub$systolic_array.v:94$366",
+                  "name": "$sub$systolic_array.v:94$401",
                   "attributes": {
-                    "src": "systolic_array.v:94.36-94.51"
+                    "src": "systolic_array.v:94.56-94.71"
                   },
                   "parameters": {
                     "A_SIGNED": "00000000000000000000000000000000",
@@ -1955,16 +1979,53 @@
             ],
             "cells": [
                 {
-                  "name": "$procmux$786",
+                  "name": "$procmux$824",
                   "attributes": {
-                    "src": "systolic_array_formal.sv:75.13-75.34|systolic_array_formal.sv:75.9-75.49"
+                    "src": "systolic_array_formal.sv:101.13-101.72|systolic_array_formal.sv:101.9-102.40"
                   },
                   "parameters": {
                     "WIDTH": "00000000000000000000000000000001"
                   }
                 },
                 {
-                  "name": "$procmux$788",
+                  "name": "$procmux$828",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:94.18-94.57|systolic_array_formal.sv:94.14-95.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$831",
+                  "attributes": {
+                    "full_case": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:92.13-92.19|systolic_array_formal.sv:92.9-95.40"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$833",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:88.31-88.52|systolic_array_formal.sv:88.27-88.88"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$835",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:79.13-79.50|systolic_array_formal.sv:79.9-82.12"
+                  },
+                  "parameters": {
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procmux$841",
                   "attributes": {
                     "src": "systolic_array_formal.sv:70.13-70.43|systolic_array_formal.sv:70.9-71.33"
                   },
@@ -1973,7 +2034,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$790",
+                  "name": "$procmux$843",
                   "attributes": {
                     "src": "systolic_array_formal.sv:64.13-64.48|systolic_array_formal.sv:64.9-65.36"
                   },
@@ -1982,7 +2043,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$792",
+                  "name": "$procmux$845",
                   "attributes": {
                     "src": "systolic_array_formal.sv:59.13-59.56|systolic_array_formal.sv:59.9-60.27"
                   },
@@ -1991,7 +2052,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$794",
+                  "name": "$procmux$847",
                   "attributes": {
                     "src": "systolic_array_formal.sv:54.13-54.65|systolic_array_formal.sv:54.9-55.36"
                   },
@@ -2000,7 +2061,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$796",
+                  "name": "$procmux$849",
                   "attributes": {
                     "src": "systolic_array_formal.sv:49.13-49.65|systolic_array_formal.sv:49.9-50.28"
                   },
@@ -2009,7 +2070,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$798",
+                  "name": "$procmux$851",
                   "attributes": {
                     "src": "systolic_array_formal.sv:44.13-44.51|systolic_array_formal.sv:44.9-45.54"
                   },
@@ -2018,7 +2079,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$800",
+                  "name": "$procmux$853",
                   "attributes": {
                     "src": "systolic_array_formal.sv:39.18-39.23|systolic_array_formal.sv:39.14-39.49"
                   },
@@ -2027,7 +2088,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$803",
+                  "name": "$procmux$856",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array_formal.sv:38.18-38.22|systolic_array_formal.sv:38.14-39.49"
@@ -2037,7 +2098,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$806",
+                  "name": "$procmux$859",
                   "attributes": {
                     "full_case": "00000000000000000000000000000001",
                     "src": "systolic_array_formal.sv:37.13-37.19|systolic_array_formal.sv:37.9-39.49"
@@ -2047,7 +2108,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$808",
+                  "name": "$procmux$861",
                   "attributes": {
                     "src": "systolic_array_formal.sv:31.31-31.43|systolic_array_formal.sv:31.27-31.78"
                   },
@@ -2056,7 +2117,7 @@
                   }
                 },
                 {
-                  "name": "$procmux$810",
+                  "name": "$procmux$863",
                   "attributes": {
                     "src": "systolic_array_formal.sv:30.31-30.44|systolic_array_formal.sv:30.27-30.62"
                   },
@@ -2091,6 +2152,23 @@
                 }
             ],
             "cells": [
+                {
+                  "name": "_witness_.check_assert_systolic_array_formal_sv_102_97",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_systolic_array_formal_sv_102_97",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:102.13-102.39"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
                 {
                   "name": "_witness_.check_assert_systolic_array_formal_sv_45_27",
                   "attributes": {
@@ -2194,6 +2272,40 @@
                   }
                 },
                 {
+                  "name": "_witness_.check_assert_systolic_array_formal_sv_80_75",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_systolic_array_formal_sv_80_75",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:80.13-80.83"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assert_systolic_array_formal_sv_81_77",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assert_systolic_array_formal_sv_81_77",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:81.13-81.83"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assert",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111110",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
                   "name": "_witness_.check_assume_systolic_array_formal_sv_30_14",
                   "attributes": {
                     "hdlname": "_witness_ check_assume_systolic_array_formal_sv_30_14",
@@ -2228,11 +2340,62 @@
                   }
                 },
                 {
-                  "name": "_witness_.check_cover_systolic_array_formal_sv_75_70",
+                  "name": "_witness_.check_assume_systolic_array_formal_sv_74_70",
                   "attributes": {
-                    "hdlname": "_witness_ check_cover_systolic_array_formal_sv_75_70",
+                    "hdlname": "_witness_ check_assume_systolic_array_formal_sv_74_70",
                     "keep": "00000000000000000000000000000001",
-                    "src": "systolic_array_formal.sv:75.36-75.48"
+                    "src": "systolic_array_formal.sv:74.54-74.78"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_systolic_array_formal_sv_88_81",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_systolic_array_formal_sv_88_81",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:88.54-88.87"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_assume_systolic_array_formal_sv_98_91",
+                  "attributes": {
+                    "hdlname": "_witness_ check_assume_systolic_array_formal_sv_98_91",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:98.54-98.79"
+                  },
+                  "parameters": {
+                    "ARGS_WIDTH": "00000000000000000000000000000000",
+                    "FLAVOR": "assume",
+                    "FORMAT": true,
+                    "PRIORITY": "11111111111111111111111111111111",
+                    "TRG_ENABLE": "00000000000000000000000000000001",
+                    "TRG_POLARITY": "1",
+                    "TRG_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "_witness_.check_cover_systolic_array_formal_sv_106_101",
+                  "attributes": {
+                    "hdlname": "_witness_ check_cover_systolic_array_formal_sv_106_101",
+                    "keep": "00000000000000000000000000000001",
+                    "src": "systolic_array_formal.sv:106.36-106.48"
                   },
                   "parameters": {
                     "ARGS_WIDTH": "00000000000000000000000000000000",
@@ -2245,11 +2408,11 @@
                   }
                 },
                 {
-                  "name": "_witness_.check_cover_systolic_array_formal_sv_79_73",
+                  "name": "_witness_.check_cover_systolic_array_formal_sv_110_104",
                   "attributes": {
-                    "hdlname": "_witness_ check_cover_systolic_array_formal_sv_79_73",
+                    "hdlname": "_witness_ check_cover_systolic_array_formal_sv_110_104",
                     "keep": "00000000000000000000000000000001",
-                    "src": "systolic_array_formal.sv:79.36-79.56"
+                    "src": "systolic_array_formal.sv:110.36-110.56"
                   },
                   "parameters": {
                     "ARGS_WIDTH": "00000000000000000000000000000000",
@@ -2284,7 +2447,17 @@
             ],
             "cells": [
                 {
-                  "name": "$procdff$982",
+                  "name": "$procdff$1035",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:91.5-96.8"
+                  },
+                  "parameters": {
+                    "CLK_POLARITY": "1",
+                    "WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$procdff$1036",
                   "attributes": {
                     "src": "systolic_array_formal.sv:53.5-55.36"
                   },
@@ -2294,7 +2467,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$983",
+                  "name": "$procdff$1037",
                   "attributes": {
                     "src": "systolic_array_formal.sv:53.5-55.36"
                   },
@@ -2304,7 +2477,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$984",
+                  "name": "$procdff$1038",
                   "attributes": {
                     "src": "systolic_array_formal.sv:48.5-50.28"
                   },
@@ -2314,7 +2487,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$985",
+                  "name": "$procdff$1039",
                   "attributes": {
                     "src": "systolic_array_formal.sv:48.5-50.28"
                   },
@@ -2324,7 +2497,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$986",
+                  "name": "$procdff$1040",
                   "attributes": {
                     "src": "systolic_array_formal.sv:43.5-45.54"
                   },
@@ -2334,7 +2507,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$987",
+                  "name": "$procdff$1041",
                   "attributes": {
                     "src": "systolic_array_formal.sv:36.5-40.8"
                   },
@@ -2344,7 +2517,7 @@
                   }
                 },
                 {
-                  "name": "$procdff$988",
+                  "name": "$procdff$1042",
                   "attributes": {
                     "src": "systolic_array_formal.sv:31.5-31.78"
                   },
@@ -2354,13 +2527,41 @@
                   }
                 },
                 {
-                  "name": "$procdff$989",
+                  "name": "$procdff$1043",
                   "attributes": {
                     "src": "systolic_array_formal.sv:28.5-28.48"
                   },
                   "parameters": {
                     "CLK_POLARITY": "1",
                     "WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$reduce_bool",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ne$systolic_array_formal.sv:94$87",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:94.36-94.57"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000100000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
                   }
                 }
             ]
@@ -2397,98 +2598,17 @@
                     "B_WIDTH": "00000000000000000000000000000001",
                     "Y_WIDTH": "00000000000000000000000000000001"
                   }
-                }
-            ]
-          },
-          {
-            "type": "$logic_not",
-            "ports": [
-                {
-                  "name": "A",
-                  "direction": "io",
-                  "range": [0, 0]
                 },
                 {
-                  "name": "Y",
-                  "direction": "",
-                  "range": [0, 0]
-                }
-            ],
-            "cells": [
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:31$19",
+                  "name": "$logic_or$systolic_array_formal.sv:88$84",
                   "attributes": {
-                    "src": "systolic_array_formal.sv:31.63-31.76"
+                    "src": "systolic_array_formal.sv:88.62-88.86"
                   },
                   "parameters": {
                     "A_SIGNED": "00000000000000000000000000000000",
                     "A_WIDTH": "00000000000000000000000000000001",
-                    "Y_WIDTH": "00000000000000000000000000000001"
-                  }
-                },
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:44$33",
-                  "attributes": {
-                    "src": "systolic_array_formal.sv:44.44-44.50"
-                  },
-                  "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
-                    "A_WIDTH": "00000000000000000000000000000001",
-                    "Y_WIDTH": "00000000000000000000000000000001"
-                  }
-                },
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:59$53",
-                  "attributes": {
-                    "src": "systolic_array_formal.sv:59.51-59.56"
-                  },
-                  "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
-                    "A_WIDTH": "00000000000000000000000000000001",
-                    "Y_WIDTH": "00000000000000000000000000000001"
-                  }
-                },
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:64$58",
-                  "attributes": {
-                    "src": "systolic_array_formal.sv:64.38-64.48"
-                  },
-                  "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
-                    "A_WIDTH": "00000000000000000000000000000001",
-                    "Y_WIDTH": "00000000000000000000000000000001"
-                  }
-                },
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:65$61",
-                  "attributes": {
-                    "src": "systolic_array_formal.sv:65.21-65.34"
-                  },
-                  "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
-                    "A_WIDTH": "00000000000000000000000000000001",
-                    "Y_WIDTH": "00000000000000000000000000000001"
-                  }
-                },
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:70$64",
-                  "attributes": {
-                    "src": "systolic_array_formal.sv:70.38-70.43"
-                  },
-                  "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
-                    "A_WIDTH": "00000000000000000000000000000001",
-                    "Y_WIDTH": "00000000000000000000000000000001"
-                  }
-                },
-                {
-                  "name": "$logic_not$systolic_array_formal.sv:71$67",
-                  "attributes": {
-                    "src": "systolic_array_formal.sv:71.21-71.31"
-                  },
-                  "parameters": {
-                    "A_SIGNED": "00000000000000000000000000000000",
-                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
                     "Y_WIDTH": "00000000000000000000000000000001"
                   }
                 }
@@ -2514,6 +2634,45 @@
                 }
             ],
             "cells": [
+                {
+                  "name": "$logic_and$systolic_array_formal.sv:101$95",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:101.13-101.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$systolic_array_formal.sv:101$96",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:101.13-101.72"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_and$systolic_array_formal.sv:110$103",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:110.13-110.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
                 {
                   "name": "$logic_and$systolic_array_formal.sv:44$26",
                   "attributes": {
@@ -2658,15 +2817,271 @@
                   }
                 },
                 {
-                  "name": "$logic_and$systolic_array_formal.sv:79$72",
+                  "name": "$logic_and$systolic_array_formal.sv:94$88",
                   "attributes": {
-                    "src": "systolic_array_formal.sv:79.13-79.34"
+                    "src": "systolic_array_formal.sv:94.18-94.57"
                   },
                   "parameters": {
                     "A_SIGNED": "00000000000000000000000000000000",
                     "A_WIDTH": "00000000000000000000000000000001",
                     "B_SIGNED": "00000000000000000000000000000000",
                     "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$le",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$le$systolic_array_formal.sv:81$78",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:81.21-81.82"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000100000",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000100000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$gt",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [16, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$gt$systolic_array_formal.sv:74$71",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:74.62-74.77"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000010000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$ge",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [32, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$ge$systolic_array_formal.sv:80$76",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:80.21-80.82"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000001",
+                    "A_WIDTH": "00000000000000000000000000100000",
+                    "B_SIGNED": "00000000000000000000000000000001",
+                    "B_WIDTH": "00000000000000000000000000100000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$eq",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [16, 0]
+                },
+                {
+                  "name": "B",
+                  "direction": "io",
+                  "range": [0, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$eq$systolic_array_formal.sv:98$92",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:98.62-98.78"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000010000",
+                    "B_SIGNED": "00000000000000000000000000000000",
+                    "B_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                }
+            ]
+          },
+          {
+            "type": "$logic_not",
+            "ports": [
+                {
+                  "name": "A",
+                  "direction": "io",
+                  "range": [128, 0]
+                },
+                {
+                  "name": "Y",
+                  "direction": "",
+                  "range": [0, 0]
+                }
+            ],
+            "cells": [
+                {
+                  "name": "$eq$systolic_array_formal.sv:102$98",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:102.21-102.38"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000010000000",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:31$19",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:31.63-31.76"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:44$33",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:44.44-44.50"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:59$53",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:59.51-59.56"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:64$58",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:64.38-64.48"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:65$61",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:65.21-65.34"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:71$67",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:71.21-71.31"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:88$82",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:88.62-88.77"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
+                    "Y_WIDTH": "00000000000000000000000000000001"
+                  }
+                },
+                {
+                  "name": "$logic_not$systolic_array_formal.sv:88$83",
+                  "attributes": {
+                    "src": "systolic_array_formal.sv:88.81-88.86"
+                  },
+                  "parameters": {
+                    "A_SIGNED": "00000000000000000000000000000000",
+                    "A_WIDTH": "00000000000000000000000000000001",
                     "Y_WIDTH": "00000000000000000000000000000001"
                   }
                 }
@@ -2678,7 +3093,7 @@
             "hdlname": "systolic_array_formal",
             "dynports": "00000000000000000000000000000001",
             "top": "00000000000000000000000000000001",
-            "src": "systolic_array_formal.sv:2.1-81.10"
+            "src": "systolic_array_formal.sv:2.1-112.10"
         }
       }
   ]

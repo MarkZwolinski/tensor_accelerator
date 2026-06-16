@@ -12,19 +12,19 @@
 ##   0:00:00  Checking cover reachability in step 10..
 ##   0:00:00  Checking cover reachability in step 11..
 ##   0:00:00  Checking cover reachability in step 12..
-##   0:00:00  Reached cover statement in step 12 at systolic_array_formal: systolic_array_formal.sv:79.36-79.56 (_witness_.check_cover_systolic_array_formal_sv_79_73)
+##   0:00:00  Reached cover statement in step 12 at systolic_array_formal: systolic_array_formal.sv:110.36-110.56 (_witness_.check_cover_systolic_array_formal_sv_110_104)
 ##   0:00:00  Writing trace to VCD file: engine_0/trace0.vcd
-##   0:00:01  Writing trace to Verilog testbench: engine_0/trace0_tb.v
-##   0:00:01  Writing trace to constraints file: engine_0/trace0.smtc
-##   0:00:01  Writing trace to Yosys witness file: engine_0/trace0.yw
-##   0:00:01  Checking cover reachability in step 12..
-##   0:00:01  Checking cover reachability in step 13..
-##   0:00:01  Checking cover reachability in step 14..
-##   0:00:01  Checking cover reachability in step 15..
-##   0:00:01  Checking cover reachability in step 16..
-##   0:00:01  Checking cover reachability in step 17..
-##   0:00:01  Reached cover statement in step 17 at systolic_array_formal: systolic_array_formal.sv:75.36-75.48 (_witness_.check_cover_systolic_array_formal_sv_75_70)
-##   0:00:01  Writing trace to VCD file: engine_0/trace1.vcd
+##   0:00:00  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+##   0:00:00  Writing trace to constraints file: engine_0/trace0.smtc
+##   0:00:00  Writing trace to Yosys witness file: engine_0/trace0.yw
+##   0:00:00  Checking cover reachability in step 12..
+##   0:00:00  Checking cover reachability in step 13..
+##   0:00:00  Checking cover reachability in step 14..
+##   0:00:00  Checking cover reachability in step 15..
+##   0:00:00  Checking cover reachability in step 16..
+##   0:00:00  Checking cover reachability in step 17..
+##   0:00:00  Reached cover statement in step 17 at systolic_array_formal: systolic_array_formal.sv:106.36-106.48 (_witness_.check_cover_systolic_array_formal_sv_106_101)
+##   0:00:00  Writing trace to VCD file: engine_0/trace1.vcd
 ##   0:00:01  Writing trace to Verilog testbench: engine_0/trace1_tb.v
 ##   0:00:01  Writing trace to constraints file: engine_0/trace1.smtc
 ##   0:00:01  Writing trace to Yosys witness file: engine_0/trace1.yw

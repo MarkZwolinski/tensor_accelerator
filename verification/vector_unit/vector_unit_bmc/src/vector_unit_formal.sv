@@ -67,6 +67,27 @@ module vector_unit_formal #(
         if (f_past_valid && rst_n && cmd_ready)
             assert (!sram_we && !sram_re);
 
+    // A7: SUM reduction arithmetic correctness
+    // The combinational reduce_tree for VOP_SUM must equal the signed sum of all lane_a inputs.
+    // lane_a[k] = vrf[vs1_reg][k*DATA_WIDTH +: DATA_WIDTH], set when subop_reg is captured.
+    // REDUCE_W = DATA_WIDTH + log2(LANES) carries are sufficient to hold the exact sum
+    // of LANES signed DATA_WIDTH-bit values without intermediate overflow.
+    localparam [7:0]  VOP_SUM_OP     = 8'h20;
+    localparam integer REDUCE_STAGES_F = $clog2(LANES);
+    localparam integer REDUCE_W_F      = DATA_WIDTH + REDUCE_STAGES_F;
+
+    logic signed [REDUCE_W_F-1:0] f_lane_sum;
+    integer f_k;
+    always @(*) begin
+        f_lane_sum = 0;
+        for (f_k = 0; f_k < LANES; f_k = f_k + 1)
+            f_lane_sum = f_lane_sum + $signed(dut.lane_a[f_k]);
+    end
+
+    always @(posedge clk)
+        if (rst_n && dut.subop_reg == VOP_SUM_OP)
+            assert ($signed(dut.reduce_result) == f_lane_sum);
+
     // Cover: a command completes
     always @(posedge clk)
         if (f_past_valid && rst_n) cover (cmd_done);
@@ -75,9 +96,9 @@ module vector_unit_formal #(
     always @(posedge clk)
         if (f_past_valid && rst_n) cover (sram_we);
 
-    // Cover: two commands back-to-back
+    // Cover: back-to-back commands (new cmd accepted the same cycle as done fires)
     always @(posedge clk)
-        if (f_past_valid && rst_n) cover ($past(cmd_done) && cmd_done);
+        if (f_past_valid && rst_n) cover (cmd_done && cmd_valid);
 
 endmodule
 `default_nettype wire

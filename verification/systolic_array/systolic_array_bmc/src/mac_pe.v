@@ -87,7 +87,7 @@ module mac_pe #(
                 if (clear_acc) begin
                     psum_out <= product_ext;
                 end else begin
-                    psum_out <= psum_in + product_ext;
+                    psum_out <= $signed(psum_in) + product_ext;
                 end
             end
         end

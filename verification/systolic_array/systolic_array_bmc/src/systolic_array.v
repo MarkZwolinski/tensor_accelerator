@@ -91,7 +91,7 @@ module systolic_array #(
             
             S_COMPUTE: begin
                 cycle_count_next = cycle_count + 1;
-                if (cycle_count >= cfg_k_tiles - 1) begin
+                if (cfg_k_tiles == 0 || cycle_count >= cfg_k_tiles - 1) begin
                     state_next = S_DRAIN;
                     cycle_count_next = 16'd0;
                 end

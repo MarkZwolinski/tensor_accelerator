@@ -337,27 +337,30 @@ module local_cmd_processor #(
                         OP_TENSOR: begin
                             mxu_cmd_reg <= instr_reg;
                             mxu_valid_reg <= 1'b1;
-                            if (mxu_ready) begin
+                            if (mxu_valid_reg && mxu_ready) begin
                                 pc <= pc + 1;
                                 state <= S_FETCH;
+                                mxu_valid_reg <= 1'b0;
                             end
                         end
-                        
+
                         OP_VECTOR: begin
                             vpu_cmd_reg <= instr_reg;
                             vpu_valid_reg <= 1'b1;
-                            if (vpu_ready) begin
+                            if (vpu_valid_reg && vpu_ready) begin
                                 pc <= pc + 1;
                                 state <= S_FETCH;
+                                vpu_valid_reg <= 1'b0;
                             end
                         end
-                        
+
                         OP_DMA: begin
                             dma_cmd_reg <= instr_reg;
                             dma_valid_reg <= 1'b1;
-                            if (dma_ready) begin
+                            if (dma_valid_reg && dma_ready) begin
                                 pc <= pc + 1;
                                 state <= S_FETCH;
+                                dma_valid_reg <= 1'b0;
                             end
                         end
                         

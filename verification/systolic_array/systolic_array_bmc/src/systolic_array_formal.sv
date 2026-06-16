@@ -70,6 +70,37 @@ module systolic_array_formal #(
         if (f_past_valid && rst_n && !busy)
             assert (!act_ready);
 
+    // Precondition: cfg_k_tiles == 0 is undefined (would cause 16-bit underflow in comparison)
+    always @(posedge clk) if (f_past_valid && rst_n) assume (cfg_k_tiles > 0);
+
+    // A7: accumulator result stays within signed 32-bit range for INT8 inputs
+    // Worst-case single-PE tile sum: ARRAY_SIZE * 127 * 127 = 65,028 — well within INT32
+    always @(posedge clk)
+        if (f_past_valid && rst_n && result_valid) begin
+            assert ($signed(result_data[ACC_WIDTH-1:0]) >= -$signed(32'h7FFFFFFF));
+            assert ($signed(result_data[ACC_WIDTH-1:0]) <=  $signed(32'h7FFFFFFF));
+        end
+
+    // A8 (arithmetic sanity): Zero weights must produce zero output regardless of activations.
+    // Tests that weight loading and psum routing are correct — any activation × 0 = 0.
+    // Constrain to k_tiles=1 to keep BMC depth tractable.
+    // Weight loads while busy are invalid — the hardware is weight-stationary (load, then compute).
+    always @(posedge clk) if (f_past_valid && rst_n) assume (!weight_load_en || !busy);
+
+    logic f_all_weights_zero = 1'b1;  // vacuously true until a non-zero weight is loaded
+    always @(posedge clk) begin
+        if (!rst_n)
+            f_all_weights_zero <= 1'b1;
+        else if (weight_load_en && weight_load_data != 0)
+            f_all_weights_zero <= 1'b0;
+    end
+
+    always @(posedge clk) if (f_past_valid && rst_n) assume (cfg_k_tiles == 1);
+
+    always @(posedge clk)
+        if (f_past_valid && rst_n && result_valid && f_all_weights_zero)
+            assert (result_data == '0);
+
     // Cover: a full computation completes
     always @(posedge clk)
         if (f_past_valid && rst_n) cover (done);

@@ -1,10 +1,10 @@
-Elapsed clock time [H:MM:SS (secs)]: 0:00:06 (6)
-Elapsed process time [H:MM:SS (secs)]: 0:00:06 (6)
+Elapsed clock time [H:MM:SS (secs)]: 0:00:11 (11)
+Elapsed process time [H:MM:SS (secs)]: 0:00:13 (13)
 engine_0 (smtbmc boolector) returned pass
 cover trace: engine_0/trace0.vcd
 cover trace: engine_0/trace0.yw
-  reached cover statement vector_unit_formal._witness_.check_cover_vector_unit_formal_sv_76_73 at vector_unit_formal.sv:76.36-76.51 step 4
+  reached cover statement vector_unit_formal._witness_.check_cover_vector_unit_formal_sv_97_144 at vector_unit_formal.sv:97.36-97.51 step 4
 cover trace: engine_0/trace1.vcd
 cover trace: engine_0/trace1.yw
-  reached cover statement vector_unit_formal._witness_.check_cover_vector_unit_formal_sv_72_70 at vector_unit_formal.sv:72.36-72.52 step 6
-  reached cover statement vector_unit_formal._witness_.check_cover_vector_unit_formal_sv_80_76 at vector_unit_formal.sv:80.36-80.65 step 6
+  reached cover statement vector_unit_formal._witness_.check_cover_vector_unit_formal_sv_101_147 at vector_unit_formal.sv:101.36-101.65 step 6
+  reached cover statement vector_unit_formal._witness_.check_cover_vector_unit_formal_sv_93_141 at vector_unit_formal.sv:93.36-93.52 step 6
