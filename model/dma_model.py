@@ -24,12 +24,14 @@ class DMAState(IntEnum):
     STORE_RESP = 9
     NEXT_COL = 10
     NEXT_ROW = 11
-    DONE = 12
+    DONE     = 12
+    NOC_SEND = 14   # Assert noc_tx_valid, wait for noc_tx_ready (matches RTL S_NOC_SEND)
 
 
 class DMAOp(IntEnum):
-    LOAD = 0x01
-    STORE = 0x02
+    LOAD     = 0x01
+    STORE    = 0x02
+    NOC_SEND = 0x03   # SRAM → peer TPC via NoC (matches RTL DMA_NOC_SEND)
 
 
 @dataclass
@@ -66,6 +68,10 @@ class DMAEngine:
         self.int_ptr = 0
         self.data_buf = 0
         
+        # Latched NOC destination (extracted from ext_addr in DECODE)
+        self.noc_dest_x_r = 0
+        self.noc_dest_y_r = 0
+
         # Registered outputs (directly driven by state)
         self.sram_addr = 0
         self.sram_wdata = 0
@@ -79,6 +85,12 @@ class DMAEngine:
         self.axi_wdata = 0
         self.axi_wvalid = False
         self.axi_wlast = False
+        # NoC TX outputs
+        self.noc_tx_valid  = False
+        self.noc_tx_data   = 0
+        self.noc_tx_addr   = 0
+        self.noc_tx_dest_x = 0
+        self.noc_tx_dest_y = 0
         self.cmd_ready = True
         self.cmd_done = False
         
@@ -90,7 +102,8 @@ class DMAEngine:
     
     def posedge(self, cmd_valid=False, cmd=None, sram_rdata=0, sram_ready=True,
                 axi_arready=True, axi_rvalid=False, axi_rdata=0,
-                axi_awready=True, axi_wready=True, axi_bvalid=False):
+                axi_awready=True, axi_wready=True, axi_bvalid=False,
+                noc_tx_ready=True):
         """Execute one clock cycle using registered outputs."""
         self.cycle += 1
         
@@ -109,6 +122,7 @@ class DMAEngine:
             self.axi_awvalid = False
             self.axi_wvalid = False
             self.axi_rready = False
+            self.noc_tx_valid = False
             
             if cmd_valid and cmd:
                 self.cmd_reg = cmd
@@ -127,6 +141,11 @@ class DMAEngine:
             if self.op_type == DMAOp.LOAD:
                 self.state_next = DMAState.LOAD_ADDR
             else:
+                if self.op_type == DMAOp.NOC_SEND:
+                    # Dest TPC coords encoded in ext_addr[39:36] and [35:32]
+                    self.noc_dest_x_r = (self.cmd_reg.ext_addr >> 36) & 0xF
+                    self.noc_dest_y_r = (self.cmd_reg.ext_addr >> 32) & 0xF
+                    self.log(f"NOC_SEND dest=({self.noc_dest_x_r},{self.noc_dest_y_r})")
                 self.state_next = DMAState.STORE_REQ
         
         # ===== LOAD Path =====
@@ -183,7 +202,10 @@ class DMAEngine:
             # Capture SRAM read data
             self.data_buf = sram_rdata
             self.log(f"Captured=0x{sram_rdata:x}")
-            self.state_next = DMAState.STORE_ADDR
+            if self.op_type == DMAOp.NOC_SEND:
+                self.state_next = DMAState.NOC_SEND
+            else:
+                self.state_next = DMAState.STORE_ADDR
         
         elif self.state == DMAState.STORE_ADDR:
             self.axi_awaddr = self.ext_ptr
@@ -217,8 +239,28 @@ class DMAEngine:
             else:
                 self.state_next = DMAState.STORE_RESP
         
+        # ===== NoC Send Path =====
+        elif self.state == DMAState.NOC_SEND:
+            # Drive NoC TX port; wait for peer router to accept (noc_tx_ready)
+            self.noc_tx_data   = self.data_buf
+            self.noc_tx_addr   = self.ext_ptr & 0xFFFFF   # lower 20 bits = target SRAM addr
+            self.noc_tx_dest_x = self.noc_dest_x_r
+            self.noc_tx_dest_y = self.noc_dest_y_r
+            self.noc_tx_valid  = True
+            self.log(f"NOC TX dest=({self.noc_dest_x_r},{self.noc_dest_y_r})"
+                     f" addr=0x{self.ext_ptr & 0xFFFFF:x} data=0x{self.data_buf:x}")
+
+            if noc_tx_ready:
+                # Don't clear noc_tx_valid here — the RTL registered output stays high
+                # until the next clock edge.  NEXT_COL clears it so callers can capture
+                # noc_tx_valid=True on the cycle posedge() returns.
+                self.state_next = DMAState.NEXT_COL
+            else:
+                self.state_next = DMAState.NOC_SEND
+
         # ===== Column/Row Advancement =====
         elif self.state == DMAState.NEXT_COL:
+            self.noc_tx_valid = False   # deassert after NOC_SEND handshake (no-op for LOAD/STORE)
             self.col_count += 1
             self.ext_ptr += self.BYTES_PER_WORD
             self.int_ptr += self.BYTES_PER_WORD
@@ -359,11 +401,15 @@ class SRAMModel:
                 print(f"[SRAM @{self.cycle}] RD [{word}] (pipe=0x{self._rdata_pipe:x})")
 
 
-def run_cycles(dma, sram, axi, cmd, max_cycles=100):
-    """Run DMA command to completion."""
+def run_cycles(dma, sram, axi, cmd, max_cycles=100, noc_tx_ready=True,
+               noc_capture=None):
+    """Run DMA command to completion.
+
+    noc_capture: if provided, a list that receives (data, addr, dest_x, dest_y)
+                 tuples for every cycle where noc_tx_valid is asserted.
+    """
     first = True
     for _ in range(max_cycles):
-        # All components see signals from previous cycle
         sram.posedge(addr=dma.sram_addr, wdata=dma.sram_wdata,
                      we=dma.sram_we, re=dma.sram_re)
         axi.posedge(arvalid=dma.axi_arvalid, araddr=dma.axi_araddr, rready=dma.axi_rready,
@@ -373,8 +419,12 @@ def run_cycles(dma, sram, axi, cmd, max_cycles=100):
             cmd_valid=first, cmd=cmd if first else None,
             sram_rdata=sram.rdata, sram_ready=True,
             axi_arready=axi.arready, axi_rvalid=axi.rvalid, axi_rdata=axi.rdata,
-            axi_awready=axi.awready, axi_wready=axi.wready, axi_bvalid=axi.bvalid
+            axi_awready=axi.awready, axi_wready=axi.wready, axi_bvalid=axi.bvalid,
+            noc_tx_ready=noc_tx_ready,
         )
+        if noc_capture is not None and dma.noc_tx_valid:
+            noc_capture.append((dma.noc_tx_data, dma.noc_tx_addr,
+                                dma.noc_tx_dest_x, dma.noc_tx_dest_y))
         first = False
         if dma.cmd_done:
             return True
@@ -442,6 +492,66 @@ def test_dma():
     assert int(sram.mem[sram.word_addr(0x460)]) == 0xAA000011
     print(">>> 2D LOAD PASSED <<<\n")
     
+    # TEST 5: NOC_SEND (1 word, dest TPC x=1, y=0)
+    print("--- TEST 5: DMA NOC_SEND (1 word) ---")
+    sram.mem[sram.word_addr(0x500)] = 0xCAFEBABE
+    # ext_addr encodes dest TPC in [39:36]=x, [35:32]=y; lower bits = target addr in peer
+    dest_x, dest_y = 1, 0
+    target_addr = 0x00008000
+    noc_ext_addr = (dest_x << 36) | (dest_y << 32) | target_addr
+    cmd = DMACommand(subop=DMAOp.NOC_SEND,
+                     ext_addr=noc_ext_addr, int_addr=0x500, rows=1, cols=1)
+    captured = []
+    assert run_cycles(dma, sram, axi, cmd, noc_tx_ready=True,
+                      noc_capture=captured), "Timeout!"
+    assert len(captured) >= 1, "noc_tx_valid never asserted"
+    tx_data, tx_addr, tx_x, tx_y = captured[0]
+    assert tx_data   == 0xCAFEBABE, f"data: 0x{tx_data:x}"
+    assert tx_addr   == target_addr, f"addr: 0x{tx_addr:x}"
+    assert tx_x      == dest_x,     f"dest_x: {tx_x}"
+    assert tx_y      == dest_y,     f"dest_y: {tx_y}"
+    print(f"NOC TX: data=0x{tx_data:x} addr=0x{tx_addr:x} dest=({tx_x},{tx_y})")
+    print(">>> NOC_SEND TEST PASSED <<<\n")
+
+    # TEST 6: NOC_SEND with backpressure (noc_tx_ready deasserted for first 3 cycles)
+    print("--- TEST 6: DMA NOC_SEND with backpressure ---")
+    sram.mem[sram.word_addr(0x600)] = 0x55AA55AA
+    noc_ext_addr2 = (2 << 36) | (1 << 32) | 0x00004000   # dest (x=2, y=1)
+    cmd2 = DMACommand(subop=DMAOp.NOC_SEND,
+                      ext_addr=noc_ext_addr2, int_addr=0x600, rows=1, cols=1)
+    cycle_count = [0]
+    ready_after = [3]   # assert ready after 3 cycles of backpressure
+    captured2 = []
+
+    first = True
+    for _ in range(100):
+        sram.posedge(addr=dma.sram_addr, wdata=dma.sram_wdata,
+                     we=dma.sram_we, re=dma.sram_re)
+        axi.posedge(arvalid=dma.axi_arvalid, araddr=dma.axi_araddr, rready=dma.axi_rready,
+                    awvalid=dma.axi_awvalid, awaddr=dma.axi_awaddr,
+                    wvalid=dma.axi_wvalid, wdata=dma.axi_wdata, wlast=dma.axi_wlast)
+        ready = (cycle_count[0] >= ready_after[0])
+        dma.posedge(
+            cmd_valid=first, cmd=cmd2 if first else None,
+            sram_rdata=sram.rdata, sram_ready=True,
+            axi_arready=axi.arready, axi_rvalid=axi.rvalid, axi_rdata=axi.rdata,
+            axi_awready=axi.awready, axi_wready=axi.wready, axi_bvalid=axi.bvalid,
+            noc_tx_ready=ready,
+        )
+        if dma.noc_tx_valid:
+            cycle_count[0] += 1
+            captured2.append((dma.noc_tx_data, dma.noc_tx_dest_x, dma.noc_tx_dest_y))
+        first = False
+        if dma.cmd_done:
+            break
+
+    assert dma.cmd_done, "Timeout!"
+    assert len(captured2) >= ready_after[0], "noc_tx_valid not held during backpressure"
+    assert captured2[0][0] == 0x55AA55AA, f"data wrong: 0x{captured2[0][0]:x}"
+    assert captured2[0][1] == 2 and captured2[0][2] == 1, "dest coords wrong"
+    print(f"noc_tx_valid held for {len(captured2)} cycle(s) before ready")
+    print(">>> NOC_SEND BACKPRESSURE TEST PASSED <<<\n")
+
     print("=" * 60)
     print("ALL DMA MODEL TESTS PASSED!")
     print("=" * 60)
