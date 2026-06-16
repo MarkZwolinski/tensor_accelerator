@@ -22,6 +22,7 @@
 | Fix 3 | Assembler | `SCALE_Q8` missing from `VectorSubop` enum; `subop_map.get(subop, 0)` silently encoded unknown subops as 0 |
 | Fix 4 | VPU RTL | 13 VOP subops (MADD, BIAS_ADD, SCALE, GLOBAL_AVG, SOFTMAX_P1, etc.) had no `case` entry — all fell through to passthrough; SUM reduction tree zero-extended signed inputs, producing wrong results for negative values |
 | Fix 8 | LCP RTL | `loop_sp` declared `[$clog2(MAX_LOOP_NEST)-1:0]` = 2 bits; silently wrapped to 0 on the 4th push, making 4-level nesting trigger a false underflow error |
+| Fix 10 | Assembler + Codegen | VECTOR instruction encoding mismatch: assembler packed vd/vs1/vs2 as three 16-bit fields; codegen passed SRAM addresses as VRF indices — both fixed together |
 
 ---
 
@@ -233,7 +234,7 @@ python3 model/dma_model.py
 |----|-----------|-------------|----------|
 | A | DMA RTL | STORE path AXI write-response timing mismatch (TEST 3 skipped) | Medium |
 | B | VPU RTL | Stub ops with no implementation: EXP, RSQRT, SCALE_SHIFT, SOFTMAX_P2/P3, BATCHNORM, LAYERNORM_VAR/NORM | Medium |
-| C | Compiler | VECTOR instruction encoding mismatch: compiler writes 16-bit SRAM addresses into dst/src fields; RTL decodes those as 5-bit VRF indices — all compiler-generated VECTOR ops produce wrong results in RTL sim | High |
+| C | ~~Compiler~~ | ~~VECTOR instruction encoding mismatch~~ — **FIXED** (Fix 10): assembler now packs vd/vs1/vs2 as 5-bit fields at [111:107]/[106:102]/[101:97]; codegen emits proper VEC.LOAD→ALU→VEC.STORE sequences with VRF register indices | ~~High~~ |
 | D | LCP | VPU and DMA command dispatch not tested in `tb_local_cmd_processor.v` | Low |
 
 ---
@@ -256,4 +257,4 @@ python3 model/dma_model.py
 
 ---
 
-**Last updated:** 2026-06-16
+**Last updated:** 2026-06-16 (Fix 10)
