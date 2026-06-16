@@ -92,6 +92,21 @@ module vector_unit #(
     localparam VOP_BCAST     = 8'h32;
     localparam VOP_MOV       = 8'h33;
     localparam VOP_ZERO      = 8'h34;
+    localparam VOP_SCALE     = 8'h35;  // y = saturate(x * imm / 1024), Q10 format
+    localparam VOP_SCALE_SHIFT = 8'h36; // y = x*scale + bias; needs SRAM (stub)
+    localparam VOP_SCALE_Q8  = 8'h37;  // y = saturate(x * imm / 256), Q8 format
+    localparam VOP_ADD_BCAST = 8'h06;  // Elementwise add with broadcast semantics
+    localparam VOP_BIAS_ADD  = 8'h07;  // Elementwise add bias (same ALU as ADD)
+    localparam VOP_EXP       = 8'h15;  // Exponential (stub — not yet implemented)
+    localparam VOP_RSQRT     = 8'h16;  // Reciprocal sqrt (stub — not yet implemented)
+    localparam VOP_GLOBAL_AVG   = 8'h23;  // Global average pool (SUM >>> REDUCE_STAGES)
+    localparam VOP_SOFTMAX_P1   = 8'h40;  // Softmax pass 1: find max (reuses MAX reduction)
+    localparam VOP_SOFTMAX_P2   = 8'h41;  // Softmax pass 2: exp+sum (stub)
+    localparam VOP_SOFTMAX_P3   = 8'h42;  // Softmax pass 3: normalize (stub)
+    localparam VOP_BATCHNORM    = 8'h50;  // BatchNorm (stub — needs SRAM params)
+    localparam VOP_LAYERNORM_MEAN = 8'h51; // LayerNorm mean = average (SUM >>> REDUCE_STAGES)
+    localparam VOP_LAYERNORM_VAR  = 8'h52; // LayerNorm variance (stub)
+    localparam VOP_LAYERNORM_NORM = 8'h53; // LayerNorm normalize (stub)
 
     // Activation PWL constants (tied to DATA_WIDTH)
     localparam integer SIGMOID_BIAS = 1 << (DATA_WIDTH-2);         // 16384
@@ -108,6 +123,7 @@ module vector_unit #(
     // During S_IDLE, these may be invalid but that's OK since we don't use them yet
     wire [LANES*DATA_WIDTH-1:0] vs1_data = vrf[vs1_reg];
     wire [LANES*DATA_WIDTH-1:0] vs2_data = vrf[vs2_reg];
+    wire [LANES*DATA_WIDTH-1:0] vc_data  = vrf[vd_reg];   // MADD accumulator read port
     
     //--------------------------------------------------------------------------
     // State Machine
@@ -189,6 +205,32 @@ module vector_unit #(
                 $signed({{DATA_WIDTH{1'b0}}, sig_g_out});
             wire [DATA_WIDTH-1:0] gelu_out = gelu_prod[2*DATA_WIDTH-2:DATA_WIDTH-1];
 
+            // MADD: vd = vs1 * vs2 + vd  (fused multiply-accumulate; product widened to avoid truncation)
+            wire [DATA_WIDTH-1:0] lane_c = vc_data[i*DATA_WIDTH +: DATA_WIDTH];
+            wire signed [2*DATA_WIDTH-1:0] madd_prod =
+                $signed({{DATA_WIDTH{lane_a[i][DATA_WIDTH-1]}}, lane_a[i]}) *
+                $signed({{DATA_WIDTH{lane_b[i][DATA_WIDTH-1]}}, lane_b[i]});
+            wire signed [2*DATA_WIDTH-1:0] madd_full =
+                madd_prod + $signed({{DATA_WIDTH{lane_c[DATA_WIDTH-1]}}, lane_c});
+            wire [DATA_WIDTH-1:0] madd_out = madd_full[DATA_WIDTH-1:0];
+
+            // SCALE: y = saturate(x * imm_reg / 1024, INT16)  [Q10 format, 1.0 = 1024]
+            // SCALE_Q8: y = saturate(x * imm_reg / 256, INT16)  [Q8 format, 1.0 = 256]
+            // Both use the same 32-bit product; only the right-shift amount differs.
+            wire signed [2*DATA_WIDTH-1:0] scale_prod =
+                $signed({{DATA_WIDTH{lane_a[i][DATA_WIDTH-1]}}, lane_a[i]}) *
+                $signed({{DATA_WIDTH{imm_reg[DATA_WIDTH-1]}}, imm_reg});
+            wire signed [2*DATA_WIDTH-1:0] scale_shr  = scale_prod >>> 10;
+            wire [DATA_WIDTH-1:0] scale_out =
+                (scale_shr > SIGNED_MAX) ? {1'b0, {(DATA_WIDTH-1){1'b1}}} :
+                (scale_shr < SIGNED_MIN) ? {1'b1, {(DATA_WIDTH-1){1'b0}}} :
+                scale_shr[DATA_WIDTH-1:0];
+            wire signed [2*DATA_WIDTH-1:0] scale_q8_shr = scale_prod >>> 8;
+            wire [DATA_WIDTH-1:0] scale_q8_out =
+                (scale_q8_shr > SIGNED_MAX) ? {1'b0, {(DATA_WIDTH-1){1'b1}}} :
+                (scale_q8_shr < SIGNED_MIN) ? {1'b1, {(DATA_WIDTH-1){1'b0}}} :
+                scale_q8_shr[DATA_WIDTH-1:0];
+
             always @(*) begin
                 lane_result[i] = {DATA_WIDTH{1'b0}};
 
@@ -238,6 +280,42 @@ module vector_unit #(
                         lane_result[i] = imm_reg;
                     end
 
+                    VOP_MADD: begin
+                        lane_result[i] = madd_out;
+                    end
+
+                    VOP_ADD_BCAST,
+                    VOP_BIAS_ADD: begin
+                        lane_result[i] = lane_a[i] + lane_b[i];
+                    end
+
+                    VOP_SCALE: begin
+                        lane_result[i] = scale_out;
+                    end
+
+                    VOP_SCALE_Q8: begin
+                        lane_result[i] = scale_q8_out;
+                    end
+
+                    // Stubs: output zero (not passthrough) so failures are visible
+                    VOP_EXP,
+                    VOP_RSQRT,
+                    VOP_SCALE_SHIFT,
+                    VOP_SOFTMAX_P2,
+                    VOP_SOFTMAX_P3,
+                    VOP_BATCHNORM,
+                    VOP_LAYERNORM_VAR,
+                    VOP_LAYERNORM_NORM: begin
+                        lane_result[i] = {DATA_WIDTH{1'b0}};
+                    end
+
+                    // Reduction ops: ALU result unused; handled by S_REDUCE state
+                    VOP_GLOBAL_AVG,
+                    VOP_SOFTMAX_P1,
+                    VOP_LAYERNORM_MEAN: begin
+                        lane_result[i] = {DATA_WIDTH{1'b0}};
+                    end
+
                     default: begin
                         lane_result[i] = lane_a[i];
                     end
@@ -268,21 +346,27 @@ module vector_unit #(
     integer stage, lane;
     always @(*) begin
         for (lane = 0; lane < LANES; lane = lane + 1) begin
-            // Zero-extend to REDUCE_W; upper bits will carry SUM growth
-            reduce_tree[0][lane] = {{REDUCE_STAGES{1'b0}}, lane_a[lane]};
+            // Sign-extend to REDUCE_W so that signed SUM and average are correct
+            // for negative inputs (previously zero-extended, giving wrong results).
+            reduce_tree[0][lane] = {{REDUCE_STAGES{lane_a[lane][DATA_WIDTH-1]}}, lane_a[lane]};
         end
 
         // Build reduction tree
         for (stage = 1; stage <= REDUCE_STAGES; stage = stage + 1) begin
             for (lane = 0; lane < (LANES >> stage); lane = lane + 1) begin
                 case (subop_reg)
-                    VOP_SUM: begin
-                        // Addition in REDUCE_W — no truncation across any stage
+                    VOP_SUM,
+                    VOP_GLOBAL_AVG,
+                    VOP_LAYERNORM_MEAN: begin
+                        // Signed addition in REDUCE_W; 2's-complement wrapping stays
+                        // correct as long as the final sum fits in REDUCE_W bits,
+                        // which is guaranteed by REDUCE_W = DATA_WIDTH + REDUCE_STAGES.
                         reduce_tree[stage][lane] = reduce_tree[stage-1][lane*2] +
                                                    reduce_tree[stage-1][lane*2+1];
                     end
-                    VOP_MAX: begin
-                        // Compare on DATA_WIDTH-bit signed view; value passes through
+                    VOP_MAX,
+                    VOP_SOFTMAX_P1: begin
+                        // Compare on DATA_WIDTH-bit signed view; full-width value passes through
                         reduce_tree[stage][lane] =
                             ($signed(reduce_tree[stage-1][lane*2][DATA_WIDTH-1:0]) >
                              $signed(reduce_tree[stage-1][lane*2+1][DATA_WIDTH-1:0])) ?
@@ -371,7 +455,8 @@ module vector_unit #(
                             state <= S_MEM_WAIT;
                         end
                         
-                        VOP_SUM, VOP_MAX, VOP_MIN: begin
+                        VOP_SUM, VOP_MAX, VOP_MIN,
+                        VOP_GLOBAL_AVG, VOP_SOFTMAX_P1, VOP_LAYERNORM_MEAN: begin
                             state <= S_REDUCE;
                         end
                         
@@ -406,8 +491,16 @@ module vector_unit #(
                 end
                 
                 S_REDUCE: begin
-                    // Reduction result goes to first element of destination
-                    vrf[vd_reg] <= {{(LANES-1)*DATA_WIDTH{1'b0}}, reduce_result[DATA_WIDTH-1:0]};
+                    // Average ops: divide signed SUM by LANES via arithmetic right-shift.
+                    // reduce_result[REDUCE_W-1:REDUCE_STAGES] is exact when LANES is a
+                    // power of two and all inputs fit within DATA_WIDTH signed range.
+                    if (subop_reg == VOP_GLOBAL_AVG || subop_reg == VOP_LAYERNORM_MEAN) begin
+                        vrf[vd_reg] <= {{(LANES-1)*DATA_WIDTH{1'b0}},
+                                        reduce_result[REDUCE_W-1:REDUCE_STAGES]};
+                    end else begin
+                        // SUM, MAX, MIN, SOFTMAX_P1: scalar result in lane 0
+                        vrf[vd_reg] <= {{(LANES-1)*DATA_WIDTH{1'b0}}, reduce_result[DATA_WIDTH-1:0]};
+                    end
                     state <= S_DONE;
                 end
                 
