@@ -118,7 +118,9 @@ module local_cmd_processor #(
     
     reg [SRAM_ADDR_W-1:0] loop_start_addr [0:MAX_LOOP_NEST-1];
     reg [15:0]            loop_counter    [0:MAX_LOOP_NEST-1];
-    reg [$clog2(MAX_LOOP_NEST)-1:0] loop_sp;
+    // One extra bit so sp can reach MAX_LOOP_NEST without overflowing,
+    // which allows the overflow check (loop_sp < MAX_LOOP_NEST) to fire correctly.
+    reg [$clog2(MAX_LOOP_NEST):0] loop_sp;
     
     //--------------------------------------------------------------------------
     // Scoreboard: Track Pending Operations

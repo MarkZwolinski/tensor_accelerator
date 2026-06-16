@@ -161,10 +161,88 @@ module tb_local_cmd_processor;
             if (done && !error) $display("  PASS");
             else begin $display("  FAIL"); errors = errors + 1; end
         end else begin $display("  FAIL: no sync_request"); errors = errors + 1; end
-        
+        #(CLK * 3);
+
+        // TEST 5: 2-level nested loop
+        $display("\n[TEST 5] Nested Loop: outer=3, inner=4 (expect 12 MXU ops)");
+        mxu_cnt = 0;
+        imem[0] = {OP_LOOP,    8'd0, 64'd0, 16'd3, 32'd0};  // outer: 3 iters
+        imem[1] = {OP_LOOP,    8'd0, 64'd0, 16'd4, 32'd0};  // inner: 4 iters
+        imem[2] = {OP_TENSOR,  120'd0};
+        imem[3] = {OP_ENDLOOP, 120'd0};                      // end inner
+        imem[4] = {OP_ENDLOOP, 120'd0};                      // end outer
+        imem[5] = {OP_HALT,    120'd0};
+        start_pc = 0;
+        do_start();
+        wait_done(2000);
+        if (done && !error && mxu_cnt == 12)
+            $display("  PASS: %0d MXU ops issued", mxu_cnt);
+        else begin
+            $display("  FAIL: mxu=%0d (expected 12), done=%0b error=%0b", mxu_cnt, done, error);
+            errors = errors + 1;
+        end
+        #(CLK * 3);
+
+        // TEST 6: Max-depth nesting (4 levels × 2 iters = 16 MXU ops)
+        $display("\n[TEST 6] Max Nesting: 4 levels x 2 iters (expect 16 MXU ops)");
+        mxu_cnt = 0;
+        imem[0] = {OP_LOOP,    8'd0, 64'd0, 16'd2, 32'd0};  // level 0
+        imem[1] = {OP_LOOP,    8'd0, 64'd0, 16'd2, 32'd0};  // level 1
+        imem[2] = {OP_LOOP,    8'd0, 64'd0, 16'd2, 32'd0};  // level 2
+        imem[3] = {OP_LOOP,    8'd0, 64'd0, 16'd2, 32'd0};  // level 3 (MAX_LOOP_NEST-1)
+        imem[4] = {OP_TENSOR,  120'd0};
+        imem[5] = {OP_ENDLOOP, 120'd0};
+        imem[6] = {OP_ENDLOOP, 120'd0};
+        imem[7] = {OP_ENDLOOP, 120'd0};
+        imem[8] = {OP_ENDLOOP, 120'd0};
+        imem[9] = {OP_HALT,    120'd0};
+        start_pc = 0;
+        do_start();
+        wait_done(3000);
+        if (done && !error && mxu_cnt == 16)
+            $display("  PASS: %0d MXU ops issued", mxu_cnt);
+        else begin
+            $display("  FAIL: mxu=%0d (expected 16), done=%0b error=%0b", mxu_cnt, done, error);
+            errors = errors + 1;
+        end
+        #(CLK * 3);
+
+        // TEST 7: Loop stack overflow (5 LOOPs, MAX_LOOP_NEST=4)
+        $display("\n[TEST 7] Loop Stack Overflow (5 nested LOOPs, limit=4)");
+        imem[0] = {OP_LOOP, 8'd0, 64'd0, 16'd2, 32'd0};
+        imem[1] = {OP_LOOP, 8'd0, 64'd0, 16'd2, 32'd0};
+        imem[2] = {OP_LOOP, 8'd0, 64'd0, 16'd2, 32'd0};
+        imem[3] = {OP_LOOP, 8'd0, 64'd0, 16'd2, 32'd0};
+        imem[4] = {OP_LOOP, 8'd0, 64'd0, 16'd2, 32'd0};  // 5th LOOP overflows
+        imem[5] = {OP_NOP,  120'd0};
+        start_pc = 0;
+        do_start();
+        wait_done(200);
+        if (error && !done)
+            $display("  PASS: stack overflow detected (error=1)");
+        else begin
+            $display("  FAIL: expected error=1, got done=%0b error=%0b", done, error);
+            errors = errors + 1;
+        end
+        #(CLK * 3);
+
+        // TEST 8: Loop stack underflow (ENDLOOP with empty stack)
+        $display("\n[TEST 8] Loop Stack Underflow (ENDLOOP with empty stack)");
+        imem[0] = {OP_ENDLOOP, 120'd0};
+        imem[1] = {OP_HALT,    120'd0};
+        start_pc = 0;
+        do_start();
+        wait_done(100);
+        if (error && !done)
+            $display("  PASS: stack underflow detected (error=1)");
+        else begin
+            $display("  FAIL: expected error=1, got done=%0b error=%0b", done, error);
+            errors = errors + 1;
+        end
+
         // Summary
         $display("\n════════════════════════════════════════");
-        $display("Errors: %0d / 4 tests", errors);
+        $display("Errors: %0d / 8 tests", errors);
         if (errors == 0) $display(">>> ALL TESTS PASSED! <<<");
         else $display(">>> SOME TESTS FAILED <<<");
         $display("");
