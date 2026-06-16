@@ -217,6 +217,79 @@ class CodeGenerator:
         for tensor_name, ddr_addr, sram_addr, size in entry.dma_stores:
             self._emit_dma_store(tensor_name, ddr_addr, sram_addr, size)
     
+    # =========================================================================
+    # VRF register helpers
+    # =========================================================================
+    #
+    # The VPU uses a 32-entry Vector Register File (VRF).  Each VRF slot holds
+    # LANES × DATA_WIDTH bits (64 × 16 = 1024 bits).  ALU ops address VRF by
+    # 5-bit index; LOAD/STORE transfer between SRAM and a VRF register.
+    #
+    # We assign a fixed VRF register to each SRAM buffer so the codegen can
+    # emit LOAD→ALU→STORE without a full register allocator.
+    #
+    #   v0  sram_act_a    (0x0000)
+    #   v1  sram_act_b    (0x1000)
+    #   v2  sram_weight_a (0x2000)
+    #   v3  sram_weight_b (0x4000)
+    #   v4  sram_output   (0x6000)
+    #   v5  sram_scratch  (0x7000)
+    #   v6  sram_scratch2 (0x8000)
+    #   v7  fallback for any other address
+
+    def _vrf(self, sram_addr: int) -> int:
+        """Return the fixed VRF register index for a SRAM buffer address."""
+        m = {
+            self.config.sram_act_a: 0,
+            self.config.sram_act_b: 1,
+            self.config.sram_weight_a: 2,
+            self.config.sram_weight_b: 3,
+            self.config.sram_output: 4,
+            self.config.sram_scratch: 5,
+            getattr(self.config, 'sram_scratch2', self.config.sram_scratch + 0x1000): 6,
+        }
+        return m.get(sram_addr, 7)
+
+    def _emit_vld(self, vd: int, addr: int):
+        self._emit(f"VEC.LOAD v{vd}, 0x{addr:04X}")
+
+    def _emit_vst(self, vs1: int, addr: int):
+        self._emit(f"VEC.STORE v{vs1}, 0x{addr:04X}")
+
+    def _emit_vpu1(self, subop: str, dst_addr: int, src_addr: int, imm: int = 0):
+        """Unary VPU op: LOAD src, OP, STORE dst."""
+        vs = self._vrf(src_addr)
+        vd = self._vrf(dst_addr)
+        self._emit_vld(vs, src_addr)
+        if imm:
+            self._emit(f"VEC.{subop} v{vd}, v{vs}, {imm}")
+        else:
+            self._emit(f"VEC.{subop} v{vd}, v{vs}")
+        self._emit_vst(vd, dst_addr)
+
+    def _emit_vpu2(self, subop: str, dst_addr: int, src_a_addr: int, src_b_addr: int):
+        """Binary VPU op: LOAD src_a, LOAD src_b, OP, STORE dst."""
+        va = self._vrf(src_a_addr)
+        vb = self._vrf(src_b_addr)
+        vd = self._vrf(dst_addr)
+        self._emit_vld(va, src_a_addr)
+        if src_b_addr != src_a_addr:
+            self._emit_vld(vb, src_b_addr)
+        self._emit(f"VEC.{subop} v{vd}, v{va}, v{vb}")
+        self._emit_vst(vd, dst_addr)
+
+    def _emit_vpu3(self, subop: str, dst_addr: int, src_a_addr: int, src_b_addr: int):
+        """Ternary VPU op: LOAD both sources, OP vd=f(vd,va,vb) in-place, STORE."""
+        va = self._vrf(src_a_addr)
+        vb = self._vrf(src_b_addr)
+        vd = self._vrf(dst_addr)
+        if src_a_addr != dst_addr:
+            self._emit_vld(va, src_a_addr)
+        if src_b_addr != src_a_addr and src_b_addr != dst_addr:
+            self._emit_vld(vb, src_b_addr)
+        self._emit(f"VEC.{subop} v{vd}, v{va}, v{vb}")
+        self._emit_vst(vd, dst_addr)
+
     def _emit_dma_load(self, name: str, ddr_addr: int, sram_addr: int, size: int):
         self._emit_comment(f"Load {name} from DDR")
         self._emit(f"DMA.LOAD_1D 0x{sram_addr:04X}, 0x{ddr_addr:08X}, {size}")
@@ -273,7 +346,7 @@ class CodeGenerator:
             bias_addr = entry.input_addrs.get(bias_name, 0)
             if bias_addr:
                 self._emit_comment("Add bias")
-                self._emit(f"VECTOR.ADD 0x{output_addr:04X}, 0x{output_addr:04X}, 0x{bias_addr:04X}, {M * N}")
+                self._emit_vpu2("ADD", output_addr, output_addr, bias_addr)
                 self._emit("SYNC.WAIT_VPU")
     
     def _emit_matmul(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -333,7 +406,7 @@ class CodeGenerator:
             bias_addr = entry.input_addrs.get(bias_name, 0)
             if bias_addr:
                 self._emit_comment("Add bias (broadcast)")
-                self._emit(f"VECTOR.BIAS_ADD 0x{output_addr:04X}, 0x{output_addr:04X}, 0x{bias_addr:04X}, {M}, {N_gemm}")
+                self._emit_vpu2("BIAS_ADD", output_addr, output_addr, bias_addr)
                 self._emit("SYNC.WAIT_VPU")
     
     def _emit_depthwise_conv2d(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -388,8 +461,7 @@ class CodeGenerator:
             bias_addr = entry.input_addrs.get(bias_name, 0)
             if bias_addr:
                 self._emit_comment("Add bias (per-channel)")
-                num_out = N * C * H_out * W_out
-                self._emit(f"VECTOR.BIAS_ADD 0x{output_addr:04X}, 0x{output_addr:04X}, 0x{bias_addr:04X}, {H_out * W_out}, {C}")
+                self._emit_vpu2("BIAS_ADD", output_addr, output_addr, bias_addr)
                 self._emit("SYNC.WAIT_VPU")
     
     def _emit_attention(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -451,27 +523,25 @@ class CodeGenerator:
         
         # Step 2: Scale by 1/sqrt(d_k)
         self._emit_comment(f"Step 2: scores = scores / sqrt({head_dim})")
-        score_size = seq_q * seq_k * num_heads
-        self._emit(f"VECTOR.SCALE_Q8 0x{scratch_addr:04X}, 0x{scratch_addr:04X}, {scale}, {score_size}")
+        self._emit_vpu1("SCALE_Q8", scratch_addr, scratch_addr, imm=scale)
         self._emit("SYNC.WAIT_VPU")
-        
+
         # Step 3: Optional mask
         if len(node.inputs) > 3:
             mask_name = node.inputs[3]
             mask_addr = entry.input_addrs.get(mask_name, 0)
             if mask_addr:
                 self._emit_comment("Step 3: Apply attention mask")
-                self._emit(f"VECTOR.MASKED_FILL 0x{scratch_addr:04X}, 0x{scratch_addr:04X}, 0x{mask_addr:04X}, -128, {score_size}")
+                self._emit_vpu2("MASKED_FILL", scratch_addr, scratch_addr, mask_addr)
                 self._emit("SYNC.WAIT_VPU")
-        
+
         # Step 4: Softmax over seq_k dimension
         self._emit_comment("Step 4: attn_weights = softmax(scores)")
-        num_rows = seq_q * num_heads
-        self._emit(f"VECTOR.SOFTMAX_P1 0x{scratch2_addr:04X}, 0x{scratch_addr:04X}, {seq_k}, {num_rows}")
+        self._emit_vpu1("SOFTMAX_P1", scratch2_addr, scratch_addr)
         self._emit("SYNC.WAIT_VPU")
-        self._emit(f"VECTOR.SOFTMAX_P2 0x{scratch_addr:04X}, 0x{scratch_addr:04X}, 0x{scratch2_addr:04X}, {seq_k}, {num_rows}")
+        self._emit_vpu3("SOFTMAX_P2", scratch_addr, scratch_addr, scratch2_addr)
         self._emit("SYNC.WAIT_VPU")
-        self._emit(f"VECTOR.SOFTMAX_P3 0x{scratch_addr:04X}, 0x{scratch_addr:04X}, 0x{scratch2_addr:04X}, {seq_k}, {num_rows}")
+        self._emit_vpu3("SOFTMAX_P3", scratch_addr, scratch_addr, scratch2_addr)
         self._emit("SYNC.WAIT_VPU")
         
         # Step 5: attn_weights @ V
@@ -501,7 +571,7 @@ class CodeGenerator:
             input_addr = entry.input_addrs.get(input_name, self.config.sram_act_a)
             output_addr = entry.output_addr or input_addr
             
-            self._emit(f"VECTOR.RELU 0x{output_addr:04X}, 0x{input_addr:04X}, {num_elements}")
+            self._emit_vpu1("RELU", output_addr, input_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_relu6(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -515,7 +585,7 @@ class CodeGenerator:
             output_addr = entry.output_addr or input_addr
             
             self._emit_comment("ReLU6: clamp(x, 0, 6)")
-            self._emit(f"VECTOR.RELU6 0x{output_addr:04X}, 0x{input_addr:04X}, {num_elements}")
+            self._emit_vpu1("RELU6", output_addr, input_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_swish(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -530,9 +600,9 @@ class CodeGenerator:
             scratch_addr = self.config.sram_scratch
             
             self._emit_comment("Swish: x * sigmoid(x)")
-            self._emit(f"VECTOR.SIGMOID 0x{scratch_addr:04X}, 0x{input_addr:04X}, {num_elements}")
+            self._emit_vpu1("SIGMOID", scratch_addr, input_addr)
             self._emit("SYNC.WAIT_VPU")
-            self._emit(f"VECTOR.MUL 0x{output_addr:04X}, 0x{input_addr:04X}, 0x{scratch_addr:04X}, {num_elements}")
+            self._emit_vpu2("MUL", output_addr, input_addr, scratch_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_gelu(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -547,11 +617,11 @@ class CodeGenerator:
             scratch_addr = self.config.sram_scratch
             
             self._emit_comment("GELU: x * sigmoid(1.702 * x)")
-            self._emit(f"VECTOR.SCALE 0x{scratch_addr:04X}, 0x{input_addr:04X}, 1702, {num_elements}")
+            self._emit_vpu1("SCALE", scratch_addr, input_addr, imm=1702)
             self._emit("SYNC.WAIT_VPU")
-            self._emit(f"VECTOR.SIGMOID 0x{scratch_addr:04X}, 0x{scratch_addr:04X}, {num_elements}")
+            self._emit_vpu1("SIGMOID", scratch_addr, scratch_addr)
             self._emit("SYNC.WAIT_VPU")
-            self._emit(f"VECTOR.MUL 0x{output_addr:04X}, 0x{input_addr:04X}, 0x{scratch_addr:04X}, {num_elements}")
+            self._emit_vpu2("MUL", output_addr, input_addr, scratch_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_sigmoid(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -564,7 +634,7 @@ class CodeGenerator:
             input_addr = entry.input_addrs.get(input_name, self.config.sram_act_a)
             output_addr = entry.output_addr or input_addr
             
-            self._emit(f"VECTOR.SIGMOID 0x{output_addr:04X}, 0x{input_addr:04X}, {num_elements}")
+            self._emit_vpu1("SIGMOID", output_addr, input_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_tanh(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -577,7 +647,7 @@ class CodeGenerator:
             input_addr = entry.input_addrs.get(input_name, self.config.sram_act_a)
             output_addr = entry.output_addr or input_addr
             
-            self._emit(f"VECTOR.TANH 0x{output_addr:04X}, 0x{input_addr:04X}, {num_elements}")
+            self._emit_vpu1("TANH", output_addr, input_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_softmax(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -599,11 +669,11 @@ class CodeGenerator:
             scratch_addr = self.config.sram_scratch
             
             self._emit_comment(f"Softmax: axis={axis}, size={axis_size}")
-            self._emit(f"VECTOR.SOFTMAX_P1 0x{scratch_addr:04X}, 0x{input_addr:04X}, {axis_size}, {num_vectors}")
+            self._emit_vpu1("SOFTMAX_P1", scratch_addr, input_addr)
             self._emit("SYNC.WAIT_VPU")
-            self._emit(f"VECTOR.SOFTMAX_P2 0x{output_addr:04X}, 0x{input_addr:04X}, 0x{scratch_addr:04X}, {axis_size}, {num_vectors}")
+            self._emit_vpu3("SOFTMAX_P2", output_addr, input_addr, scratch_addr)
             self._emit("SYNC.WAIT_VPU")
-            self._emit(f"VECTOR.SOFTMAX_P3 0x{output_addr:04X}, 0x{output_addr:04X}, 0x{scratch_addr:04X}, {axis_size}, {num_vectors}")
+            self._emit_vpu3("SOFTMAX_P3", output_addr, output_addr, scratch_addr)
             self._emit("SYNC.WAIT_VPU")
     
     # =========================================================================
@@ -642,7 +712,11 @@ class CodeGenerator:
         output_addr = entry.output_addr or input_addr
         
         self._emit_comment(f"BatchNorm: {C} channels, spatial={spatial_size}")
-        self._emit(f"VECTOR.BATCHNORM 0x{output_addr:04X}, 0x{input_addr:04X}, 0x{scale_addr:04X}, 0x{bias_addr:04X}, {C}, {spatial_size}")
+        vi = self._vrf(input_addr)
+        vd = self._vrf(output_addr)
+        self._emit_vld(vi, input_addr)
+        self._emit(f"VEC.BATCHNORM v{vd}, v{vi}, 0x{scale_addr:04X}, 0x{bias_addr:04X}, {C}, {spatial_size}")
+        self._emit_vst(vd, output_addr)
         self._emit("SYNC.WAIT_VPU")
     
     def _emit_layernorm(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -673,17 +747,36 @@ class CodeGenerator:
             bias_addr = entry.input_addrs.get(bias_name, self.config.sram_weight_a + normalized_size * 4)
         
         self._emit_comment(f"LayerNorm: size={normalized_size}, instances={num_instances}")
-        
-        # 4-pass: mean, var, normalize, scale+shift
-        self._emit(f"VECTOR.LAYERNORM_MEAN 0x{scratch_addr:04X}, 0x{input_addr:04X}, {normalized_size}, {num_instances}")
+        scratch2_addr = self.config.sram_scratch + 0x1000
+
+        vi = self._vrf(input_addr)
+        vm = self._vrf(scratch_addr)
+        vv = self._vrf(scratch2_addr)
+        vd = self._vrf(output_addr)
+
+        # Pass 1: mean
+        self._emit_vld(vi, input_addr)
+        self._emit(f"VEC.LAYERNORM_MEAN v{vm}, v{vi}, {normalized_size}, {num_instances}")
+        self._emit_vst(vm, scratch_addr)
         self._emit("SYNC.WAIT_VPU")
-        self._emit(f"VECTOR.LAYERNORM_VAR 0x{scratch_addr + 0x1000:04X}, 0x{input_addr:04X}, 0x{scratch_addr:04X}, {normalized_size}, {num_instances}")
+        # Pass 2: variance (needs input and mean)
+        self._emit_vld(vi, input_addr)
+        self._emit_vld(vm, scratch_addr)
+        self._emit(f"VEC.LAYERNORM_VAR v{vv}, v{vi}, v{vm}, {normalized_size}, {num_instances}")
+        self._emit_vst(vv, scratch2_addr)
         self._emit("SYNC.WAIT_VPU")
-        self._emit(f"VECTOR.LAYERNORM_NORM 0x{output_addr:04X}, 0x{input_addr:04X}, 0x{scratch_addr:04X}, 0x{scratch_addr + 0x1000:04X}, {normalized_size}, {num_instances}")
+        # Pass 3: normalize (needs input, mean, var)
+        self._emit_vld(vi, input_addr)
+        self._emit_vld(vm, scratch_addr)
+        self._emit_vld(vv, scratch2_addr)
+        self._emit(f"VEC.LAYERNORM_NORM v{vd}, v{vi}, v{vm}, v{vv}, {normalized_size}, {num_instances}")
+        self._emit_vst(vd, output_addr)
         self._emit("SYNC.WAIT_VPU")
-        
+
         if has_affine:
-            self._emit(f"VECTOR.SCALE_SHIFT 0x{output_addr:04X}, 0x{output_addr:04X}, 0x{scale_addr:04X}, 0x{bias_addr:04X}, {normalized_size}, {num_instances}")
+            self._emit_vld(vd, output_addr)
+            self._emit(f"VEC.SCALE_SHIFT v{vd}, v{vd}, 0x{scale_addr:04X}, 0x{bias_addr:04X}, {normalized_size}, {num_instances}")
+            self._emit_vst(vd, output_addr)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_groupnorm(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -724,14 +817,18 @@ class CodeGenerator:
             bias_addr = entry.input_addrs.get(bias_name, self.config.sram_weight_a + C * 4)
         
         self._emit_comment(f"GroupNorm: {num_groups} groups, {C} channels, spatial={H}x{W}")
-        
-        # Process each group independently
-        self._emit(f"VECTOR.GROUPNORM 0x{output_addr:04X}, 0x{input_addr:04X}, {num_groups}, {channels_per_group}, {H * W}")
+        vi = self._vrf(input_addr)
+        vd = self._vrf(output_addr)
+        self._emit_vld(vi, input_addr)
+        self._emit(f"VEC.GROUPNORM v{vd}, v{vi}, {num_groups}, {channels_per_group}, {H * W}")
+        self._emit_vst(vd, output_addr)
         self._emit("SYNC.WAIT_VPU")
-        
+
         if has_affine:
             self._emit_comment("Apply learnable scale and bias")
-            self._emit(f"VECTOR.BATCHNORM 0x{output_addr:04X}, 0x{output_addr:04X}, 0x{scale_addr:04X}, 0x{bias_addr:04X}, {C}, {H * W}")
+            self._emit_vld(vd, output_addr)
+            self._emit(f"VEC.BATCHNORM v{vd}, v{vd}, 0x{scale_addr:04X}, 0x{bias_addr:04X}, {C}, {H * W}")
+            self._emit_vst(vd, output_addr)
             self._emit("SYNC.WAIT_VPU")
     
     # =========================================================================
@@ -825,7 +922,7 @@ class CodeGenerator:
         output_addr = entry.output_addr or self.config.sram_output
         
         self._emit_comment(f"GlobalAvgPool: [{N},{C},{H},{W}] -> [{N},{C},1,1]")
-        self._emit(f"VECTOR.GLOBAL_AVG 0x{output_addr:04X}, 0x{input_addr:04X}, {C}, {spatial_size}")
+        self._emit_vpu1("GLOBAL_AVG", output_addr, input_addr)
         self._emit("SYNC.WAIT_VPU")
     
     # =========================================================================
@@ -849,10 +946,10 @@ class CodeGenerator:
             output_addr = entry.output_addr or addr_a
             
             if num_a == num_b:
-                self._emit(f"VECTOR.ADD 0x{output_addr:04X}, 0x{addr_a:04X}, 0x{addr_b:04X}, {num_a}")
+                self._emit_vpu2("ADD", output_addr, addr_a, addr_b)
             else:
                 self._emit_comment(f"Add with broadcast: {num_a} + {num_b}")
-                self._emit(f"VECTOR.ADD_BCAST 0x{output_addr:04X}, 0x{addr_a:04X}, 0x{addr_b:04X}, {num_a}, {num_b}")
+                self._emit_vpu2("ADD_BCAST", output_addr, addr_a, addr_b)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_sub(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -866,7 +963,7 @@ class CodeGenerator:
             addr_b = entry.input_addrs.get(input_b, self.config.sram_act_b)
             output_addr = entry.output_addr or addr_a
             
-            self._emit(f"VECTOR.SUB 0x{output_addr:04X}, 0x{addr_a:04X}, 0x{addr_b:04X}, {num_elements}")
+            self._emit_vpu2("SUB", output_addr, addr_a, addr_b)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_mul(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -880,7 +977,7 @@ class CodeGenerator:
             addr_b = entry.input_addrs.get(input_b, self.config.sram_act_b)
             output_addr = entry.output_addr or addr_a
             
-            self._emit(f"VECTOR.MUL 0x{output_addr:04X}, 0x{addr_a:04X}, 0x{addr_b:04X}, {num_elements}")
+            self._emit_vpu2("MUL", output_addr, addr_a, addr_b)
             self._emit("SYNC.WAIT_VPU")
     
     def _emit_div(self, graph: Graph, node: Node, entry: ScheduleEntry):
@@ -894,7 +991,7 @@ class CodeGenerator:
             addr_b = entry.input_addrs.get(input_b, self.config.sram_act_b)
             output_addr = entry.output_addr or addr_a
             
-            self._emit(f"VECTOR.DIV 0x{output_addr:04X}, 0x{addr_a:04X}, 0x{addr_b:04X}, {num_elements}")
+            self._emit_vpu2("DIV", output_addr, addr_a, addr_b)
             self._emit("SYNC.WAIT_VPU")
     
     # =========================================================================

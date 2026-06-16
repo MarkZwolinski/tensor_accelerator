@@ -167,7 +167,7 @@ def test_codegen():
     
     # Check it has key instructions
     assert "TENSOR.GEMM" in asm_code
-    assert "VECTOR.RELU" in asm_code
+    assert "VEC.RELU" in asm_code
     assert "HALT" in asm_code
     
     # Check weight data is generated

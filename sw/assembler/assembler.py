@@ -174,6 +174,28 @@ class Assembler:
         self.constants: Dict[str, int] = {}
         self.line_num = 0
         
+    def _pack_vrf(self, vd: int, vs1: int = 0, vs2: int = 0) -> int:
+        """Pack three 5-bit VRF indices into the 16-bit dst slot.
+
+        RTL layout within the 128-bit instruction:
+          cmd[111:107] = vd  (top 5 bits of dst[15:0])
+          cmd[106:102] = vs1
+          cmd[101:97]  = vs2
+        Mapping: dst[15:11]=vd, dst[10:6]=vs1, dst[5:1]=vs2
+        """
+        return ((vd & 0x1F) << 11) | ((vs1 & 0x1F) << 6) | ((vs2 & 0x1F) << 1)
+
+    def _pack_memaddr(self, addr: int, instr) -> None:
+        """Pack a 20-bit SRAM address into src0 and src1.
+
+        RTL reads mem_addr from cmd[95:76] (20 bits):
+          mem_addr[19:4] = cmd[95:80]  = src0
+          mem_addr[3:0]  = cmd[79:76]  = src1[15:12]
+        So: src0 = addr >> 4,  src1 = (addr & 0xF) << 12
+        """
+        instr.src0 = (addr >> 4) & 0xFFFF
+        instr.src1 = ((addr & 0xF) << 12) & 0xFFFF
+
     def parse_value(self, s: str) -> int:
         """Parse an integer value (decimal, hex, or symbol)"""
         s = s.strip()
@@ -399,128 +421,166 @@ class Assembler:
                 raise ValueError(f"Unknown VECTOR subop '{subop}' at line {self.line_num}")
             instr.subop = subop_map[subop]
             
-            # Format varies by operation
-            if subop in ['LOAD', 'STORE']:
-                # VEC.LOAD vd, addr, count
+            # Helpers: parse a VRF register (v0-v31 alias or bare 0-31 integer)
+            def preg(s):
+                return self.parse_value(s) & 0x1F
+
+            # RTL VECTOR field layout (from vector_unit.v):
+            #   [111:107] vd  — dst[15:11]
+            #   [106:102] vs1 — dst[10:6]
+            #   [101:97]  vs2 — dst[5:1]
+            #   [95:76]   mem_addr (20 bits) = {src0[15:0], src1[15:12]}
+            #   [63:48]   count = dim_m
+            #   [47:32]   imm   = dim_n
+
+            if subop == 'LOAD':
+                # VEC.LOAD vd, sram_addr [, count]
+                # RTL: vd = destination VRF register; mem_addr = SRAM source
                 if len(ops) >= 2:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
+                    instr.dst = self._pack_vrf(preg(ops[0]))
+                    self._pack_memaddr(self.parse_value(ops[1]), instr)
                     if len(ops) > 2:
                         instr.dim_m = self.parse_value(ops[2])
-            elif subop in ['ADD', 'SUB', 'MUL', 'DIV']:
-                # VEC.ADD dst, src1, src2, count
-                if len(ops) >= 4:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.src1 = self.parse_value(ops[2])
-                    instr.dim_m = self.parse_value(ops[3])
-                elif len(ops) >= 3:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.src1 = self.parse_value(ops[2])
-            elif subop == 'ADD_BCAST':
-                # VEC.ADD_BCAST dst, src1, src2, count1, count2
-                if len(ops) >= 5:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.src1 = self.parse_value(ops[2])
-                    instr.dim_m = self.parse_value(ops[3])
-                    instr.dim_n = self.parse_value(ops[4])
-            elif subop == 'BIAS_ADD':
-                # VEC.BIAS_ADD dst, src, bias, M, N
-                if len(ops) >= 5:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.src1 = self.parse_value(ops[2])
-                    instr.dim_m = self.parse_value(ops[3])
-                    instr.dim_n = self.parse_value(ops[4])
-            elif subop in ['RELU', 'GELU', 'SILU', 'EXP', 'RSQRT', 'TANH', 'SIGMOID']:
-                # VEC.RELU dst, src, count
+
+            elif subop == 'STORE':
+                # VEC.STORE vs1, sram_addr [, count]
+                # RTL: vs1 = source VRF register (write-data); mem_addr = SRAM destination
                 if len(ops) >= 2:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
+                    instr.dst = self._pack_vrf(0, preg(ops[0]))  # vs1 at [106:102]
+                    self._pack_memaddr(self.parse_value(ops[1]), instr)
                     if len(ops) > 2:
-                        instr.src1 = self.parse_value(ops[2])  # Count in src1
+                        instr.dim_m = self.parse_value(ops[2])
+
+            elif subop in ['ADD', 'SUB', 'MUL', 'DIV']:
+                # VEC.ADD vd, vs1, vs2 [, count]
+                if len(ops) >= 3:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]), preg(ops[2]))
+                    if len(ops) >= 4:
+                        instr.dim_m = self.parse_value(ops[3])
+
+            elif subop == 'MADD':
+                # VEC.MADD vd, vs1, vs2   (vd += vs1 * vs2)
+                if len(ops) >= 3:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]), preg(ops[2]))
+
+            elif subop in ['ADD_BCAST', 'BIAS_ADD']:
+                # VEC.ADD_BCAST vd, vs1, vs2 [, count, stride]
+                if len(ops) >= 3:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]), preg(ops[2]))
+                    if len(ops) >= 4:
+                        instr.dim_m = self.parse_value(ops[3])
+                    if len(ops) >= 5:
+                        instr.dim_n = self.parse_value(ops[4])
+
+            elif subop in ['RELU', 'GELU', 'SILU', 'EXP', 'RSQRT', 'TANH', 'SIGMOID']:
+                # VEC.RELU vd, vs1 [, count]
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                    if len(ops) > 2:
+                        instr.dim_m = self.parse_value(ops[2])
+
             elif subop in ['SUM', 'MAX', 'MIN']:
                 # VEC.SUM vd, vs1
                 if len(ops) >= 2:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+
             elif subop == 'GLOBAL_AVG':
-                # VEC.GLOBAL_AVG dst, src, channels, spatial_size
-                if len(ops) >= 4:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.dim_m = self.parse_value(ops[2])  # channels
-                    instr.dim_n = self.parse_value(ops[3])  # spatial
+                # VEC.GLOBAL_AVG vd, vs1 [, channels, spatial]
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                    if len(ops) >= 3:
+                        instr.dim_m = self.parse_value(ops[2])
+                    if len(ops) >= 4:
+                        instr.dim_n = self.parse_value(ops[3])
+
             elif subop == 'BCAST':
                 # VEC.BCAST vd, imm
                 if len(ops) >= 2:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.dim_n = self.parse_value(ops[1])
+                    instr.dst = self._pack_vrf(preg(ops[0]))
+                    instr.dim_n = self.parse_value(ops[1])  # imm at [47:32]
+
+            elif subop == 'MOV':
+                # VEC.MOV vd, vs1
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+
             elif subop in ['SCALE', 'SCALE_Q8']:
-                # VEC.SCALE / VEC.SCALE_Q8  dst, src, scale, count
-                # SCALE:    scale is an integer multiplier
-                # SCALE_Q8: scale is Q8 fixed-point (actual = scale/256)
-                if len(ops) >= 4:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.dim_n = self.parse_value(ops[2])  # scale
-                    instr.dim_m = self.parse_value(ops[3])  # count
-                elif len(ops) >= 3:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.dim_n = self.parse_value(ops[2])
+                # VEC.SCALE vd, vs1, scale [, count]
+                # scale (imm) goes to dim_n → cmd[47:32]
+                if len(ops) >= 3:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                    instr.dim_n = self.parse_value(ops[2])  # imm
+                    if len(ops) >= 4:
+                        instr.dim_m = self.parse_value(ops[3])  # count
+                elif len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+
             elif subop == 'SCALE_SHIFT':
-                # VEC.SCALE_SHIFT dst, src, scale, bias, size, count
+                # VEC.SCALE_SHIFT vd, vs1, scale_sram_addr, bias_sram_addr, size, count
+                # Scale SRAM address goes in mem_addr; bias not encodable in current format.
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                if len(ops) >= 3:
+                    self._pack_memaddr(self.parse_value(ops[2]), instr)  # scale addr
+                if len(ops) >= 5:
+                    instr.dim_m = self.parse_value(ops[4])  # size
                 if len(ops) >= 6:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.src1 = self.parse_value(ops[2])  # scale addr
-                    instr.dim_m = self.parse_value(ops[3])  # bias addr (packed)
-                    instr.dim_n = self.parse_value(ops[4])  # size
                     instr.dim_k = self.parse_value(ops[5])  # count
+
             elif subop == 'ZERO':
                 # VEC.ZERO vd
                 if len(ops) >= 1:
-                    instr.dst = self.parse_value(ops[0])
-            elif subop in ['SOFTMAX_P1', 'SOFTMAX_P2', 'SOFTMAX_P3']:
-                # SOFTMAX passes: dst, src, [scratch], size, vectors
-                if len(ops) >= 4:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    if subop == 'SOFTMAX_P1':
+                    instr.dst = self._pack_vrf(preg(ops[0]))
+
+            elif subop == 'SOFTMAX_P1':
+                # VEC.SOFTMAX_P1 vd, vs1 [, size, count]
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                    if len(ops) >= 3:
                         instr.dim_m = self.parse_value(ops[2])
+                    if len(ops) >= 4:
                         instr.dim_n = self.parse_value(ops[3])
-                    else:
-                        instr.src1 = self.parse_value(ops[2])  # scratch
+
+            elif subop in ['SOFTMAX_P2', 'SOFTMAX_P3']:
+                # VEC.SOFTMAX_P2 vd, vs1, vs2 [, size, count]
+                if len(ops) >= 3:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]), preg(ops[2]))
+                    if len(ops) >= 4:
                         instr.dim_m = self.parse_value(ops[3])
-                        if len(ops) > 4:
-                            instr.dim_n = self.parse_value(ops[4])
+                    if len(ops) >= 5:
+                        instr.dim_n = self.parse_value(ops[4])
+
             elif subop == 'BATCHNORM':
-                # VEC.BATCHNORM dst, src, scale, bias, channels, spatial
+                # VEC.BATCHNORM vd, vs1, scale_sram_addr, bias_sram_addr, channels, spatial
+                # Scale SRAM address in mem_addr; channels/spatial in dim_m/dim_n.
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                if len(ops) >= 3:
+                    self._pack_memaddr(self.parse_value(ops[2]), instr)  # scale addr
+                if len(ops) >= 5:
+                    instr.dim_m = self.parse_value(ops[4])  # channels
                 if len(ops) >= 6:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    instr.src1 = self.parse_value(ops[2])  # scale addr
-                    instr.dim_m = self.parse_value(ops[3])  # bias addr
-                    instr.dim_n = self.parse_value(ops[4])  # channels
-                    instr.dim_k = self.parse_value(ops[5])  # spatial
-            elif subop in ['LAYERNORM_MEAN', 'LAYERNORM_VAR', 'LAYERNORM_NORM']:
-                # Various LayerNorm passes
-                if len(ops) >= 4:
-                    instr.dst = self.parse_value(ops[0])
-                    instr.src0 = self.parse_value(ops[1])
-                    if subop == 'LAYERNORM_MEAN':
+                    instr.dim_n = self.parse_value(ops[5])  # spatial
+
+            elif subop == 'LAYERNORM_MEAN':
+                # VEC.LAYERNORM_MEAN vd, vs1 [, size, count]
+                if len(ops) >= 2:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]))
+                    if len(ops) >= 3:
                         instr.dim_m = self.parse_value(ops[2])
+                    if len(ops) >= 4:
                         instr.dim_n = self.parse_value(ops[3])
-                    else:
-                        instr.src1 = self.parse_value(ops[2])
+
+            elif subop in ['LAYERNORM_VAR', 'LAYERNORM_NORM']:
+                # VEC.LAYERNORM_VAR vd, vs1, vs2 [, size, count, extra]
+                if len(ops) >= 3:
+                    instr.dst = self._pack_vrf(preg(ops[0]), preg(ops[1]), preg(ops[2]))
+                    if len(ops) >= 4:
                         instr.dim_m = self.parse_value(ops[3])
-                        if len(ops) > 4:
-                            instr.dim_n = self.parse_value(ops[4])
-                        if len(ops) > 5:
-                            instr.dim_k = self.parse_value(ops[5])
+                    if len(ops) >= 5:
+                        instr.dim_n = self.parse_value(ops[4])
+                    if len(ops) >= 6:
+                        instr.dim_k = self.parse_value(ops[5])
         
         #----------------------------------------------------------------------
         # DMA operations
