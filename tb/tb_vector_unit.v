@@ -6,7 +6,7 @@
 
 module tb_vector_unit;
 
-    parameter LANES = 8;
+    parameter LANES = 64;
     parameter DATA_WIDTH = 16;
     parameter VREG_COUNT = 32;
     parameter SRAM_ADDR_W = 20;
@@ -107,19 +107,21 @@ module tb_vector_unit;
     task print_vreg;
         input [4:0] idx;
     begin
-        $display("    V%0d = [%d, %d, %d, %d, %d, %d, %d, %d]", idx,
-            $signed(dut.vrf[idx][7*DATA_WIDTH +: DATA_WIDTH]),
-            $signed(dut.vrf[idx][6*DATA_WIDTH +: DATA_WIDTH]),
-            $signed(dut.vrf[idx][5*DATA_WIDTH +: DATA_WIDTH]),
-            $signed(dut.vrf[idx][4*DATA_WIDTH +: DATA_WIDTH]),
-            $signed(dut.vrf[idx][3*DATA_WIDTH +: DATA_WIDTH]),
-            $signed(dut.vrf[idx][2*DATA_WIDTH +: DATA_WIDTH]),
+        $display("    V%0d lanes[0-7] = [%d, %d, %d, %d, %d, %d, %d, %d] (of %0d)",
+            idx,
+            $signed(dut.vrf[idx][0*DATA_WIDTH +: DATA_WIDTH]),
             $signed(dut.vrf[idx][1*DATA_WIDTH +: DATA_WIDTH]),
-            $signed(dut.vrf[idx][0*DATA_WIDTH +: DATA_WIDTH]));
+            $signed(dut.vrf[idx][2*DATA_WIDTH +: DATA_WIDTH]),
+            $signed(dut.vrf[idx][3*DATA_WIDTH +: DATA_WIDTH]),
+            $signed(dut.vrf[idx][4*DATA_WIDTH +: DATA_WIDTH]),
+            $signed(dut.vrf[idx][5*DATA_WIDTH +: DATA_WIDTH]),
+            $signed(dut.vrf[idx][6*DATA_WIDTH +: DATA_WIDTH]),
+            $signed(dut.vrf[idx][7*DATA_WIDTH +: DATA_WIDTH]),
+            LANES);
     end
     endtask
     
-    integer errors;
+    integer errors, j;
     reg signed [DATA_WIDTH-1:0] val;
     
     initial begin
@@ -142,8 +144,11 @@ module tb_vector_unit;
         $display("");
         $display("[TEST 1] Vector ADD: V2 = V0 + V1");
         
-        dut.vrf[0] = {16'd8, 16'd7, 16'd6, 16'd5, 16'd4, 16'd3, 16'd2, 16'd1};
-        dut.vrf[1] = {16'd80, 16'd70, 16'd60, 16'd50, 16'd40, 16'd30, 16'd20, 16'd10};
+        // Set lanes 0-7; lanes 8-63 remain 0 from init_vrf
+        for (j = 0; j < 8; j = j + 1)
+            dut.vrf[0][j*DATA_WIDTH +: DATA_WIDTH] = j + 1;         // [1..8]
+        for (j = 0; j < 8; j = j + 1)
+            dut.vrf[1][j*DATA_WIDTH +: DATA_WIDTH] = (j + 1) * 10; // [10..80]
         print_vreg(0);
         print_vreg(1);
         
@@ -155,8 +160,8 @@ module tb_vector_unit;
         else begin $display("  FAIL: V2[0] = %0d, expected 11", val); errors = errors + 1; end
         
         val = $signed(dut.vrf[2][7*DATA_WIDTH +: DATA_WIDTH]);
-        if (val == 88) $display("  PASS: V2[7] = %0d (8+80)", val);
-        else begin $display("  FAIL: V2[7] = %0d, expected 88", val); errors = errors + 1; end
+        if (val == 88) $display("  PASS: V2[lane7] = %0d (8+80)", val);
+        else begin $display("  FAIL: V2[lane7] = %0d, expected 88", val); errors = errors + 1; end
 
         #(CLK * 5);
 
@@ -187,18 +192,19 @@ module tb_vector_unit;
         // TEST 3: Reduction SUM
         //======================================================================
         $display("");
-        $display("[TEST 3] Reduction SUM: V0 = sum(V3)");
-        
+        $display("[TEST 3] Reduction SUM: V0 = sum(V3) [all %0d lanes = 10, expected 640]", LANES);
+
         init_vrf();
-        dut.vrf[3] = {16'd8, 16'd7, 16'd6, 16'd5, 16'd4, 16'd3, 16'd2, 16'd1};
+        for (j = 0; j < LANES; j = j + 1)
+            dut.vrf[3][j*DATA_WIDTH +: DATA_WIDTH] = 16'sh000A;  // 10 per lane
         print_vreg(3);
-        
+
         issue_cmd(make_cmd(VOP_SUM, 5'd0, 5'd3, 5'd0));  // vd=0, vs1=3
-        
+
         print_vreg(0);
         val = $signed(dut.vrf[0][0 +: DATA_WIDTH]);
-        if (val == 36) $display("  PASS: sum([1..8]) = %0d", val);
-        else begin $display("  FAIL: sum = %0d, expected 36", val); errors = errors + 1; end
+        if (val == 640) $display("  PASS: sum(%0d x 10) = %0d", LANES, val);
+        else begin $display("  FAIL: sum = %0d, expected 640", val); errors = errors + 1; end
 
         #(CLK * 5);
 
@@ -454,70 +460,55 @@ module tb_vector_unit;
 
         //======================================================================
         // TEST 13: GLOBAL_AVG and LAYERNORM_MEAN (average of all LANES lanes)
-        //   V16 = [10, 20, 30, 40, 50, 60, 70, 80]  sum=360, avg=45
-        //   GLOBAL_AVG(V17, V16) → V17[0] = 45
-        //   V18 = [-8, -8, -8, -8, 8, 8, 8, 8]  sum=0, avg=0
-        //   LAYERNORM_MEAN(V19, V18) → V19[0] = 0
+        //   All LANES lanes = 45  → sum = LANES*45, avg = 45
+        //   LANES/2 lanes = -8, LANES/2 lanes = +8 → sum = 0, avg = 0
         //======================================================================
         $display("");
-        $display("[TEST 13] GLOBAL_AVG and LAYERNORM_MEAN");
+        $display("[TEST 13] GLOBAL_AVG and LAYERNORM_MEAN [all %0d lanes]", LANES);
 
         init_vrf();
-        dut.vrf[16][0*DATA_WIDTH +: DATA_WIDTH] = 16'sh000A;  // 10
-        dut.vrf[16][1*DATA_WIDTH +: DATA_WIDTH] = 16'sh0014;  // 20
-        dut.vrf[16][2*DATA_WIDTH +: DATA_WIDTH] = 16'sh001E;  // 30
-        dut.vrf[16][3*DATA_WIDTH +: DATA_WIDTH] = 16'sh0028;  // 40
-        dut.vrf[16][4*DATA_WIDTH +: DATA_WIDTH] = 16'sh0032;  // 50
-        dut.vrf[16][5*DATA_WIDTH +: DATA_WIDTH] = 16'sh003C;  // 60
-        dut.vrf[16][6*DATA_WIDTH +: DATA_WIDTH] = 16'sh0046;  // 70
-        dut.vrf[16][7*DATA_WIDTH +: DATA_WIDTH] = 16'sh0050;  // 80
+        for (j = 0; j < LANES; j = j + 1)
+            dut.vrf[16][j*DATA_WIDTH +: DATA_WIDTH] = 16'sh002D;  // 45
 
         issue_cmd(make_cmd(VOP_GLOBAL_AVG, 5'd17, 5'd16, 5'd0));
 
         val = $signed(dut.vrf[17][0*DATA_WIDTH +: DATA_WIDTH]);
-        if (val == 45) $display("  PASS: GLOBAL_AVG([10..80]) = %0d", val);
-        else begin $display("  FAIL: GLOBAL_AVG([10..80]) = %0d, expected 45", val); errors = errors + 1; end
+        if (val == 45) $display("  PASS: GLOBAL_AVG(%0d x 45) = %0d", LANES, val);
+        else begin $display("  FAIL: GLOBAL_AVG(%0d x 45) = %0d, expected 45", LANES, val); errors = errors + 1; end
 
         init_vrf();
-        dut.vrf[18][0*DATA_WIDTH +: DATA_WIDTH] = 16'shFFF8;  // -8
-        dut.vrf[18][1*DATA_WIDTH +: DATA_WIDTH] = 16'shFFF8;  // -8
-        dut.vrf[18][2*DATA_WIDTH +: DATA_WIDTH] = 16'shFFF8;  // -8
-        dut.vrf[18][3*DATA_WIDTH +: DATA_WIDTH] = 16'shFFF8;  // -8
-        dut.vrf[18][4*DATA_WIDTH +: DATA_WIDTH] = 16'sh0008;  // +8
-        dut.vrf[18][5*DATA_WIDTH +: DATA_WIDTH] = 16'sh0008;  // +8
-        dut.vrf[18][6*DATA_WIDTH +: DATA_WIDTH] = 16'sh0008;  // +8
-        dut.vrf[18][7*DATA_WIDTH +: DATA_WIDTH] = 16'sh0008;  // +8
+        for (j = 0; j < LANES/2; j = j + 1)
+            dut.vrf[18][j*DATA_WIDTH +: DATA_WIDTH] = 16'shFFF8;  // -8
+        for (j = LANES/2; j < LANES; j = j + 1)
+            dut.vrf[18][j*DATA_WIDTH +: DATA_WIDTH] = 16'sh0008;  // +8
 
         issue_cmd(make_cmd(VOP_LAYERNORM_MEAN, 5'd19, 5'd18, 5'd0));
 
         val = $signed(dut.vrf[19][0*DATA_WIDTH +: DATA_WIDTH]);
-        if (val == 0) $display("  PASS: LAYERNORM_MEAN(4x-8, 4x+8) = %0d", val);
-        else begin $display("  FAIL: LAYERNORM_MEAN(4x-8, 4x+8) = %0d, expected 0", val); errors = errors + 1; end
+        if (val == 0) $display("  PASS: LAYERNORM_MEAN(%0d/2 x -8, %0d/2 x +8) = %0d", LANES, LANES, val);
+        else begin $display("  FAIL: LAYERNORM_MEAN = %0d, expected 0", val); errors = errors + 1; end
 
         #(CLK * 5);
 
         //======================================================================
         // TEST 14: SOFTMAX_P1 (MAX reduction — same tree as VOP_MAX)
-        //   V20 = [-5, 10, -3, 20, 0, 15, -1, 5]  max = 20
+        //   All LANES lanes = -1, except lane 40 = 999 (upper half of tree)
+        //   Forces the maximum to propagate from the upper half of the reduction tree.
         //======================================================================
         $display("");
-        $display("[TEST 14] SOFTMAX_P1 (max reduction): V21 = max(V20)");
+        $display("[TEST 14] SOFTMAX_P1 (max reduction): V21 = max(V20) [%0d lanes, max in upper half]", LANES);
 
         init_vrf();
-        dut.vrf[20][0*DATA_WIDTH +: DATA_WIDTH] = 16'shFFFB;  // -5
-        dut.vrf[20][1*DATA_WIDTH +: DATA_WIDTH] = 16'sh000A;  // 10
-        dut.vrf[20][2*DATA_WIDTH +: DATA_WIDTH] = 16'shFFFD;  // -3
-        dut.vrf[20][3*DATA_WIDTH +: DATA_WIDTH] = 16'sh0014;  // 20
-        dut.vrf[20][4*DATA_WIDTH +: DATA_WIDTH] = 16'sh0000;  // 0
-        dut.vrf[20][5*DATA_WIDTH +: DATA_WIDTH] = 16'sh000F;  // 15
-        dut.vrf[20][6*DATA_WIDTH +: DATA_WIDTH] = 16'shFFFF;  // -1
-        dut.vrf[20][7*DATA_WIDTH +: DATA_WIDTH] = 16'sh0005;  // 5
+        for (j = 0; j < LANES; j = j + 1)
+            dut.vrf[20][j*DATA_WIDTH +: DATA_WIDTH] = 16'shFFFF;  // -1
+        dut.vrf[20][3*DATA_WIDTH  +: DATA_WIDTH] = 16'sh0014;     // 20  (lower half)
+        dut.vrf[20][40*DATA_WIDTH +: DATA_WIDTH] = 16'sh03E7;     // 999 (upper half — global max)
 
         issue_cmd(make_cmd(VOP_SOFTMAX_P1, 5'd21, 5'd20, 5'd0));
 
         val = $signed(dut.vrf[21][0*DATA_WIDTH +: DATA_WIDTH]);
-        if (val == 20) $display("  PASS: SOFTMAX_P1 max([-5,10,-3,20,0,15,-1,5]) = %0d", val);
-        else begin $display("  FAIL: SOFTMAX_P1 max = %0d, expected 20", val); errors = errors + 1; end
+        if (val == 999) $display("  PASS: SOFTMAX_P1 max(lane40=999, lane3=20, rest=-1) = %0d", val);
+        else begin $display("  FAIL: SOFTMAX_P1 max = %0d, expected 999", val); errors = errors + 1; end
 
         #(CLK * 5);
 
